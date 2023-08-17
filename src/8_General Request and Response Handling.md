@@ -30,7 +30,7 @@ XML 解析器. 所有在请求或响应中使用的 XML **必须** (MUST) 至少
 服务器**可能** (MAY) 会拒绝可疑请求 (即使它们由良好格式的 XML 构成), 比如返回 400
 (Bad Request) 状态代码和可选的响应主体来解释问题.
 
-## 8.3. 处理 URL
+## 8.3. 处理 URL (URL Handling)
 
 URL 会出现在请求和响应的很多地方. 与 [RFC2518] 的互操作性经验显示许多解析多状态
 (Multi-Status) 响应的客户端没有完全实现 [RFC3986#5] 中定义的完整引用解析. 因此，
@@ -88,13 +88,13 @@ Simple-ref = absolute-URI | ( path-absolute [ "?" query ] )
 它必须进行百分号编码 (percent-encoded), 以符合 [RFC3986#2.1] 中对 URI 的要求.
 此外还要注意，一个合法的 URI 仍可能包含在 XML 字符集中需要转义的字符, 比如 `&` 字符.
 
-## 8.4. 请求中必要的主体
+## 8.4. 请求中必要的主体 (Required Bodies in Requests)
 
 一些新的方法没有定义请求主体. 服务器必须检查所有请求是否有主体, 即使这个主体不是期望的.
 在存在请求主体但服务器将忽略它的情况下, 服务器必须返回 415 (不支持的媒体类型) 拒绝该请求.
 这会通知可能正尝试使用扩展功能客户端, 既服务器无法按照客户端的意图处理请求主体.
 
-## 8.5. 用于 WebDAV 的 HTTP 标头
+## 8.5. 用于 WebDAV 的 HTTP 标头 (HTTP Headers for Use in WebDAV)
 
 HTTP 定义了许多可用于 WebDAV 请求和响应的标头. 这些标头并非所有情况下都适用,
 其中某些交互可能未定义. 注意, HTTP 1.1 在如果可能的情况下会要求在所有响应中包含 `Date`
@@ -119,7 +119,35 @@ HTTP 1.1 建议在控制缓存时使用 `ETags` 而不是修改日期, 甚至有
 可能需要在本规范和 HTTP 范围之外达成一些协议或标准. 同时要注意的是, `弱ETags` 在 HTTP 中有一些限制，e.g., 在 `If-Match` 标头中无法使用它们.
 
 需要注意的是，在 PUT 响应中 `ETag` 的含义在本文档或 [RFC2616] 中都没有明确定义 (i.e., `ETag` 是否表示资源与 PUT 请求主体等效;
-或服务器是否可以在存储时对文档的格式或内容进行细微更改).
-这不仅仅是 WebDAV, 而是 HTTP 的一个问题.
+或服务器是否可以在存储时对文档的格式或内容进行细微更改). 这不仅仅是 WebDAV, 而是 HTTP
+的一个问题.
+
+由于如果 `ETag` 更改，客户端可能强制提示用户或丢弃更改的内容, 因此 WebDAV 服务器**不应该** (SHOULD NOT) 改变那些正文和位置未被更改的资源的 `ETag` (或上次修改时间 (Last-Modified
+time)). `ETag` 代表资源的主体或内容的状态, 除了 `ETag` 没有类似的方法来判断属性是否已更改.
+
+> 译者注:
+> `Etag` 包含在 HTTP 标头中,
+> 其标识资源的状态和版本, 以支持资源的锁定, 版本控制和冲突解决等功能.
+>
+> ```http
+> # 1. 请求
+> LOCK /file.txt HTTP/1.1
+> Host: example.com
+> If: (<opaquelocktoken:123456789>)
+>
+> # 2. 响应
+> HTTP/1.1 200 OK
+> Lock-Token: <opaquelocktoken:123456789>
+> ETag: "abcdef123456"
+> ```
+
+## 8.7. 包含错误响应的主体 (Including Error Response Bodies)
+
+直到 WebDAV 版本扩展规范引入在错误响应的主体中包含更具体信息的机制前, HTTP 和 WebDAV 并没有将大多数错误响应的主体用于机器可解析信息 (machine-parsable information)
+(参见 [RFC3253#1.6]). 错误的主体机制适用于任何可能具有主体但尚未定义主体的错误响应. 当状态代码可以表示多种含义时，该机制十分合适 (e.g, 400 (Bad Request)
+可能表示缺少必需的标头或者标头格式不正确等等). 关于该错误主体机制的内容将在[第 16 章]()
+中进行说明.
+
+## 8.8. 命名空间操作对缓存验证器的影响 (Impact of Namespace Operations on Cache Validators)
 
 <!-- TODO -->

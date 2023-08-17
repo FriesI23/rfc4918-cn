@@ -62,6 +62,10 @@ RFC 中用于指示需求级别的关键字
 
 统一资源标识符 (URI): 通用语法, 第 5 章: 引用解析
 
+## [RFC3253#1.6]
+
+WebDAV 的版本控制扩展 (Web 分布式创作和版本控制), 第 1.6 章: 方法前置和后置条件
+
 <!-- REC refs -->
 
 ## [REC-XML]
@@ -93,6 +97,7 @@ XML 信息集合 (第二版)
 [RFC3986#3.4]: https://datatracker.ietf.org/doc/html/rfc3986#section-3.4
 [RFC3986#4.3]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.3
 [RFC3986#5]: https://datatracker.ietf.org/doc/html/rfc3986#section-5
+[RFC3253#1.6]: https://datatracker.ietf.org/doc/html/rfc3253#section-1.6
 [REC-XML]: https://www.w3.org/TR/xml/
 [REC-XML-NAMES]: https://www.w3.org/TR/2006/REC-xml-names-20060816/
 [REC-XML-INFOSET]: https://www.w3.org/TR/2004/REC-xml-infoset-20040204/

@@ -26,6 +26,6 @@
     - [x] 8.3.1. Example - Correct URL Handling
   - [x] 8.4. Required Bodies in Requests
   - [x] 8.5. HTTP Headers for Use in WebDAV
-  - [ ] 8.6. ETag
-  - [ ] 8.7. Including Error Response Bodies
+  - [x] 8.6. ETag
+  - [x] 8.7. Including Error Response Bodies
   - [ ] 8.8. Impact of Namespace Operations on Cache Validators
