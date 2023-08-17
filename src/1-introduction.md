@@ -17,10 +17,10 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 
 本文档未指定 [RFC2291] 中建议的版本控制操作. 该工作 [RFC3253] 中进行.
 
-以下各节详细介绍了各种 WebDAV 的抽象:
+以下各章详细介绍了各种 WebDAV 的抽象:
 
 - 资源属性 (resource properties)
-  ([第四章](./4-data_model_for_resource_properties.md))
+  ([第四章](./4_data_model_for_resource_properties.md))
 - 资源集合 (collections of resources)
   ([第五章](./5_collection_of_web_resources.md))
 - 锁定 (locks) ([第六章]())
@@ -32,7 +32,8 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 - WebDAV 方法一起使用的额外 HTTP 头 (extra HTTP headers used with WebDAV methods)
   ([第十章]())
 
-关于在 WebDAV 中处理 HTTP 请求和响应的一般考虑事项, 请参考[第八章]().
+关于在 WebDAV 中处理 HTTP 请求和响应的一般考虑事项,
+请参考[第八章](./8_General%20Request%20and%20Response%20Handling.md).
 
 虽然 HTTP/1.1 提供的状态码足以描述 WebDAV 方法中遇到的大多数错误条件 (error conditions), 但某些错误并不完全适用. 本规范定义了为 WebDAV 方法开发的额外状态码 ([第十一章]()),
 并描述了在 WebDAV 中使用的现有 HTTP 状态码 ([第十二章]()). 由于一些 WebDAV

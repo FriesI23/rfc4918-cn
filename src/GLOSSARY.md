@@ -26,23 +26,51 @@ WebDAV 的版本控制扩展
 
 超文本传输协议 —— HTTP/1.1, 第 2.2 章: 基本规则
 
+## [RFC2616#3.2.3]
+
+超文本传输协议 —— HTTP/1.1, 第 3.2.3 章: 比较 URI
+
+## [RFC2616#14.18]
+
+超文本传输协议 —— HTTP/1.1, 第 14.18 章: 日期
+
 ## [RFC2119]
 
 RFC 中用于指示需求级别的关键字
 
 ## [RFC3986]
 
-统一资源标识符 (URI)：通用语法
+统一资源标识符 (URI): 通用语法
+
+## [RFC3986#2.1]
+
+统一资源标识符 (URI): 通用语法, 第 2.1 章: 百分比编码
 
 ## [RFC3986#3.3]
 
-统一资源标识符 (URI)：通用语法, 第 3.3 章: 路径
+统一资源标识符 (URI): 通用语法, 第 3.3 章: 路径
+
+## [RFC3986#3.4]
+
+统一资源标识符 (URI): 通用语法, 第 3.4 章: 查询
+
+## [RFC3986#4.3]
+
+统一资源标识符 (URI): 通用语法, 第 4.3 章: 绝对 URI
+
+## [RFC3986#5]
+
+统一资源标识符 (URI): 通用语法, 第 5 章: 引用解析
 
 <!-- REC refs -->
 
 ## [REC-XML]
 
 扩展标记语言 (XML) 1.0（第五版）
+
+## [REC-XML-NAMES]
+
+XML 1.0 中的命名空间（第二版）
 
 ## [REC-XML-INFOSET]
 
@@ -56,8 +84,15 @@ XML 信息集合 (第二版)
 [RFC7101]: https://datatracker.ietf.org/doc/html/rfc7101
 [RFC2616#2.1]: https://datatracker.ietf.org/doc/html/rfc2616#section-2.1
 [RFC2616#2.2]: https://datatracker.ietf.org/doc/html/rfc2616#section-2.2
+[RFC2616#3.2.3]: https://datatracker.ietf.org/doc/html/rfc2616#section-3.2.3
+[RFC2616#14.18]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.18
 [RFC2119]: https://datatracker.ietf.org/doc/html/rfc2119
 [RFC3986]: https://datatracker.ietf.org/doc/html/rfc3986
+[RFC3986#2.1]: https://datatracker.ietf.org/doc/html/rfc3986#section-2.1
 [RFC3986#3.3]: https://datatracker.ietf.org/doc/html/rfc3986#section-3.3
+[RFC3986#3.4]: https://datatracker.ietf.org/doc/html/rfc3986#section-3.4
+[RFC3986#4.3]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.3
+[RFC3986#5]: https://datatracker.ietf.org/doc/html/rfc3986#section-5
 [REC-XML]: https://www.w3.org/TR/xml/
+[REC-XML-NAMES]: https://www.w3.org/TR/2006/REC-xml-names-20060816/
 [REC-XML-INFOSET]: https://www.w3.org/TR/2004/REC-xml-infoset-20040204/

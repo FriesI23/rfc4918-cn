@@ -1,6 +1,6 @@
 # 5. 网络资源集合 (Collections of Web Resources)
 
-本章节提供了一种 Web 资源类型 -- 集合的描述, 并讨论了它与 HTTP URL 命名空间和 HTTP
+本章提供了一种 Web 资源类型 -- 集合的描述, 并讨论了它与 HTTP URL 命名空间和 HTTP
 方法的交互. 集合资源的目的是在服务器命名空间内为那些类似集合的对象提供建模 (model
 collection-like objects) (e.g., 文件系统目录).
 
