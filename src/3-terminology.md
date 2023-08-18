@@ -20,7 +20,7 @@
 
 非正式地说, 集合是一个资源 (resource), 同时也作为包含对其子资源的引用的容器.
 正式地说, 它是包含[路径段](#路径段-path-segment)与资源 (Resources) 之间映射的集合,
-并满足[第五章](./5_collection_of_web_resources.md)中定义的要求.
+并满足[第五章](./5-collection_of_web_resources.md)中定义的要求.
 
 ## 集合的内部成员 (Internal Member (of a Collection))
 

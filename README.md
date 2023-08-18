@@ -28,4 +28,55 @@
   - [x] 8.5. HTTP Headers for Use in WebDAV
   - [x] 8.6. ETag
   - [x] 8.7. Including Error Response Bodies
-  - [ ] 8.8. Impact of Namespace Operations on Cache Validators
+  - [x] 8.8. Impact of Namespace Operations on Cache Validators
+- [ ] 9. HTTP Methods for Distributed Authoring
+  - [ ] 9.1. PROPFIND Method
+    - [ ] 9.1.1. PROPFIND Status Codes
+    - [ ] 9.1.2. Status Codes for Use in 'propstat' Element
+    - [ ] 9.1.3. Example - Retrieving Named Properties
+    - [ ] 9.1.4. Example - Using 'propname' to Retrieve All Property Name
+    - [ ] 9.1.5. Example - Using So-called 'allprop'
+    - [ ] 9.1.6. Example - Using 'allprop' with 'include'
+  - [ ] 9.2. PROPPATCH Method
+    - [ ] 9.2.1. Status Codes for Use in 'propstat' Element
+    - [ ] 9.2.2. Example - PROPPATCH
+  - [ ] 9.3. MKCOL Method
+    - [ ] 9.3.1. MKCOL Status Codes
+    - [ ] 9.3.2. Example - MKCOL
+  - [ ] 9.4. GET, HEAD for Collections
+  - [ ] 9.5. POST for Collections
+  - [ ] 9.6. DELETE Requirements
+    - [ ] 9.6.1. DELETE for Collections
+    - [ ] 9.6.2. Example - DELETE
+  - [ ] 9.7. PUT Requirements
+    - [ ] 9.7.1. PUT for Non-Collection Resources
+    - [ ] 9.7.2. PUT for Collections
+  - [ ] 9.8. COPY Method
+    - [ ] 9.8.1. COPY for Non-collection Resources
+    - [ ] 9.8.2. COPY for Properties
+    - [ ] 9.8.3. COPY for Collections
+    - [ ] 9.8.4. COPY and Overwriting Destination Resources
+    - [ ] 9.8.5. Status Codes
+    - [ ] 9.8.6. Example - COPY with Overwrite
+    - [ ] 9.8.7. Example - COPY with No Overwrite
+    - [ ] 9.8.8. Example - COPY of a Collection
+  - [ ] 9.9. MOVE Method
+    - [ ] 9.9.1. MOVE for Properties
+    - [ ] 9.9.2. MOVE for Collections
+    - [ ] 9.9.3. MOVE and the Overwrite Header
+    - [ ] 9.9.4. Status Codes
+    - [ ] 9.9.5. Example - MOVE of a Non-Collection
+    - [ ] 9.9.6. Example - MOVE of a Collection
+  - [ ] 9.10. LOCK Method
+    - [ ] 9.10.1. Creating a Lock on an Existing Resource
+    - [ ] 9.10.2. Refreshing Locks
+    - [ ] 9.10.3. Depth and Locking
+    - [ ] 9.10.4. Locking Unmapped URLs
+    - [ ] 9.10.5. Lock Compatibility Table
+    - [ ] 9.10.6. LOCK Responses
+    - [ ] 9.10.7. Example - Simple Lock Request
+    - [ ] 9.10.8. Example - Refreshing a Write Lock
+    - [ ] 9.10.9. Example - Multi-Resource Lock Request
+  - [ ] 9.11 UNLOCK Method
+    - [ ] 9.11.1. Status Codes
+    - [ ] 9.11.2. Example - UNLOCK

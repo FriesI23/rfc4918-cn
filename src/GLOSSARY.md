@@ -34,6 +34,14 @@ WebDAV 的版本控制扩展
 
 超文本传输协议 —— HTTP/1.1, 第 14.18 章: 日期
 
+## [RFC2616#14.19]
+
+超文本传输协议 —— HTTP/1.1, 第 14.19 章: ETag
+
+## [RFC2616#14.29]
+
+超文本传输协议 —— HTTP/1.1, 第 14.19 章: Last-Modified
+
 ## [RFC2119]
 
 RFC 中用于指示需求级别的关键字
@@ -90,6 +98,8 @@ XML 信息集合 (第二版)
 [RFC2616#2.2]: https://datatracker.ietf.org/doc/html/rfc2616#section-2.2
 [RFC2616#3.2.3]: https://datatracker.ietf.org/doc/html/rfc2616#section-3.2.3
 [RFC2616#14.18]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.18
+[RFC2616#14.19]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.19
+[RFC2616#14.29]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.29
 [RFC2119]: https://datatracker.ietf.org/doc/html/rfc2119
 [RFC3986]: https://datatracker.ietf.org/doc/html/rfc3986
 [RFC3986#2.1]: https://datatracker.ietf.org/doc/html/rfc3986#section-2.1

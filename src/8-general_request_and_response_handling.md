@@ -126,7 +126,7 @@ HTTP 1.1 建议在控制缓存时使用 `ETags` 而不是修改日期, 甚至有
 time)). `ETag` 代表资源的主体或内容的状态, 除了 `ETag` 没有类似的方法来判断属性是否已更改.
 
 > 译者注:
-> `Etag` 包含在 HTTP 标头中,
+> 对于 HTTP 而言, `Etag` 包含在其标头中,
 > 其标识资源的状态和版本, 以支持资源的锁定, 版本控制和冲突解决等功能.
 >
 > ```http
@@ -140,14 +140,96 @@ time)). `ETag` 代表资源的主体或内容的状态, 除了 `ETag` 没有类�
 > Lock-Token: <opaquelocktoken:123456789>
 > ETag: "abcdef123456"
 > ```
+>
+> 对于 WebDav 而言, 可以通过 `PRFIND` 和 `getetag` 来获取资源的 `ETag` 值.
+>
+> ```xml
+> # 1. 请求
+> PROPFIND /example.txt HTTP/1.1
+> Host: example.com
+> Depth: 0
+> Content-Type: text/xml; charset="utf-8"
+>
+> <?xml version="1.0" encoding="utf-8"?>
+> <D:propfind xmlns:D="DAV:">
+>   <D:prop>
+>     <D:getetag />
+>   </D:prop>
+> </D:propfind>
+>
+> # 2. 响应 (包含一个多状态响应)
+> HTTP/1.1 207 Multi-Status
+> Content-Type: text/xml; charset="utf-8"
+>
+> <?xml version="1.0" encoding="utf-8"?>
+> <D:multistatus xmlns:D="DAV:">
+>   <D:response>
+>     <D:href>/example.txt</D:href>
+>     <D:propstat>
+>       <D:prop>
+>         <D:getetag>"123456789"</D:getetag>
+>       </D:prop>
+>       <D:status>HTTP/1.1 200 OK</D:status>
+>     </D:propstat>
+>   </D:response>
+> </D:multistatus>
+> ```
 
 ## 8.7. 包含错误响应的主体 (Including Error Response Bodies)
 
-直到 WebDAV 版本扩展规范引入在错误响应的主体中包含更具体信息的机制前, HTTP 和 WebDAV 并没有将大多数错误响应的主体用于机器可解析信息 (machine-parsable information)
-(参见 [RFC3253#1.6]). 错误的主体机制适用于任何可能具有主体但尚未定义主体的错误响应. 当状态代码可以表示多种含义时，该机制十分合适 (e.g, 400 (Bad Request)
+直到 WebDAV 版本扩展规范引入在错误响应的主体中包含更具体信息的机制前, HTTP 和 WebDAV
+并没有将大多数错误响应的主体用于机器可解析信息 (machine-parsable information)
+(参见 [RFC3253#1.6]). 错误的主体机制适用于任何可能具有主体但尚未定义主体的错误响应.
+当状态代码可以表示多种含义时，该机制十分合适 (e.g, 400 (Bad Request)
 可能表示缺少必需的标头或者标头格式不正确等等). 关于该错误主体机制的内容将在[第 16 章]()
 中进行说明.
 
 ## 8.8. 命名空间操作对缓存验证器的影响 (Impact of Namespace Operations on Cache Validators)
 
-<!-- TODO -->
+需要注意的是, HTTP 响应标头的 "Etag" 和 "Last-Modified" (参见 [RFC2616#14.19] 与
+[RFC2616#14.29]) 是按 URL (而不是按资源) 定义的, 并且客户端会用于缓存.
+因此, 服务器必须确保执行任何影响 URL 命名空间的操作 (比如 `COPY`, `MOVE`, `DELETE`,
+`PUT`, `MKCOL`) 能够保留它们的语义, 特别是:
+
+- 对于给定的 URL, 每次 GET 返回的表示发生变化时, `"Last-Modified"` 值必须递增
+  (在时间戳分辨率的限制内).
+- 对于给定的 URL, `"ETag"` 值不得 GET 返回的不同表示形式中重用.
+
+事实上, 这意味着
+
+- 服务器可能需要为每一个资源递增 `"Last-Modified"` 时间戳,
+  该资源位于命名空间操作的目标命名空间内. 除非这个资源可以更有选择性地进行递增;
+- 同样地, 服务器可能需要重新分配这些资源的 `"ETag"` 值 (除非服务器按照某种方式分配实体标签,
+  确保它们在服务器管理的整个 URL 命名空间中是唯一的).
+
+需要注意的是, 这些考虑因素也适用于特定的用例, 比如使用 PUT 在一个 URL 上创建新资源,
+然而这个 URL 在之前被映射过, 但此后被删除.
+
+最后, 从 HTTP 标头中继承的的 WebDAV 属性 (比如 `DAV:getetag` 和
+`DAV:getlastmodified`) 必须做出相应的应为.
+
+> 译者注: 怎么理解这段话
+> 比如 `<DAV:getetag>`, `<DAV:getlastmodified>` 这类属性,
+> 必须按照相应的方式进行操作和处理. e.g.,
+>
+> ```xml
+> # 响应
+> HTTP/1.1 207 Multi-Status
+> Content-Type: text/xml; charset="utf-8"
+>
+> <?xml version="1.0" encoding="utf-8"?>
+> <D:multistatus xmlns:D="DAV:">
+>   <D:response>
+>     <D:href>/document.txt</D:href>
+>     <D:propstat>
+>       <D:prop>
+>         <D:getetag>"123456789"</D:getetag>
+>         <!-- 必须按照getlastmodified属性的定义要求进行解析  -->
+>         <D:getlastmodified>Tue, 10 Aug 2023 14:30:00 GMT</D:getlastmodified>
+>       </D:prop>
+>       <D:status>HTTP/1.1 200 OK</D:status>
+>     </D:propstat>
+>   </D:response>
+>   <!-- ... other responses -->
+> </D:multistatus>
+> ```

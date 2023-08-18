@@ -20,9 +20,9 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 以下各章详细介绍了各种 WebDAV 的抽象:
 
 - 资源属性 (resource properties)
-  ([第四章](./4_data_model_for_resource_properties.md))
+  ([第四章](./4-data_model_for_resource_properties.md))
 - 资源集合 (collections of resources)
-  ([第五章](./5_collection_of_web_resources.md))
+  ([第五章](./5-collection_of_web_resources.md))
 - 锁定 (locks) ([第六章]())
 - 写锁定 (write locks) ([第七章]())
 
