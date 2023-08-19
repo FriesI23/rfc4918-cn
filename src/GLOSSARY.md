@@ -14,10 +14,6 @@ WebDAV - 用于分布式创作的 HTTP 扩展
 
 面向 WWW 的分布式创作与版本控制协议要求
 
-## [RFC3253]
-
-WebDAV 的版本控制扩展
-
 ## [RFC2616#2.1]
 
 超文本传输协议 —— HTTP/1.1, 第 2.1 章: 增强 BNF (Augmented BNF)
@@ -29,6 +25,10 @@ WebDAV 的版本控制扩展
 ## [RFC2616#3.2.3]
 
 超文本传输协议 —— HTTP/1.1, 第 3.2.3 章: 比较 URI
+
+## [RFC2616#9.1]
+
+超文本传输协议 —— HTTP/1.1, 第 9.1 章: 安全又幂等的方法
 
 ## [RFC2616#14.18]
 
@@ -70,6 +70,10 @@ RFC 中用于指示需求级别的关键字
 
 统一资源标识符 (URI): 通用语法, 第 5 章: 引用解析
 
+## [RFC3253]
+
+WebDAV 的版本控制扩展 (Web 分布式创作和版本控制)
+
 ## [RFC3253#1.6]
 
 WebDAV 的版本控制扩展 (Web 分布式创作和版本控制), 第 1.6 章: 方法前置和后置条件
@@ -92,11 +96,11 @@ XML 信息集合 (第二版)
 
 [RFC2518]: https://datatracker.ietf.org/doc/html/rfc2518
 [RFC2291]: https://datatracker.ietf.org/doc/html/rfc2291
-[RFC3253]: https://datatracker.ietf.org/doc/html/rfc3253
 [RFC7101]: https://datatracker.ietf.org/doc/html/rfc7101
 [RFC2616#2.1]: https://datatracker.ietf.org/doc/html/rfc2616#section-2.1
 [RFC2616#2.2]: https://datatracker.ietf.org/doc/html/rfc2616#section-2.2
 [RFC2616#3.2.3]: https://datatracker.ietf.org/doc/html/rfc2616#section-3.2.3
+[RFC2616#9.1]: https://datatracker.ietf.org/doc/html/rfc2616#section-9.1
 [RFC2616#14.18]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.18
 [RFC2616#14.19]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.19
 [RFC2616#14.29]: https://datatracker.ietf.org/doc/html/rfc2616#section-14.29
@@ -107,6 +111,7 @@ XML 信息集合 (第二版)
 [RFC3986#3.4]: https://datatracker.ietf.org/doc/html/rfc3986#section-3.4
 [RFC3986#4.3]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.3
 [RFC3986#5]: https://datatracker.ietf.org/doc/html/rfc3986#section-5
+[RFC3253]: https://datatracker.ietf.org/doc/html/rfc3253
 [RFC3253#1.6]: https://datatracker.ietf.org/doc/html/rfc3253#section-1.6
 [REC-XML]: https://www.w3.org/TR/xml/
 [REC-XML-NAMES]: https://www.w3.org/TR/2006/REC-xml-names-20060816/

@@ -29,14 +29,14 @@
   - [x] 8.6. ETag
   - [x] 8.7. Including Error Response Bodies
   - [x] 8.8. Impact of Namespace Operations on Cache Validators
-- [ ] 9. HTTP Methods for Distributed Authoring
-  - [ ] 9.1. PROPFIND Method
-    - [ ] 9.1.1. PROPFIND Status Codes
-    - [ ] 9.1.2. Status Codes for Use in 'propstat' Element
-    - [ ] 9.1.3. Example - Retrieving Named Properties
-    - [ ] 9.1.4. Example - Using 'propname' to Retrieve All Property Name
-    - [ ] 9.1.5. Example - Using So-called 'allprop'
-    - [ ] 9.1.6. Example - Using 'allprop' with 'include'
+- [x] 9. HTTP Methods for Distributed Authoring
+  - [x] 9.1. PROPFIND Method
+    - [x] 9.1.1. PROPFIND Status Codes
+    - [x] 9.1.2. Status Codes for Use in 'propstat' Element
+    - [x] 9.1.3. Example - Retrieving Named Properties
+    - [x] 9.1.4. Example - Using 'propname' to Retrieve All Property Name
+    - [x] 9.1.5. Example - Using So-called 'allprop'
+    - [x] 9.1.6. Example - Using 'allprop' with 'include'
   - [ ] 9.2. PROPPATCH Method
     - [ ] 9.2.1. Status Codes for Use in 'propstat' Element
     - [ ] 9.2.2. Example - PROPPATCH
