@@ -3,15 +3,15 @@ name: CI Page builder
 on:
   push:
     branches:
-        - gh-pages
+        - main
 env:
-  USER_EMAIL: ${{secrets.USER_EMAIL}}
-  USER_NAME: ${{secrets.USER_NAME}}
+  USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  USER_NAME: ${{ secrets.USER_NAME }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  Build-Deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Build and deploy
+      - name: Build and Deploy
         uses: monstar-lab-oss/honkit-ghpages-action@main
