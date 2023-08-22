@@ -487,7 +487,7 @@ PROPPATCH 方法的请求消息主体**必须** (MUST) 包含 `propertyupdate` X
 如果服务器尝试在 PROPPATCH 请求中修改任意属性 (i.e., 在处理主体前请求不会因高级错误被拒绝),
 响应必须是一个多状态响应, 如[第 9.2.1 章]()中所述.
 
-该方法是幂等, 但不安全 (请参阅 [RFC2616#9.1]). 不能缓存此方法的响应.
+该方法幂等但不安全 (请参阅 [RFC2616#9.1]). 不能缓存此方法的响应.
 
 ### 9.2.1. "propstat" 元素中使用的状态代码 (Status Codes for Use in 'propstat' Element)
 
@@ -568,3 +568,65 @@ Content-Length: xxxx
 由于 "Copyright-Owner" 属性无法被移除, 因此没有修改任何属性. 对于 "Authors" 属性,
 状态码 424 (Failed Dependency) 表示, 这个操作如果不是因为与移除 "Copyright-Owner"
 属性冲突的话应该可以成功.
+
+## 9.3. MKCOL 方法 (MKCOL Method)
+
+MKCOL 方法在由 Request-URI 指定的位置创建一个新的集合资源. 如果 Request-URI
+已经映射到一个资源, 那么 MKCOL 方法**必须** (MUST) 失败. 在 MKCOL 处理过程中,
+服务器**必须** (MUST) 将 Request-URI 设置为其父集合的内部成员, 除非这个 Request-URI
+是 "/". 如果不存在这样的祖先, 该方法**必须** (MUST) 失败. 当 MKCOL
+操作创建一个新的集合资源时, 所有的祖先集合**必须** (MUST) 已经存在, 否则方法必须失败并返回
+409 (Conflict) 状态码. e.g., 如果发出一个请求创建集合 `/a/b/c/d/`, 而 `/a/b/c/`
+不存在, 那么该请求必须失败.
+
+当在没有请求主体的情况下调用 MKCOL 时, 新创建的集合**应该** (SHOULD) 没有成员.
+
+MKCOL 请求消息可能包含一个消息体. 当消息体存在时, MKCOL 请求的精确行为是未定义的,
+但这一情况仅限制于创建集合/集合的成员/成员主体/集合或成员的属性时.
+如果服务器收到一种不支持或不理解的 MKCOL 请求实体类型, 必须响应 415
+(Unsupported Media Type) 状态码. 如果服务器决定基于实体存在或实体类型拒绝请求, 则应该响应
+415 (Unsupported Media Type) 状态码.
+
+该方法幂等但不安全 (请参阅 [RFC2616#9.1]). 不能缓存此方法的响应.
+
+### 9.3.1. MKCOL 响应码 (MKCOL Status Codes)
+
+除了可能的一般状态码外, 以下状态码对于 MKCOL 方法具有特定的适用性:
+
+- 201 (Created): 集合已创建
+- 403 (Forbidden): 这表示至少有存在两种情况之一:
+  1. 服务器不允许在给定的 URL 命名空间位置创建集合.
+  2. Request-URI 的父集合存在, 但无法接受成员.
+- 405 (Method Not Allowed): MKCOL 只能在未映射的 URL 上执行.
+- 409 (Conflict): 在 Request-URI 处创建集合前, 必须先创建一个或多个中间集合.
+  服务器**不能** (MUST NOT) 自动创建这些中间集合.
+- 415 (Unsupported Media Type): 服务器不支持的请求体类型 (尽管在 MKCOL
+  请求中可以使用请求主体 (bodies on requests)，但由于本规范没有定义任何请求主体类型,
+  因此服务器可能不会支持任何给定的请求主体类型).
+- 507 (Insufficient Storage): 该资源没有足够的空间来记录执行此方法后资源状态.
+
+### 9.3.2. MKCOL 示例 (Example - MKCOL)
+
+此示例在 `www.example.com` 服务器中创建了一个 `/webdisc/xfiles/` 集合.
+
+```http
+>>Request
+
+MKCOL /webdisc/xfiles/ HTTP/1.1
+Host: www.example.com
+
+
+>>Response
+
+HTTP/1.1 201 Created
+```
+
+## 9.4. 集合中的 GET 和 HEAD (GET, HEAD for Collections)
+
+HTTP 方法 GET 的语义在集合(目录)资源中并没有改变. GET 方法被定义为 "检索由请求 URI
+标识的任何信息 (以实体的形式)" [RFC2616]. 当应用于集合时, GET 方法可能会返回
+"index.html" 资源的内容，其中包含人类可读的集合内容, 或者其他一些内容. 因此，
+GET 在集合上的结果可能与集合的成员关系之间没有任何相关性.
+
+类似地, 由于 HEAD 方法的定义是一个没有响应消息主体的 GET,
+HEAD 方法的语义在应用于集合资源时也没有改变.

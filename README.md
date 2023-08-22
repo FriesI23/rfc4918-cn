@@ -19,7 +19,7 @@
 - [x] 5. Collections of Web Resources
   - [x] 5.1. HTTP URL Namespace Model
   - [x] 5.2. Collection Resources
-- [ ] 8. General Request and Response Handling
+- [x] 8. General Request and Response Handling
   - [x] 8.1. Precedence in Error Handling
   - [x] 8.2. Use of XML
   - [x] 8.3. URL Handling
@@ -40,10 +40,10 @@
   - [x] 9.2. PROPPATCH Method
     - [x] 9.2.1. Status Codes for Use in 'propstat' Element
     - [x] 9.2.2. Example - PROPPATCH
-  - [ ] 9.3. MKCOL Method
-    - [ ] 9.3.1. MKCOL Status Codes
-    - [ ] 9.3.2. Example - MKCOL
-  - [ ] 9.4. GET, HEAD for Collections
+  - [x] 9.3. MKCOL Method
+    - [x] 9.3.1. MKCOL Status Codes
+    - [x] 9.3.2. Example - MKCOL
+  - [x] 9.4. GET, HEAD for Collections
   - [ ] 9.5. POST for Collections
   - [ ] 9.6. DELETE Requirements
     - [ ] 9.6.1. DELETE for Collections
