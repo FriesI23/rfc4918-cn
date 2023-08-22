@@ -37,9 +37,9 @@
     - [x] 9.1.4. Example - Using 'propname' to Retrieve All Property Name
     - [x] 9.1.5. Example - Using So-called 'allprop'
     - [x] 9.1.6. Example - Using 'allprop' with 'include'
-  - [ ] 9.2. PROPPATCH Method
-    - [ ] 9.2.1. Status Codes for Use in 'propstat' Element
-    - [ ] 9.2.2. Example - PROPPATCH
+  - [x] 9.2. PROPPATCH Method
+    - [x] 9.2.1. Status Codes for Use in 'propstat' Element
+    - [x] 9.2.2. Example - PROPPATCH
   - [ ] 9.3. MKCOL Method
     - [ ] 9.3.1. MKCOL Status Codes
     - [ ] 9.3.2. Example - MKCOL
