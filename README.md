@@ -44,10 +44,10 @@
     - [x] 9.3.1. MKCOL Status Codes
     - [x] 9.3.2. Example - MKCOL
   - [x] 9.4. GET, HEAD for Collections
-  - [ ] 9.5. POST for Collections
-  - [ ] 9.6. DELETE Requirements
-    - [ ] 9.6.1. DELETE for Collections
-    - [ ] 9.6.2. Example - DELETE
+  - [x] 9.5. POST for Collections
+  - [x] 9.6. DELETE Requirements
+    - [x] 9.6.1. DELETE for Collections
+    - [x] 9.6.2. Example - DELETE
   - [ ] 9.7. PUT Requirements
     - [ ] 9.7.1. PUT for Non-Collection Resources
     - [ ] 9.7.2. PUT for Collections
