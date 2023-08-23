@@ -725,3 +725,31 @@ Content-Length: xxxx
 ## 9.7. PUT 要求 (PUT Requirements)
 
 ### 9.7.1. 非集合资源中的 PUT (PUT for Non-Collection Resources)
+
+对现有资源执行的 PUT 操作将替换该资源的 GET 响应实体.
+在 PUT 处理过程中, 可能会重新计算在资源上定义的属性, 但其他属性不会受到影响. e.g.,
+如果服务器识别到请求主体的内容类型, 其可能能够自动提取并作为属性进行有益地展示.
+
+如果 PUT 导致创建一个资源, 而该资源没有适当作用域的父集时, 这个操作**必须** (MUST)
+失败并返回 409 (Conflict) 状态码.
+
+PUT 请求允许客户端指示实体主体的媒体类型, 以及是否在被覆盖时进行更改. 因此,
+客户端**应该** (SHOULD) 为新资源提供一个 Content-Type (如果有的话).
+如果客户端没有为新资源提供 Content-Type, 服务器**可能** (MAY)
+创建一个没有分配 Content-Type 的资源, 或者**可能** (MAY) 尝试分配一个 Content-Type。
+
+需要注意的是, 尽管接收方通常应该将 HTTP 请求中提供的元数据视为权威,
+但实际上并不能保证服务器会接受客户端提供的元数据（e.g., 任何以 "Content-" 开头的请求标头).
+首先许多服务器不允许在每个资源上配置 Content-Type. 因此,
+客户端并不总是能通过包含 Content-Type 请求标头来直接影响内容类型.
+
+### 9.7.2. 集合中的 PUT (PUT for Collections)
+
+本规范未定义对已存在集合的 PUT 方法行为. 对现有集合的 PUT 请求可能会被视为错误
+(405 Method Not Allowed).
+
+[MKCOL 方法][OP:MKCOL]被定义用于创建集合.
+
+<!-- below are refs and links -->
+
+[OP:MKCOL]: #93-mkcol-方法-mkcol-method

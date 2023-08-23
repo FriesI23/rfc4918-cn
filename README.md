@@ -48,9 +48,9 @@
   - [x] 9.6. DELETE Requirements
     - [x] 9.6.1. DELETE for Collections
     - [x] 9.6.2. Example - DELETE
-  - [ ] 9.7. PUT Requirements
-    - [ ] 9.7.1. PUT for Non-Collection Resources
-    - [ ] 9.7.2. PUT for Collections
+  - [x] 9.7. PUT Requirements
+    - [x] 9.7.1. PUT for Non-Collection Resources
+    - [x] 9.7.2. PUT for Collections
   - [ ] 9.8. COPY Method
     - [ ] 9.8.1. COPY for Non-collection Resources
     - [ ] 9.8.2. COPY for Properties
