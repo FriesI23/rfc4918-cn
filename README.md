@@ -51,15 +51,15 @@
   - [x] 9.7. PUT Requirements
     - [x] 9.7.1. PUT for Non-Collection Resources
     - [x] 9.7.2. PUT for Collections
-  - [ ] 9.8. COPY Method
-    - [ ] 9.8.1. COPY for Non-collection Resources
-    - [ ] 9.8.2. COPY for Properties
-    - [ ] 9.8.3. COPY for Collections
-    - [ ] 9.8.4. COPY and Overwriting Destination Resources
-    - [ ] 9.8.5. Status Codes
-    - [ ] 9.8.6. Example - COPY with Overwrite
-    - [ ] 9.8.7. Example - COPY with No Overwrite
-    - [ ] 9.8.8. Example - COPY of a Collection
+  - [x] 9.8. COPY Method
+    - [x] 9.8.1. COPY for Non-collection Resources
+    - [x] 9.8.2. COPY for Properties
+    - [x] 9.8.3. COPY for Collections
+    - [x] 9.8.4. COPY and Overwriting Destination Resources
+    - [x] 9.8.5. Status Codes
+    - [x] 9.8.6. Example - COPY with Overwrite
+    - [x] 9.8.7. Example - COPY with No Overwrite
+    - [x] 9.8.8. Example - COPY of a Collection
   - [ ] 9.9. MOVE Method
     - [ ] 9.9.1. MOVE for Properties
     - [ ] 9.9.2. MOVE for Collections

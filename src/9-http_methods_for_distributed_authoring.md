@@ -782,6 +782,149 @@ COPY 方法的具体行为取决于源资源类型.
 
 ### 9.8.3. 集合中的 COPY (COPY for Collections)
 
+对于在集合上且没有 Depth 标头的 COPY 方法, 其行为 **必须** (MUST) 与包括了值为
+"infinity"的 Depth 标头一致. 客户端可能在对集合进行 COPY 时提交一个值为 "0" 或
+"infinity"的 Depth 标头. 服务器**必须** (MUST) 在兼容 WebDAV 的资源上支持 "0" 和
+"infinity" Depth 标头.
+
+无限深度的 COPY 操作指出: 该操作将由 Request-URI 标识的集合资源复制到由目标头中的 URI
+标识的位置, 并且将通过递归地遍历集合层次结构的所有级别的方式,
+将所有内部成员资源都复制到与其相关的位置. 注意, 以无限深度 COPY 的方式将 `/A/` 复制到
+`/A/B/` 中时, 如果没有进行正确处理, 则可能会导致无限递归.
+
+"Depth: 0" 的 COPY 仅仅指出将集合及其属性进行复制, 而不复制由其内部成员 URL 标识的资源.
+
+COPY 中包含的任何标头除 `Destination` 外, 都必须应用于处理要复制的每个资源.
+
+`Destination` 标头仅仅为 Request-URI 指定目标 URI. 当应用于由 Request-URI
+标识的集合成员时, `Destination` 的值将被修改以反映当前的层次结构位置. 因此, 如果
+Request-URI 为 `/a/`, Host 标头为 `http://example.com/`, 且 Destination 为
+`http://example.com/b/`, 那么在处理 `http://example.com/a/c/d` 时,
+Destination 的值必须为 `http://example.com/b/c/d`.
+
+当 COPY 方法完成处理后, 其**必须** (MUST) 在目标处创建一个一致的 URL 命名空间
+(请参见[第 5.1 章]()中有关命名空间一致性的定义). 然而，如果在复制内部集合时出现错误,
+服务器**不得** (MUST NOT) 复制该集合成员中的资源 (i.e., 服务器必须跳过这个子树),
+因为这会创建一个不一致的命名空间. 检测到错误后, COPY 操作**应该** (SHOULD)
+尽可能尝试完成原先的复制操作 (i.e., 服务器仍应尝试复制那些 (不是错误导致的)
+集合后代的子树及其成员).
+
+举个例子: 如果在集合 `/a/` 上执行无限深度复制操作, 该集合包含集合 `/a/b/` 和`/a/c/`,
+并且在复制 `/a/b/` 时发生错误, 服务器仍应该尝试继续复制 `/a/c/`. 同样,
+在以无限深度复制非集合资源时其中一部分遇到错误后, 服务器**应该** (SHOULD)
+你可能尝试完成原始的复制操作.
+
+如果在执行 COPY 方法时发生错误, 且资源与 Request-URI 中标识的不同, 则服务器**必须**
+(MUST) 响应 207 (Multi-Status), 而且导致失败的资源 URL **必须** (MUST)显示具体的错误.
+
+424 (Failed Dependency) 状态代码**不应该** (SHOULD NOT) 在 207 (Multi-Status)
+响应中返回. 这些响应可以被安全地省略, 因为客户端会知道当接收到父级错误时, 后代资源也无法复制.
+此外, 201 (Created) / 204 (No Content) 状态代码**不应** (SHOULD NOT) 包含在 COPY
+方法 207 (Multi-Status) 响应的值中. 它们也可以被安全地省略, 因为它们是默认的成功代码.
+
+### 9.8.4. COPY 并覆盖目标资源 (COPY and Overwriting Destination Resources)
+
+如果该 COPY 请求具有值为 "F" 的 "Overwrite" 标头, 并且在目标 URL 上存在资源,
+name 服务器**必须** (MUST) 拒绝该请求.
+
+当服务器执行 COPY 请求并覆盖目标资源时, 实际行为可能会依赖于很多因素,
+包括 WebDAV 扩展功能 (详见[RFC3253]). e.g., 当普通资源被覆盖时,
+服务器可以在进行复制操作之前删除目标资源, 也可以进行原地覆盖以保留其活属性.
+
+当集合被覆盖时, 成功 COPY 请求后的目标集合成员**必须** (MSUT) 与 COPY
+之前的源集合成员相同. 因此, 在目标中将源集合与目标集合的成员进行合并是不合规行为.
+
+一般来说, 如果客户端要求在 COPY 之前清除目标 URL 的状态 (e.g., 强制重置其活属性),
+客户端可以在 COPY 请求之前向目标发送 DELETE 请求, 以确保此重置操作.
+
+### 9.8.5. 状态码 (Status Codes)
+
+除了可能出现的常规状态码外, 以下状态码特别适用于 COPY 操作:
+
+- 201 (Created): 源资源被成功复制. COPY 操作会导致创建一个新资源.
+- 204 (No Content): 源资源成功复制到了一个预先存在的目标资源上。
+- 207 (Multi-Status): 多个资源受到 COPY 的影响, 但其中一些资源的错误阻止了该操作继续进行.
+  具体的错误消息以及最合适的源 URL 和目标 URL 将出现在多状态响应的主体里.
+  e.g., 如果目标资源被锁定且无法被覆盖, 则目标资源的 URL 将显示为 423 (Locked) 状态.
+- 403 (Forbidden): 操作被禁止. 一个 COPY 中的特殊情况为: 源资源和目标资源是同一个资源.
+- 409 (Conflict): 直到已经创建一个或多个中间集合前, 不能在目标位置创建资源.
+  服务器**不得** (MUST NOT) 自动创建这些中间集合.
+- 412 (Precondition Failed): 前置条件标头检查失败, e.g., "Overwrite" 标头为 “F”,
+  而目标 URL 已被映射到一个资源.
+- 423 (Locked): 目标资源或目标集合中的资源已被锁定. 此响应**应该** (SHOULD) 包含
+  'lock-token-submitted' 前置条件元素.
+- 502 (Bad Gateway): 当目标位于另一个服务器, 存储库或 URL 命名空间时可能发生该错误.
+  要么源命名空间不支持复制到目标命名空间, 要么目标命名空间拒绝接受资源.
+  客户端可能希望尝试 GET/PUT 和 PROPFIND/PROPPATCH.
+- 507 (Insufficient Storage); 目标资源没有足够的空间来记录执行此方法后的资源状态.
+
+### 9.8.6. 一个包含覆盖的 COPY 的示例 (Example - COPY with Overwrite)
+
+这个示例展示了将资源 `http://www.example.com/~fielding/index.html`
+复制到位置 `http://www.example.com/users/f/fielding/index.html`.
+204 (No Content) 状态码表示目标位置上的现有资源被覆盖。
+
+```http
+>>Request
+
+COPY /~fielding/index.html HTTP/1.1
+Host: www.example.com
+Destination: http://www.example.com/users/f/fielding/index.html
+
+>>Response
+
+HTTP/1.1 204 No Content
+```
+
+### 9.8.7. 不覆盖 COPY 的示例 (Example - COPY with No Overwrite)
+
+以下示例展示了执行相同的复制操作, 但将 Overwrite 标头设置为"F"。该操作返回了一个
+412（Precondition Failed) 响应, 因为目标 URL 已经映射到一个资源上。
+
+```http
+>>Request
+
+COPY /~fielding/index.html HTTP/1.1
+Host: www.example.com
+Destination: http://www.example.com/users/f/fielding/index.html
+Overwrite: F
+
+>>Response
+
+HTTP/1.1 412 Precondition Failed
+```
+
+### 9.8.8. COPY 集合的示例 (Example - COPY of a Collection)
+
+```xml
+>>Request
+
+COPY /container/ HTTP/1.1
+Host: www.example.com
+Destination: http://www.example.com/othercontainer/
+Depth: infinity
+
+>>Response
+
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<d:multistatus xmlns:d="DAV:">
+    <d:response>
+        <d:href>http://www.example.com/othercontainer/R2/</d:href>
+        <d:status>HTTP/1.1 423 Locked</d:status>
+        <d:error><d:lock-token-submitted/></d:error>
+    </d:response>
+</d:multistatus>
+```
+
+该例中, Depth 标头是不必要的, 因为对集合执行 COPY 的默认行为已经是如同已提交
+"Depth: infinity" 头部一样. 在此例中, 大多数资源与集合都已被成功复制. 然而，集合 `R2`
+由于目标资源 `R2` 被锁定复制失败. 由于在复制 R2 时出现错误, R2 的所有成员也没有被复制.
+然而, 由于错误最小化规则，对于这些成员的错误没有被列出.
+
 <!-- below are refs and links -->
 
 [OP:MKCOL]: #93-mkcol-方法-mkcol-method
