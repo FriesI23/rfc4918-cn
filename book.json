@@ -1,4 +1,11 @@
 {
     "root": "./src",
-    "language": "zh"
+    "language": "zh",
+    "plugins": [ "sitemap" ],
+    "pluginsConfig": {
+        "sitemap": {
+            "url": "https://friesi23.github.io",
+            "pathSuffix": "/rfc4918-cn/"
+        }
+    }
 }
