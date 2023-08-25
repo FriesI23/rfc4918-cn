@@ -100,7 +100,7 @@
     - [ ] 9.11.1. Status Codes
     - [ ] 9.11.2. Example - UNLOCK
 - [ ] 10. HTTP Headers for Distributed Authoring
-  - [ ] 10.1. DAV Header
+  - [x] 10.1. DAV Header
   - [ ] 10.2. Depth Header
   - [ ] 10.3. Destination Header
   - [ ] 10.4. If Header
