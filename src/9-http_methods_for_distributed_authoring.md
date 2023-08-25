@@ -803,11 +803,11 @@ Request-URI 为 `/a/`, Host 标头为 `http://example.com/`, 且 Destination 为
 Destination 的值必须为 `http://example.com/b/c/d`.
 
 当 COPY 方法完成处理后, 其**必须** (MUST) 在目标处创建一个一致的 URL 命名空间
-(请参见[第 5.1 章]()中有关命名空间一致性的定义). 然而，如果在复制内部集合时出现错误,
-服务器**不得** (MUST NOT) 复制该集合成员中的资源 (i.e., 服务器必须跳过这个子树),
-因为这会创建一个不一致的命名空间. 检测到错误后, COPY 操作**应该** (SHOULD)
-尽可能尝试完成原先的复制操作 (i.e., 服务器仍应尝试复制那些 (不是错误导致的)
-集合后代的子树及其成员).
+(请参见[第 5.1 章][SECTION:5-1]中有关命名空间一致性的定义). 然而，
+如果在复制内部集合时出现错误, 服务器**不得** (MUST NOT) 复制该集合成员中的资源 (i.e.,
+服务器必须跳过这个子树), 因为这会创建一个不一致的命名空间. 检测到错误后, COPY
+操作**应该** (SHOULD) 尽可能尝试完成原先的复制操作 (i.e., 服务器仍应尝试复制那些
+(不是错误导致的) 集合后代的子树及其成员).
 
 举个例子: 如果在集合 `/a/` 上执行无限深度复制操作, 该集合包含集合 `/a/b/` 和`/a/c/`,
 并且在复制 `/a/b/` 时发生错误, 服务器仍应该尝试继续复制 `/a/c/`. 同样,
@@ -922,9 +922,140 @@ Content-Length: xxxx
 
 该例中, Depth 标头是不必要的, 因为对集合执行 COPY 的默认行为已经是如同已提交
 "Depth: infinity" 头部一样. 在此例中, 大多数资源与集合都已被成功复制. 然而，集合 `R2`
-由于目标资源 `R2` 被锁定复制失败. 由于在复制 R2 时出现错误, R2 的所有成员也没有被复制.
+由于目标资源 `R2` 被锁定复制失败. 由于在复制 `R2` 时出现错误, `R2` 的所有成员也没有被复制.
 然而, 由于错误最小化规则，对于这些成员的错误没有被列出.
+
+## 9.9. MOVE 方法 (MOVE Method)
+
+在非集合资源上执行的 MOVE 操作在逻辑上与下面的方式等价:
+
+- 一个复制 (COPY) 操作
+- 进行一致性维护处理
+- 删除源资源
+
+在这个三个动作在一个操作中完成. 一致性维护步骤允许服务器执行由移动引起的更新,
+比如将除了标识源资源的请求 URI 外的所有 URL 都指向新的目标资源.
+
+MOVE 方法经常被客户端用于在不改变其父集合的前提下重命名文件,
+因此重置于资源创建时所设置的所有活属性是不合适的. e.g., "DAV:creationdate"
+属性值应该在移动后保持不变.
+
+死属性必须与资源一起移动.
+
+### 9.9.2. 集合中的 MOVE (MOVE for Collections)
+
+带有 "Depth: infinity" 的 MOVE 操作表示将位于 Request-URI 标识的集合移动到 Destination 标头所指定的地址, 且所有由其内部成员 URL 标识的资源将
+(递归地通过集合层次结构的所有级别) 移动到与其相关的位置.
+
+对于集合上的 MOVE 方法**必须** (MUST) 得如同使用 "Depth: infinity" 标头一样.
+客户端在集合上 MOVE 时候不能在 Depth 标头中提交除 "infinity" 以外其他任何值.
+
+包含在 MOVE 请求中的任何标头部**必须** (MUST) 在处理应用于除了 Destination
+标头外的每个要移动的资源. Destination 标头的行为与集合上的 COPY 方法中给出的相同.
+
+当 MOVE 方法完成处理后，其**必须** (MUST) 在源位置和目标位置创建一个一致的 URL 命名空间
+(有关命名空间一致性的定义，请参[见第 5.1 章][SECTION:5-1]).
+不过在移动内部集合时出现错误时, 服务器不能移动由失败集合的成员标识的任何资源 (i.e.,
+服务器必须跳过引起错误的子树), 因为这将创建一个不一致的命名空间. 这种情况下, 检测到错误后，
+移动操作**应该** (SHOULD) 尽可能多地尝试完成原始移动 (i.e.,
+服务器仍应尝试移动其他子树以及由其成员标识的 (不是导致错误的) 集合后代的资源. 例如,
+如果在集合 `/a/` 上执行了无限深度移动操作, 该集合包含集合 `/a/b/` 和 `/a/c/`, 且在移动
+`/a/b/` 时出现错误时, 则仍应尝试继续移动 `/a/c/`, 类似地,
+在无限深度移动操作中移动一部分非集合资源时遇到错误后, 服务器**应该** (SHOULD)
+尽可能多地尝试完成原始移动.
+
+如果在 Request-URI 中标识资源外的资源发生错误时, **必须** (MUST) 响应 207
+(Multi-Status), 并且**必须** (MUST) 在具体错误的位置标明错误资源的 URL.
+
+MOVE 方法的 207 (Multi-Status) 响应中, 不应返回 424（Failed Dependency）状态码.
+这些错误可以被安全地省略, 因为客户端会在为收到父资源错误时了解到不能移动资源的后代.
+此外, 不应将 201 (Created) /204 (No Content) 响应作为 207 (Multi-Status)
+响应中的返回值. 这些响应可以被安全地省略, 因为它们是默认的成功代码.
+
+### 9.9.3. MOVE 与 Overwrite 标头 (MOVE and the Overwrite Header)
+
+如果目标位置存在资源, 且 Overwrite 标头值为 "T", 则在执行移动操作之前,
+服务器**必须** (MUST) 对目标资源执行一个带有 "Depth: infinity" 的 DELETE 操作;
+如果 Overwrite 标头值为 "F", 那么操作将失败.
+
+### 9.9.4. 状态码 (Status Codes)
+
+除了可能出现的常规状态码外, 以下状态码特别适用于 MOVE 操作:
+
+- 201 (Created): 源资源已成功移动, 并在目标位置创建了一个新的 URL 映射.
+- 204 (No Content): 源资源已成功移动到一个已被映射的 URL 上.
+- 207 (Multi-Status): 多个资源受到 MOVE 操作的影响, 但其中一些资源的错误导致操作中断.
+  具体的错误消息以及最合适的源 URL 和目标 URL 将出现在多状态响应的主体里. e.g.,
+  如果源资源被锁定且无法移动, 那么该源资源 URL 将显示为状态码 423 (Locked).
+- 403 (Forbidden): 在禁止 MOVE 操作的多重可能原因中,
+  建议在源资源和目标资源相同时使用此状态码.
+- 409 (Conflict): 直到已经创建一个或多个中间集合前, 目标位置无法创建资源.
+  服务器**不能** (MUST NOT) 自动创建这些中间集合. 或服务器无法保留活性属性行为,
+  并仍将资源移动到目标位置 (请参阅 "preserved-live-properties" 后置条件).
+- 412 (Precondition Failed): 一个条件标头失败. 对于 MOVE 操作来说,
+  这可能意味着 Overwrite 头部的值是 "F"，且目标 URL 已经并被映射到一个资源.
+- 423 (Locked): 源资源, 目标资源, 源资源或目标资源的父级,
+  或源资源或目标资源集合中的某些资源被锁定. 这个响应应包含 "lock-token-submitted"
+  前置条件元素.
+- 502 (Bad Gateway): 这可能发生在目标位于另一个服务器且目标服务器拒绝接受资源这一情况下,
+  也可能发生在目标位于相同服务器命名空间下的另一个子部分上时.
+
+### 9.9.5. 非集合的 MOVE 示例 Example - MOVE of a Non-Collection
+
+这个示例展示了资源 `http://www.example.com/~fielding/index.html` 被移动到位置
+`http://www.example.com/users/f/fielding/index.html`.
+如果目标 URL 已经映射到一个资源, 目标资源的内容将被覆盖. 在这个例子中,
+由于目标资源上没有任何内容，所以响应码是 201 (Created).
+
+```http
+>>Request
+
+MOVE /~fielding/index.html HTTP/1.1
+Host: www.example.com
+Destination: http://www.example/users/f/fielding/index.html
+
+>>Response
+
+HTTP/1.1 201 Created
+Location: http://www.example.com/users/f/fielding/index.html
+```
+
+### 9.9.6. 集合的 MOVE 示例 (Example - MOVE of a Collection)
+
+```xml
+>>Request
+
+MOVE /container/ HTTP/1.1
+Host: www.example.com
+Destination: http://www.example.com/othercontainer/
+Overwrite: F
+If: (<urn:uuid:fe184f2e-6eec-41d0-c765-01adc56e6bb4>)
+    (<urn:uuid:e454f3f3-acdc-452a-56c7-00a5c91e4b77>)
+
+>>Response
+
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<d:multistatus xmlns:d='DAV:'>
+    <d:response>
+        <d:href>http://www.example.com/othercontainer/C2/</d:href>
+        <d:status>HTTP/1.1 423 Locked</d:status>
+        <d:error><d:lock-token-submitted/></d:error>
+    </d:response>
+</d:multistatus>
+```
+
+在这个示例中, 客户端已经与请求一起提交了几个锁令牌（lock tokens). 在方法的作用域中,
+无论是源资源还是目标资源, 对于任何已锁定的资源都需要提交相应的锁令牌. 在这个例子中,
+请求没有为目标资源 `http://www.example.com/othercontainer/C2/` 提交正确的锁令牌.
+这意味着资源 `/container/C2/` 无法被移动. 由于移动 `/container/C2/` 时出现错误, 因此
+`/container/C2` 的所有成员也没有被移动. 但由于错误最小化规则, 这些成员的移动错误没有列出.
+用户代理身份验证之前已经通过 HTTP 协议范围之外的底层传输层机制处理.
 
 <!-- below are refs and links -->
 
 [OP:MKCOL]: #93-mkcol-方法-mkcol-method
+[SECTION:5-1]: 5-collection_of_web_resources.md#51-http-url-命名空间模型-http-url-namespace-model

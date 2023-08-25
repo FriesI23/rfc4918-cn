@@ -19,6 +19,25 @@
 - [x] 5. Collections of Web Resources
   - [x] 5.1. HTTP URL Namespace Model
   - [x] 5.2. Collection Resources
+- [ ] 6. Locking
+  - [ ] 6.1. Lock Model
+  - [ ] 6.2. Exclusive vs. Shared Locks
+  - [ ] 6.3. Required Support
+  - [ ] 6.4. Lock Creator and Privileges
+  - [ ] 6.5. Lock Tokens
+  - [ ] 6.6. Lock Timeout
+  - [ ] 6.7. Lock Capability Discovery
+  - [ ] 6.8. Active Lock Discover
+- [ ] 7. Write Lock
+  - [ ] 7.1. Write Locks and Properties
+  - [ ] 7.2. Avoiding Lost Updates
+  - [ ] 7.3. Write Locks and Unmapped URLs
+  - [ ] 7.4. Write Locks and Collections
+  - [ ] 7.5. Write Locks and the If Request Header
+    - [ ] 7.5.1. Example - Write Lock and COPY
+    - [ ] 7.5.2 Example - Deleting a Member of a Locked Collection
+  - [ ] 7.6. Write Locks and COPY/MOVE
+  - [ ] 7.7. Refreshing Write Locks
 - [x] 8. General Request and Response Handling
   - [x] 8.1. Precedence in Error Handling
   - [x] 8.2. Use of XML
@@ -60,13 +79,13 @@
     - [x] 9.8.6. Example - COPY with Overwrite
     - [x] 9.8.7. Example - COPY with No Overwrite
     - [x] 9.8.8. Example - COPY of a Collection
-  - [ ] 9.9. MOVE Method
-    - [ ] 9.9.1. MOVE for Properties
-    - [ ] 9.9.2. MOVE for Collections
-    - [ ] 9.9.3. MOVE and the Overwrite Header
-    - [ ] 9.9.4. Status Codes
-    - [ ] 9.9.5. Example - MOVE of a Non-Collection
-    - [ ] 9.9.6. Example - MOVE of a Collection
+  - [x] 9.9. MOVE Method
+    - [x] 9.9.1. MOVE for Properties
+    - [x] 9.9.2. MOVE for Collections
+    - [x] 9.9.3. MOVE and the Overwrite Header
+    - [x] 9.9.4. Status Codes
+    - [x] 9.9.5. Example - MOVE of a Non-Collection
+    - [x] 9.9.6. Example - MOVE of a Collection
   - [ ] 9.10. LOCK Method
     - [ ] 9.10.1. Creating a Lock on an Existing Resource
     - [ ] 9.10.2. Refreshing Locks
@@ -80,3 +99,22 @@
   - [ ] 9.11 UNLOCK Method
     - [ ] 9.11.1. Status Codes
     - [ ] 9.11.2. Example - UNLOCK
+- [ ] 10. HTTP Headers for Distributed Authoring
+  - [ ] 10.1. DAV Header
+  - [ ] 10.2. Depth Header
+  - [ ] 10.3. Destination Header
+  - [ ] 10.4. If Header
+    - [ ] 10.4.1. Purpose
+    - [ ] 10.4.2. Syntax
+    - [ ] 10.4.3. List Evaluation
+    - [ ] 10.4.4. Matching State Tokens and ETags
+    - [ ] 10.4.5. If Header and Non-DAV-Aware Proxies
+    - [ ] 10.4.6. Example - No-tag Production
+    - [ ] 10.4.7. Example - Using "Not" with No-tag Production
+    - [ ] 10.4.8. Example - Causing a Condition to Always Evaluate to True
+    - [ ] 10.4.9. Example - Tagged List If Header in COPY
+    - [ ] 10.4.10. Example - Matching Lock Tokens with Collection Locks
+    - [ ] 10.4.11. Example - Matching ETags on Unmapped URLs
+  - [ ] 10.5. Lock-Token Header
+  - [ ] 10.6. Overwrite Header
+  - [ ] 10.7. Timeout Request Header
