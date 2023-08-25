@@ -1,7 +1,7 @@
 {
     "root": "./src",
     "language": "zh",
-    "plugins": [ "sitemap" ],
+    "plugins": [ ],
     "pluginsConfig": {
         "sitemap": {
             "url": "https://friesi23.github.io",
