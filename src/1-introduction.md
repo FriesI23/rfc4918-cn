@@ -2,7 +2,7 @@
 
 本文档描述了对 HTTP/1.1 协议的扩展, 允许客户端执行远程 Web 内容作者操作 (remote Web
 content authoring operations). 该扩展提供了一组相关的方法 (methods),
-标头 (heaeders), 请求实体主体格式 (request entity body formats) 和响应实体主体格式
+标头 (heaeders), 请求实体正文格式 (request entity body formats) 和响应实体正文格式
 (response entity body formats), 并提供下述操作:
 
 - **属性 (Property)**: 创建, 删除, 查询有关 Web 页面信息, 例如作者或者创建日期等.

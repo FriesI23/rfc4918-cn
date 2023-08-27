@@ -99,22 +99,28 @@
   - [ ] 9.11 UNLOCK Method
     - [ ] 9.11.1. Status Codes
     - [ ] 9.11.2. Example - UNLOCK
-- [ ] 10. HTTP Headers for Distributed Authoring
+- [x] 10. HTTP Headers for Distributed Authoring
   - [x] 10.1. DAV Header
-  - [ ] 10.2. Depth Header
-  - [ ] 10.3. Destination Header
-  - [ ] 10.4. If Header
-    - [ ] 10.4.1. Purpose
-    - [ ] 10.4.2. Syntax
-    - [ ] 10.4.3. List Evaluation
-    - [ ] 10.4.4. Matching State Tokens and ETags
-    - [ ] 10.4.5. If Header and Non-DAV-Aware Proxies
-    - [ ] 10.4.6. Example - No-tag Production
-    - [ ] 10.4.7. Example - Using "Not" with No-tag Production
-    - [ ] 10.4.8. Example - Causing a Condition to Always Evaluate to True
-    - [ ] 10.4.9. Example - Tagged List If Header in COPY
-    - [ ] 10.4.10. Example - Matching Lock Tokens with Collection Locks
-    - [ ] 10.4.11. Example - Matching ETags on Unmapped URLs
-  - [ ] 10.5. Lock-Token Header
-  - [ ] 10.6. Overwrite Header
-  - [ ] 10.7. Timeout Request Header
+  - [x] 10.2. Depth Header
+  - [x] 10.3. Destination Header
+  - [x] 10.4. If Header
+    - [x] 10.4.1. Purpose
+    - [x] 10.4.2. Syntax
+    - [x] 10.4.3. List Evaluation
+    - [x] 10.4.4. Matching State Tokens and ETags
+    - [x] 10.4.5. If Header and Non-DAV-Aware Proxies
+    - [x] 10.4.6. Example - No-tag Production
+    - [x] 10.4.7. Example - Using "Not" with No-tag Production
+    - [x] 10.4.8. Example - Causing a Condition to Always Evaluate to True
+    - [x] 10.4.9. Example - Tagged List If Header in COPY
+    - [x] 10.4.10. Example - Matching Lock Tokens with Collection Locks
+    - [x] 10.4.11. Example - Matching ETags on Unmapped URLs
+  - [x] 10.5. Lock-Token Header
+  - [x] 10.6. Overwrite Header
+  - [x] 10.7. Timeout Request Header
+- [ ] 11. Status Code Extensions to HTTP/1.1
+  - [ ] 11.1. 207 Multi-Status
+  - [ ] 11.2. 422 Unprocessable Entity
+  - [ ] 11.3. 423 Locked
+  - [ ] 11.4. 424 Failed Dependency
+  - [ ] 11.5. 507 Insufficient Storage
