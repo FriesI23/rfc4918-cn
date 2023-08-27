@@ -3,15 +3,35 @@ name: CI Page builder
 on:
   push:
     branches:
-        - main
-env:
-  USER_EMAIL: ${{ secrets.USER_EMAIL }}
-  USER_NAME: ${{ secrets.USER_NAME }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build and Deploy
-        uses: monstar-lab-oss/honkit-ghpages-action@main
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build Pages
+        uses: FriesI23/honkit-build-page@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
