@@ -13,7 +13,8 @@ PROPFIND 方法用于检索在由请求 URI (Request-URI) 标识资源上定义�
 客户端在 PROPFIND 请求中必须提交一个值可以是 "0"、"1" 或者 "infinity" 的 Depth 标头.
 服务器必须**支持** (MUST) 符合 WebDAV 的资源的 "0" 和 "1" 深度的请求，并**应该**
 (SHOULD) 支持 "infinity" 请求. 实际上，由于与此行为相关的性能和安全问题, 对于无限深度
-(infinite-depth) 请求的支持**可能** (MAY) 被禁用. 服务器**应该** (SHOULD) 将没有 Depth 标头的请求视为包含了 "Depth: infinity" 标头.
+(infinite-depth) 请求的支持**可能** (MAY) 被禁用. 服务器**应该** (SHOULD) 将没有
+Depth 标头的请求视为包含了 "Depth: infinity" 标头.
 
 客户端可以在请求方法主体中提交 "propfind" XML 元素, 描述正在请求的信息. 这可能会:
 
@@ -130,13 +131,17 @@ PROPFIND 方法用于检索在由请求 URI (Request-URI) 标识资源上定义�
 > ```
 
 请注意, "allprop" 并不返回所有活属性的值. 如今 WebDAV
-服务器存在越来越多地具有高昂计算成本或冗长的属性 (参见 [RFC3253] 和 [RFC3744]), 所以并不会返回所有属性. 相反, WebDAV 客户端可以使用 "propname" 来请求并发现存在哪些活属性,
+服务器存在越来越多地具有高昂计算成本或冗长的属性 (参见 [RFC3253] 和 [RFC3744]),
+所以并不会返回所有属性. 相反, WebDAV 客户端可以使用 "propname" 来请求并发现存在哪些活属性,
 并在需要检索值时请求特定的属性. 对于在其他地方定义的活属性，该定义
 (_译者注: 指服务器可能不会返回所有的属性_) 可以指定是否会在 "allprop" 请求中返回该活属性.
 
-所有服务器必须支持返回内容类型为 `text/xml` 或 `application/xml` 的响应, 其中包含一个描述检索各种属性尝试结果的 "multistatus" XML 元素。
+所有服务器必须支持返回内容类型为 `text/xml` 或 `application/xml` 的响应,
+其中包含一个描述检索各种属性尝试结果的 "multistatus" XML 元素。
 
-如果在检索属性时出现错误, 那么响应中**必须** (MUST) 包含适当的错误结果. 对于尝试检索不存在的属性的请求是一种错误, 且必须使用包含 404 (Not Found) 状态值的 "response" XML 元素进行记录.
+如果在检索属性时出现错误, 那么响应中**必须** (MUST) 包含适当的错误结果.
+对于尝试检索不存在的属性的请求是一种错误, 且必须使用包含 404 (Not Found) 状态值的
+"response" XML 元素进行记录.
 
 最后, 集合资源的 "multistatus" XML 元素在任何深度的请求中**必须** (MUST)
 为集合的每个成员 URL 包含一个 "response" XML 元素. 其**不应该** (SHOULD NOT)
@@ -235,7 +240,8 @@ DingALing property.
 ```
 
 在这个例子中, PROPFIND 执行在一个非集合资源 `http://www.example.com/file` 上.
-"propfind" XML 元素指定了正在请求的四个属性的名称. 在这个例子中, 只返回了两个属性，因为发出请求的主体没有足够的访问权限查看后两个个属性.
+"propfind" XML 元素指定了正在请求的四个属性的名称. 在这个例子中, 只返回了两个属性，
+因为发出请求的主体没有足够的访问权限查看后两个个属性.
 
 ### 9.1.4. 一个使用 "propname" 检索所有属性名称的例子 (Example - Using 'propname' to Retrieve All Property Names)
 
@@ -429,7 +435,8 @@ Content-Length: xxxx
 - `bigbox` 属于命名空间 `"http://ns.example.com/boxschema/"` (另一个 "bigbox"
   属性类型的实例 (区别于资源 `"http://www.example.com/container/"` 中的属性定义))
 - `DAV:creationdate`, `DAV:displayname`, `DAV:getcontentlength`,
-  `DAV:getcontenttype`, `DAV:getetag`, `DAV:getlastmodified`, `DAV:resourcetype` 和 `DAV:supportedlock`.
+  `DAV:getcontenttype`, `DAV:getetag`, `DAV:getlastmodified`,
+  `DAV:resourcetype` 和 `DAV:supportedlock`.
 
 在上面的 xml 示例中, "front.html" 器拥有如下 WebDAV 特有的属性断言 (assert):
 
@@ -774,8 +781,9 @@ COPY 方法的具体行为取决于源资源类型.
 成功执行 COPY 操作后, 源资源上的所有死属性**应该** (SHOULD) 都应该复制到目标资源上.
 在本文档中描述的活属性**应该** (SHOULD)复制为目标资源上具有相同行为的活属性,
 但不一定具有相同的值. 服务器**不应该** (SHOULD NOT) 将活属性在目标资源上的转化为死属性,
-因为客户端可能会对资源的状态或功能得出错误的结论. 需要注意的是, 某些活属性定义使得该属性的缺失是有特定含义的 (e,g., 一个标志如果存在则有一种含义，缺失则有相反的含义), 这些情况下成功的 COPY
-操作可能会导致在后续的请求中报告该属性为 "Not Found".
+因为客户端可能会对资源的状态或功能得出错误的结论. 需要注意的是,
+某些活属性定义使得该属性的缺失是有特定含义的 (e,g., 一个标志如果存在则有一种含义，
+缺失则有相反的含义), 这些情况下成功的 COPY 操作可能会导致在后续的请求中报告该属性为 "Not Found".
 
 当目标是一个未映射的 URL 时, COPY 操作会创建一个新的资源, 这种行为类似于 PUT 操作.
 相应的, 应当设置与资源创建相关的活属性 (e,g, `DAV:creationdate`) 的值.
@@ -944,7 +952,8 @@ MOVE 方法经常被客户端用于在不改变其父集合的前提下重命名
 
 ### 9.9.2. 集合中的 MOVE (MOVE for Collections)
 
-带有 "Depth: infinity" 的 MOVE 操作表示将位于 Request-URI 标识的集合移动到 Destination 标头所指定的地址, 且所有由其内部成员 URL 标识的资源将
+带有 "Depth: infinity" 的 MOVE 操作表示将位于 Request-URI 标识的集合移动到
+Destination 标头所指定的地址, 且所有由其内部成员 URL 标识的资源将
 (递归地通过集合层次结构的所有级别) 移动到与其相关的位置.
 
 对于集合上的 MOVE 方法**必须** (MUST) 得如同使用 "Depth: infinity" 标头一样.
