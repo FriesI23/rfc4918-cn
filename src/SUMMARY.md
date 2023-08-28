@@ -25,3 +25,4 @@
   - [8.8. 命名空间操作对缓存验证器的影响](./8-general_request_and_response_handling.md#88-命名空间操作对缓存验证器的影响-impact-of-namespace-operations-on-cache-validators)
 - [9. 用于分布式创作的 HTTP 方法](./9-http_methods_for_distributed_authoring.md)
 - [10. 用于分布式创作的 HTTP 标头](./10-http_headers_for_distributed_authoring.md)
+- [11. HTTP/1.1 状态代码扩展](./11-status_code_extensions_to_http11.md)

@@ -118,9 +118,12 @@
   - [x] 10.5. Lock-Token Header
   - [x] 10.6. Overwrite Header
   - [x] 10.7. Timeout Request Header
-- [ ] 11. Status Code Extensions to HTTP/1.1
-  - [ ] 11.1. 207 Multi-Status
-  - [ ] 11.2. 422 Unprocessable Entity
-  - [ ] 11.3. 423 Locked
-  - [ ] 11.4. 424 Failed Dependency
-  - [ ] 11.5. 507 Insufficient Storage
+- [x] 11. Status Code Extensions to HTTP/1.1
+  - [x] 11.1. 207 Multi-Status
+  - [x] 11.2. 422 Unprocessable Entity
+  - [x] 11.3. 423 Locked
+  - [x] 11.4. 424 Failed Dependency
+  - [x] 11.5. 507 Insufficient Storage
+- [ ] 12. Use of HTTP Status Codes
+  - [ ] 12.1. 412 Precondition Failed
+  - [ ] 12.2. 414 Request-URI Too Long
