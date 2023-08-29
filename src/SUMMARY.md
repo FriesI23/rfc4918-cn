@@ -26,3 +26,6 @@
 - [9. 用于分布式创作的 HTTP 方法](./9-http_methods_for_distributed_authoring.md)
 - [10. 用于分布式创作的 HTTP 标头](./10-http_headers_for_distributed_authoring.md)
 - [11. HTTP/1.1 状态代码扩展](./11-status_code_extensions_to_http11.md)
+- [12. HTTP 状态码的使用](./12-use-of-hhtp-status-code.md)
+- [13. 多状态响应](./13-multi_status_response.md)
+- [14. XML 元素定义](./14-xml_element_definitions.md)

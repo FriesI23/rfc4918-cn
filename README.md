@@ -124,6 +124,41 @@
   - [x] 11.3. 423 Locked
   - [x] 11.4. 424 Failed Dependency
   - [x] 11.5. 507 Insufficient Storage
-- [ ] 12. Use of HTTP Status Codes
-  - [ ] 12.1. 412 Precondition Failed
-  - [ ] 12.2. 414 Request-URI Too Long
+- [x] 12. Use of HTTP Status Codes
+  - [x] 12.1. 412 Precondition Failed
+  - [x] 12.2. 414 Request-URI Too Long
+- [x] 13. Multi-Status Response
+  - [x] 13.1. Response Headers
+  - [x] 13.2. Handling Redirected Child Resources
+  - [x] 13.3. Internal Status Codes
+- [ ] 14. XML Element Definitions
+  - [x] 14.1. activelock XML Element
+  - [x] 14.2. allprop XML Element
+  - [x] 14.3. collection XML Element
+  - [x] 14.4. depth XML Element
+  - [ ] 14.5. error XML Element
+  - [ ] 14.6. exclusive XML Element
+  - [ ] 14.7. href XML Element
+  - [ ] 14.8. include XML Element
+  - [ ] 14.9. location XML Element
+  - [ ] 14.10. lockentry XML Element
+  - [ ] 14.11. lockinfo XML Element
+  - [ ] 14.12. lockroot XML Element
+  - [ ] 14.13. lockscope XML Element
+  - [ ] 14.14. locktoken XML Element
+  - [ ] 14.15. locktype XML Element
+  - [ ] 14.16. multistatus XML Element
+  - [ ] 14.17. owner XML Element
+  - [ ] 14.18. prop XML Element
+  - [ ] 14.19. propertyupdate XML Element
+  - [ ] 14.20. propfind XML Element
+  - [ ] 14.21. propname XML Element
+  - [ ] 14.22. propstat XML Element
+  - [ ] 14.23. remove XML Element
+  - [ ] 14.24. response XML Element
+  - [ ] 14.25. responsedescription XML Element
+  - [ ] 14.26. set XML Element
+  - [ ] 14.27. shared XML Element
+  - [ ] 14.28. status XML Element
+  - [ ] 14.29. timeout XML Element
+  - [ ] 14.30. write XML Element

@@ -165,7 +165,7 @@ PROPFIND 方法是既安全又幂等的 (参见 [RFC2616#9.1]).
 请求. 在这种情况下, 服务器应使用这个错误, 并在错误主体中使用前置条件代码
 "propfind-finite-depth".
 
-### 9.1.2. 用于 "propstat" 元素的状态码
+### 9.1.2. 用于 "propstat" 元素的状态码 (Status Codes for Use in 'propstat' Element)
 
 在 PROPFIND 响应中, 有关各个属性的信息返回在 "propstat" 元素内
 (详见[第 14.22 章]()), 每个 "propstat" 元素包含一个 "status" 元素, 每个
