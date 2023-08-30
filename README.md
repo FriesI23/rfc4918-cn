@@ -136,22 +136,22 @@
   - [x] 14.2. allprop XML Element
   - [x] 14.3. collection XML Element
   - [x] 14.4. depth XML Element
-  - [ ] 14.5. error XML Element
-  - [ ] 14.6. exclusive XML Element
-  - [ ] 14.7. href XML Element
-  - [ ] 14.8. include XML Element
-  - [ ] 14.9. location XML Element
-  - [ ] 14.10. lockentry XML Element
-  - [ ] 14.11. lockinfo XML Element
-  - [ ] 14.12. lockroot XML Element
-  - [ ] 14.13. lockscope XML Element
-  - [ ] 14.14. locktoken XML Element
-  - [ ] 14.15. locktype XML Element
-  - [ ] 14.16. multistatus XML Element
-  - [ ] 14.17. owner XML Element
-  - [ ] 14.18. prop XML Element
-  - [ ] 14.19. propertyupdate XML Element
-  - [ ] 14.20. propfind XML Element
+  - [x] 14.5. error XML Element
+  - [x] 14.6. exclusive XML Element
+  - [x] 14.7. href XML Element
+  - [x] 14.8. include XML Element
+  - [x] 14.9. location XML Element
+  - [x] 14.10. lockentry XML Element
+  - [x] 14.11. lockinfo XML Element
+  - [x] 14.12. lockroot XML Element
+  - [x] 14.13. lockscope XML Element
+  - [x] 14.14. locktoken XML Element
+  - [x] 14.15. locktype XML Element
+  - [x] 14.16. multistatus XML Element
+  - [x] 14.17. owner XML Element
+  - [x] 14.18. prop XML Element
+  - [x] 14.19. propertyupdate XML Element
+  - [x] 14.20. propfind XML Element
   - [ ] 14.21. propname XML Element
   - [ ] 14.22. propstat XML Element
   - [ ] 14.23. remove XML Element
@@ -162,3 +162,64 @@
   - [ ] 14.28. status XML Element
   - [ ] 14.29. timeout XML Element
   - [ ] 14.30. write XML Element
+- [ ] 15. DAV Properties
+  - [ ] 15.1. creationdate Property
+  - [ ] 15.2. displayname Property
+  - [ ] 15.3. getcontentlanguage Property
+  - [ ] 15.4. getcontentlength Property
+  - [ ] 15.5. getcontenttype Property
+  - [ ] 15.6. getetag Property
+  - [ ] 15.7. getlastmodified Property
+  - [ ] 15.8. lockdiscovery Property
+    - [ ] 15.8.1. Example - Retrieving DAV:lockdiscovery
+  - [ ] 15.9. resourcetype Property
+  - [ ] 15.10. supportedlock Property
+  - [ ] 15.10.1. Example - Retrieving DAV:supportedlock
+- [ ] 16. Precondition/Postcondition XML Elements
+- [ ] 17. XML Extensibility in DAV
+- [ ] 18. DAV Compliance Classes
+  - [ ] 18.1. Class 1
+  - [ ] 18.2. Class 2
+  - [ ] 18.3. Class 3
+- [ ] 19. Internationalization Considerations
+- [ ] 20. Security Considerations
+  - [ ] 20.1. Authentication of Clients
+  - [ ] 20.2. Denial of Service
+  - [ ] 20.3. Security through Obscurity
+  - [ ] 20.4. Privacy Issues Connected to Locks
+  - [ ] 20.5. Privacy Issues Connected to Properties
+  - [ ] 20.6. Implications of XML Entities
+  - [ ] 20.7. Risks Connected with Lock Tokens
+  - [ ] 20.8. Hosting Malicious Content
+- [ ] 21. IANA Considerations
+  - [ ] 21.1. New URI Schemes
+  - [ ] 21.2. XML Namespaces
+  - [ ] 21.3. Message Header Fields
+    - [ ] 21.3.1. DAV
+    - [ ] 21.3.2. Depth
+    - [ ] 21.3.3. Destination
+    - [ ] 21.3.4. If
+    - [ ] 21.3.5. Lock-Token
+    - [ ] 21.3.6. Overwrite
+    - [ ] 21.3.7. Timeout
+  - [ ] 21.4. HTTP Status Codes
+- [ ] 22. Acknowledgements
+- [ ] 23. Contributors to This Specification
+- [ ] 24. Authors of RFC 2518
+- [ ] 25. References
+  - [ ] 25.1. Normative References
+  - [ ] 25.2.Informative References
+- [ ] A. Notes on Processing XML Elements
+  - [ ] A.1. Notes on Empty XML Elements
+  - [ ] A.2. Notes on Illegal XML Processing
+  - [ ] A.3. Example - XML Syntax Error
+  - [ ] A.4. Example - Unexpected XML Element
+- [ ] B. Notes on HTTP Client Compatibility
+- [ ] C. The 'opaquelocktoken' Scheme and URIs
+- [ ] D. Lock-null Resources
+  - [ ] D.1. Guidance for Clients Using LOCK to Create Resources
+- [ ] E. Guidance for Clients Desiring to Authenticate
+- [ ] F. Summary of Changes from RFC 2518
+  - [ ] F.1. Changes for Both Client and Server Implementations
+  - [ ] F.2. Changes for Server Implementations
+  - [ ] F.3. Other Changes
