@@ -131,7 +131,7 @@
   - [x] 13.1. Response Headers
   - [x] 13.2. Handling Redirected Child Resources
   - [x] 13.3. Internal Status Codes
-- [ ] 14. XML Element Definitions
+- [x] 14. XML Element Definitions
   - [x] 14.1. activelock XML Element
   - [x] 14.2. allprop XML Element
   - [x] 14.3. collection XML Element
@@ -152,18 +152,18 @@
   - [x] 14.18. prop XML Element
   - [x] 14.19. propertyupdate XML Element
   - [x] 14.20. propfind XML Element
-  - [ ] 14.21. propname XML Element
-  - [ ] 14.22. propstat XML Element
-  - [ ] 14.23. remove XML Element
-  - [ ] 14.24. response XML Element
-  - [ ] 14.25. responsedescription XML Element
-  - [ ] 14.26. set XML Element
-  - [ ] 14.27. shared XML Element
-  - [ ] 14.28. status XML Element
-  - [ ] 14.29. timeout XML Element
-  - [ ] 14.30. write XML Element
-- [ ] 15. DAV Properties
-  - [ ] 15.1. creationdate Property
+  - [x] 14.21. propname XML Element
+  - [x] 14.22. propstat XML Element
+  - [x] 14.23. remove XML Element
+  - [x] 14.24. response XML Element
+  - [x] 14.25. responsedescription XML Element
+  - [x] 14.26. set XML Element
+  - [x] 14.27. shared XML Element
+  - [x] 14.28. status XML Element
+  - [x] 14.29. timeout XML Element
+  - [x] 14.30. write XML Element
+- [x] 15. DAV Properties
+  - [x] 15.1. creationdate Property
   - [ ] 15.2. displayname Property
   - [ ] 15.3. getcontentlanguage Property
   - [ ] 15.4. getcontentlength Property

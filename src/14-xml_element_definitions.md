@@ -239,3 +239,118 @@ PCDATA 元素的值). 需要注意的是,
 ```xml
 <!ELEMENT propfind ( propname | (allprop, include?) | prop ) >
 ```
+
+## 14.21. propname XML 元素
+
+- **名称**: propname
+- **目的**: 指定只返回资源上的属性名称列表.
+
+```xml
+<!ELEMENT propname EMPTY>
+```
+
+## 14.22. propstat XML 元素
+
+- **名称**: propstat
+- **目的**: 将与特定 'href' 元素相关联的 prop 和 status 元素分在一起.
+- **描述**: propstat XML 元素**必须** (MUST) 包含一个 prop XML 元素和一个
+  status XML 元素. prop XML 元素的内容**必须** (MUST) 仅列出 status
+  元素中的结果中适用的属性名称. 可选的前置/后置条件元素和 "responsedescription"
+  文本也适用于 "prop" 中命名的属性。
+
+```xml
+<!ELEMENT propstat (prop, status, error?, responsedescription?)>
+```
+
+## 14.23. remove XML 元素
+
+- **名称**: remove
+- **目的**: 列出要从资源中删除的属性.
+- **描述**: remove 指示应从 prop 中删除的指定属性. 指定删除不存在的属性不会导致错误.
+  在 remove XML 元素中 "prop" XML 元素里的所有 XML 元素**必须** (MUST) 为空,
+  因为删除时只需要属性的名称即可.
+
+```xml
+<!ELEMENT remove (prop)>
+```
+
+## 14.24. response XML 元素
+
+- **名称**: response
+- **目的**: 包含描述方法对资源与(或)其属性影响的单个响应.
+- **描述**: 当在 "response" 容器中使用时, "href" 元素包含指向 WebDAV 资源的 HTTP URL.
+  特定的 "href" 值**不得** (MUST NOT) 在 "multistatus" XML 元素下 "response" XML
+  元素的子元素中出现多次. 为了保持响应的处理成本为线性时间, 这个要求是必要的. 基本上,
+  这可以避免必须通过搜索将所有响应按 "href" 分组在一起这种行为. 然而, 并没有基于 "href"
+  值的排序要求. 可选的前置/后置条件元素和 "responsedescription"
+  文本可以提供有关该资源相对于请求或结果的附加信息.
+
+```xml
+<!ELEMENT response (href, ((href*, status)|(propstat+)), error?, responsedescription?, location?)>
+```
+
+## 14.25. responsedescription XML 元素
+
+- **名称**: responsedescription
+- **目的**: 包含在 Multi-Status 中的状态响应信息.
+- **描述**: 提供适合呈现给用户的信息.
+
+```xml
+<!ELEMENT responsedescription (#PCDATA)>
+```
+
+## 14.26. set XML 元素
+
+- **名称**: set
+- **目的**: 列出要为资源设置的属性值.
+- **描述**: "set" 元素**必须** (MUST) 只包含一个 "prop" 元素. "set" 元素内 "prop"
+  元素所包含的元素**必须** (MUST) 指定那些在 Request-URI 标识的资源上设置的属性的名称和值.
+  如果属性已经存在，则值将被替换. 出现在 "prop" 元素范围内的语言标记信息
+  (在 "xml:lang" 属性中, 如果存在的话) **必须** (MUST) 与属性一起持久存储,
+  并且以后**必须** (MUST) 可以使用 PROPFIND 进行检索.
+
+```xml
+<!ELEMENT set (prop)>
+```
+
+## 14.27. shard XML 元素
+
+- **名称**: shard
+- **目的**: 指定一个共享锁
+
+```xml
+<!ELEMENT shared EMPTY >
+```
+
+## 14.28. status XML 元素
+
+- **名称**: status
+- **目的**: 包含单个 HTTP status-line.
+- **数值**: status-line (在[RFC2616#6.1]中定义)
+
+```xml
+<!ELEMENT status (#PCDATA)>
+```
+
+## 14.29. timeout XML 元素
+
+- **名称**: timeout
+
+- **目的**: 表示锁过期前的剩余秒数.
+
+- **数值**: TimeType ([第 10.7 章][SECTION:10-7]中定义)
+
+```xml
+<!ELEMENT timeout (#PCDATA)>
+```
+
+## 14.30. write XML 元素
+
+- **名称**: write
+- **目的**: 定义一个写入锁
+
+```xml
+<!ELEMENT write EMPTY >
+```
+
+[SECTION:10-7]: ./10-http_headers_for_distributed_authoring.md#107-timeout-请求标头-timeout-request-header
