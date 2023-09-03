@@ -1,11 +1,17 @@
 {
     "root": "./src",
     "language": "zh",
-    "plugins": [ "sitemap" ],
+    "plugins": [ "sitemap", "page-treeview" ],
     "pluginsConfig": {
         "sitemap": {
             "url": "https://friesi23.github.io",
             "pathSuffix": "/rfc4918-cn/"
+        },
+        "page-treeview": {
+            "copyright": "",
+            "style": "markdown",
+            "minHeaderCount": "2",
+            "minHeaderDeep": "2"
         }
     }
 }

@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gitbook-plugin-page-treeview": "^3.0.2",
     "honkit": "^5.0.0",
     "honkit-plugin-sitemap": "^1.0.2"
   }
