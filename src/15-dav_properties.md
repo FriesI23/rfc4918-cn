@@ -34,3 +34,84 @@ COPY 和 MOVE 行为指的是本地 COPY 和 MOVE 操作.
 ```xml
 <!ELEMENT creationdate (#PCDATA) >
 ```
+
+## 15.2. displayname 属性
+
+- **名称**: displayname
+- **目的**: 为资源提供适合呈现给用户的名称.
+- **数值**: 任意文本.
+- **保护**: **不应** (SHOULD NOT) 受保护. 需要注意的是, 实现 [RFC2518]
+  的服务器可能将此属性设置为受保护的, 由于这是一个新的要求.
+- **COPY/MOVE 行为**: 在 COPY 和 MOVE 操作中**应该** (SHOULD) 保留该属性值.
+- **描述**: 包含适合展示给用户的资源描述. 此属性在资源上定义, 并且因此**应该** (SHOULD)
+  具有独立于检索它的 Request-URI 的相同的值 (因此, 基于 Request-URI
+  计算此属性的方式已被弃用). 虽然那些通用客户端可能会向终端用户显示属性值, 但客户端 UI
+  设计师必须理解的是: 用于标识资源的方法仍然是 URL. 对 DAV:displayname
+  的更改不会向服务器发出移动或复制请求, 而只是在各个资源上更改元数据. 即使在同一集合中，
+  两个资源也可以具有相同的 DAV:displayname 值.
+
+```xml
+<!ELEMENT displayname (#PCDATA) >
+```
+
+## 15.3. getcontentlanguage 属性
+
+- **名称**: getcontentlanguage
+- **目的**: 包含 Content-Language 标头值 (来自[RFC2616#14.12])，就像在没有 accept
+  标头的情况下执行 GET 请求时返回时一样.
+- **数值**: language-tag (language-tag 在[RFC2616#3.10])
+- **保护**: **不应** (SHOULD NOT) 受保护, 因此客户端可以重置该语言. 需要注意的是,
+  实现 [RFC2518] 的服务器可能会将其作为受保护属性, 因为这是一个新的要求.
+- **COPY/MOVE 行为**: 在 COPY 和 MOVE 操作中, **应该** (SHOULD) 保留此属性值.
+- **描述**: DAV:getcontentlanguage 属性**必须** (MUST) 在 (任何返回 GET 请求中包含
+  Content-Language 标头的) DAV 兼容资源上定义.
+
+```xml
+<!ELEMENT getcontentlanguage (#PCDATA) >
+```
+
+## 15.4. getcontentlength 属性
+
+- **名称**: getcontentlength
+- **目的**: 包含通过 GET 请求 (不包含 accept 标头) 返回的 Content-Length 标头.
+- **数值**: 参考[RFC2616#14.13].
+- **保护**: 该属性是经过计算得出的，因此受到保护.
+- **描述**: DAV:getcontentlength 属性**必须** (MUST) 定义在任何在 GET 请求中返回
+  Content-Length 标头的 DAV 兼容的资源上.
+- **COPY/MOVE 行为**: 此属性值取决于目标资源的大小, 而不是源资源上的属性值.
+
+```xml
+<!ELEMENT getcontentlength (#PCDATA) >
+```
+
+## 15.5. getcontenttype 属性
+
+- **名称**: getcontenttype
+- **目的**: 包含通过 GET 请求 (不包含 accept 标头) 返回的 Content-Type 标头值
+  (参见[RFC2616#14.17]).
+- **数值**: media-type (在[RFC2616#3.7]中定义).
+- **保护**: 如果服务器更倾向于自行分配内容类型, 则有可能受保护 (见[第 9.7.1 章]中的讨论).
+- **COPY/MOVE 行为**: 属性值**应该** (SHOULD) 在 COPY 和 MOVE 操作中保留.
+- **描述**：此属性**必须** (MUST) 在 (返回 GET 请求中包含 Content-Language 标头的)
+  DAV 兼容资源上定义.
+
+```xml
+<!ELEMENT getcontenttype (#PCDATA) >
+```
+
+## 15.6. getetag 属性
+
+- **名称**: getetag
+- **用途**: 包含 ETag 标头的值 (来自[RFC2616#14.19]), 就如返回一个没有 accept 标头的
+  GET 那样.
+- **数值**: entity-tag (在[RFC2616#3.11]中定义)
+- **保护**: **必须** (MUST) 是受保护的, 因为该值由服务器创建和控制.
+- **COPY/MOVE 行为**: 此属性值取决于目标资源的最终状态, 而不是源资源上属性的值.
+  另需要注意[第 8.8 章]()中的考虑事项.
+- **描述**: 在任何返回 Etag 标头的 DAV 兼容资源上都**必须** (MUST) 定义 getetag 属性.
+  请参阅 [RFC2616#3.11] 中有关 ETag 语义的完整定义, 并参阅[第 8.6 章]()中关于 WebDAV
+  中 ETag 的讨论.
+
+```xml
+<!ELEMENT getetag (#PCDATA) >
+```
