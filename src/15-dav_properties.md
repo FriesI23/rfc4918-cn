@@ -107,11 +107,188 @@ COPY 和 MOVE 行为指的是本地 COPY 和 MOVE 操作.
 - **数值**: entity-tag (在[RFC2616#3.11]中定义)
 - **保护**: **必须** (MUST) 是受保护的, 因为该值由服务器创建和控制.
 - **COPY/MOVE 行为**: 此属性值取决于目标资源的最终状态, 而不是源资源上属性的值.
-  另需要注意[第 8.8 章]()中的考虑事项.
+  另需要注意[第 8.8 章][SECTION#8.8]中的考虑事项.
 - **描述**: 在任何返回 Etag 标头的 DAV 兼容资源上都**必须** (MUST) 定义 getetag 属性.
-  请参阅 [RFC2616#3.11] 中有关 ETag 语义的完整定义, 并参阅[第 8.6 章]()中关于 WebDAV
-  中 ETag 的讨论.
+  请参阅 [RFC2616#3.11] 中有关 ETag 语义的完整定义,
+  并参阅[第 8.6 章][SECTION#8.6]中关于 WebDAV 中 ETag 的讨论.
 
 ```xml
 <!ELEMENT getetag (#PCDATA) >
 ```
+
+## 15.7. 15.7. getlastmodified 属性
+
+- **名称**: getlastmodified
+- **目的**: 包含 Last-Modified 标头的值 (来自[RFC2616#14.19]), 就如返回一个没有
+  accept 标头的 GET 那样.
+- **数值**: rfc1123-date (在[RFC2616#3.3.1]中定义)
+- **保护**: **应该** (SHOULD) 受保护, 因为某些客户端可能依赖该值来进行适当的缓存行为,
+  或依赖与此属性关联的 Last-Modified 标头的值.
+- **COPY/MOVE 行为**: 此属性值依赖于目标资源的最后修改日期, 而不是源资源的属性值.
+  需要注意的是, 某些服务器的实现是使用文件系统的修改日期值来设置 DAV:getlastmodified 值,
+  并且可以在 MOVE 操作中保留该值, 即使 HTTP Last-Modified 值**应该** (SHOUD) 被修改.
+  主要注意的是, 由于 [RFC2616] 要求客户端使用服务器提供的 ETags, 因此实现 ETags
+  的服务器可以依赖客户端使用比修改日期更好的机制进行离线同步或缓存控制.
+  同时注意[第 8.8 章][SECTION#8.8]中的考虑事项.
+- **描述**: 资源的最后修改日期 (last-modified date) **应该** (SHOULD) 仅反映资源正文
+  (GET 响应)的更改. 仅更改属性**不应** (SHOULD NOT) 导致最后修改日期的更改,
+  因为客户端可能依赖最后修改日期来知道何时覆盖现有正文. DAV:getlastmodified 属性**必须**
+  (MUST) 在任何 (支持在 GET 响应中返回 Last-Modified 标头的 ) DAV 兼容资源中定义。
+
+```xml
+<!ELEMENT getlastmodified (#PCDATA) >
+```
+
+## 15.8. lockdiscovery 属性
+
+- **名称**: lockdiscovery
+- **目的**: 描述资源上的活动锁 (active locks).
+- **保护**: **必须** (MUST) 受保护. 客户端通过 LOCK 和 UNLOCK (而不是通过 PROPPATCH)
+  更改锁列表.
+- **COPY/MOVE 行为**: 此属性的值取决于目标锁的状态, 而不取决于源资源锁的状态.
+  需要注意的是, 锁不会在 MOVE 操作中发生移动.
+- **描述**: 返回有关谁拥有锁, 拥有的锁的类型, 超时类型与超时剩余时间, 以及相关锁令牌的列表.
+  所有者信息**可能** (MAY) 由于考虑到敏感信息而被省略. 如果没有锁, 但服务器支持锁,
+  那么属性将存在但包含零个 "activelock" 元素. 如果存在一或多个锁,
+  将为资源上的每个锁显示一个 "activelock" 元素.
+  此属性对于写锁[第 7 章][SECTION#7]而言**不可** (NOT) 锁定.
+
+```xml
+<!ELEMENT lockdiscovery (activelock)* >
+```
+
+## 15.8.1。示例 - 检索 DAV:lockdiscovery
+
+```xml
+>>Request
+
+PROPFIND /container/ HTTP/1.1
+Host: www.example.com
+Content-Length: xxxx
+Content-Type: application/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:propfind xmlns:D='DAV:'>
+  <D:prop><D:lockdiscovery/></D:prop>
+</D:propfind>
+
+>>Response
+
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:multistatus xmlns:D='DAV:'>
+  <D:response>
+    <D:href>http://www.example.com/container/</D:href>
+    <D:propstat>
+      <D:prop>
+        <D:lockdiscovery>
+          <D:activelock>
+            <D:locktype><D:write/></D:locktype>
+            <D:lockscope><D:exclusive/></D:lockscope>
+            <D:depth>0</D:depth>
+            <D:owner>Jane Smith</D:owner>
+            <D:timeout>Infinite</D:timeout>
+            <D:locktoken>
+              <D:href>urn:uuid:f81de2ad-7f3d-a1b2-4f3c-00a0c91a9d76</D:href>
+            </D:locktoken>
+            <D:lockroot>
+              <D:href>http://www.example.com/container/</D:href>
+            </D:lockroot>
+          </D:activelock>
+        </D:lockdiscovery>
+      </D:prop>
+      <D:status>HTTP/1.1 200 OK</D:status>
+    </D:propstat>
+  </D:response>
+</D:multistatus>
+```
+
+该资源具有一个带有无限超时的排他写锁 (exclusive write lock).
+
+## 15.9. resourcetype 属性
+
+- **名称**: resourcetype
+- **目的**: 指定资源的性质
+- **保护**: **应该** (SHOULD) 受保护. 通常资源类型是通过创建资源（MKCOL vs PUT）的操作
+  (而不是 PROPPATCH) 来确定的.
+- **COPY/MOVE 行为**: 对资源的 COPY/MOVE 通常会导致在目标位置上有相同类型的资源
+- **描述**: **必须** (MUST) 在所有符合 DAV 规范的资源上定义.
+  每个子元素标识资源所属的特定类型, 例如 "collection", 这是此规范中定义的唯一资源类型
+  (参考[第 14.3 章][SECTION#14.3]). 如果元素包含 "collection"
+  子元素加上其他无法识别的元素, 通常应将其视为集合. 如果元素不包含已识别的子元素,
+  则应将其视为非集合资源. 默认值为空. 此元素**不得** (MUST NOT) 包含文本或混合内容.
+  任何自定义子元素都会考虑被视为资源类型的标识符.
+- **示例**: (虚构示例, 用于展示其可扩展性)
+
+  ```xml
+  <x:resourcetype xmlns:x="DAV:">
+    <x:collection/>
+    <f:search-results xmlns:f="http://www.example.com/ns"/>
+  </x:resourcetype>
+  ```
+
+<!-- below are refs and links -->
+
+## 15.10. supportedlock 属性
+
+- **名称**: supportedlock
+- **目的**: 提供资源支持的锁定功能列表.
+- **保护**: **必须** (MUST) 受保护. 服务器 (而不是客户端) 决定哪些锁机制收到支持.
+- **COPY/MOVE 行为**: 该属性的值取决于目标支持的锁类型, 而不是源资源的属性值. 因此,
+  服务器在 COPY 到目标位置时不应尝试设置此属性.
+- **描述**: 返回一个列表组合, 其内包含在资源上可以指定的锁请求中可能出现的锁范围和访问类型.
+  需要注意的是, 实际内容本身受限与访问控制, 因此服务器无需提供客户端无权查看的信息.
+  此属性对于写锁[第 7 章][SECTION#7]而言**不可** (NOT) 锁定.
+
+```xml
+<!ELEMENT supportedlock (lockentry)* >
+```
+
+## 15.10.1. 示例 - 检索 DAV:supportedlock
+
+```xml
+>>Request
+
+PROPFIND /container/ HTTP/1.1
+Host: www.example.com
+Content-Length: xxxx
+Content-Type: application/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:propfind xmlns:D="DAV:">
+  <D:prop><D:supportedlock/></D:prop>
+</D:propfind>
+
+>>Response
+
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:multistatus xmlns:D="DAV:">
+  <D:response>
+    <D:href>http://www.example.com/container/</D:href>
+    <D:propstat>
+      <D:prop>
+        <D:supportedlock>
+          <D:lockentry>
+            <D:lockscope><D:exclusive/></D:lockscope>
+            <D:locktype><D:write/></D:locktype>
+          </D:lockentry>
+          <D:lockentry>
+            <D:lockscope><D:shared/></D:lockscope>
+            <D:locktype><D:write/></D:locktype>
+          </D:lockentry>
+        </D:supportedlock>
+      </D:prop>
+      <D:status>HTTP/1.1 200 OK</D:status>
+    </D:propstat>
+  </D:response>
+</D:multistatus>
+```
+
+[SECTION#8.6]: ./8-general_request_and_response_handling.md#86-etag
