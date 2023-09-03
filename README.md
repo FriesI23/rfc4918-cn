@@ -164,17 +164,17 @@
   - [x] 14.30. write XML Element
 - [x] 15. DAV Properties
   - [x] 15.1. creationdate Property
-  - [ ] 15.2. displayname Property
-  - [ ] 15.3. getcontentlanguage Property
-  - [ ] 15.4. getcontentlength Property
-  - [ ] 15.5. getcontenttype Property
-  - [ ] 15.6. getetag Property
-  - [ ] 15.7. getlastmodified Property
-  - [ ] 15.8. lockdiscovery Property
-    - [ ] 15.8.1. Example - Retrieving DAV:lockdiscovery
-  - [ ] 15.9. resourcetype Property
-  - [ ] 15.10. supportedlock Property
-  - [ ] 15.10.1. Example - Retrieving DAV:supportedlock
+  - [x] 15.2. displayname Property
+  - [x] 15.3. getcontentlanguage Property
+  - [x] 15.4. getcontentlength Property
+  - [x] 15.5. getcontenttype Property
+  - [x] 15.6. getetag Property
+  - [x] 15.7. getlastmodified Property
+  - [x] 15.8. lockdiscovery Property
+    - [x] 15.8.1. Example - Retrieving DAV:lockdiscovery
+  - [x] 15.9. resourcetype Property
+  - [x] 15.10. supportedlock Property
+  - [x] 15.10.1. Example - Retrieving DAV:supportedlock
 - [ ] 16. Precondition/Postcondition XML Elements
 - [ ] 17. XML Extensibility in DAV
 - [ ] 18. DAV Compliance Classes

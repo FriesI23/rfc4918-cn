@@ -1,5 +1,57 @@
 # 术语表
 
+<!-- Convertions -->
+
+## MUST_NOT
+
+必须不能, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## SHALL_NOT
+
+必须不, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## SHOULD_NOT
+
+不应该, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## MUST
+
+必须, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## REQUIRED
+
+要求, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## SHALL
+
+必须, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## SHOULD
+
+应该, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## RECOMMENDED
+
+推荐, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## MAY
+
+可能/可以, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+## OPTIONAL
+
+可选的, 详见[第 2 章][SECTION#2]中相关符号约定.
+
+<!-- Abbreviation -->
+
+## LWS
+
+Linear White Space, 既 "线性空白".
+
+## BNF
+
+Backus–Naur form, 既 "巴科斯范式".
+
 <!-- RFC refs -->
 
 ## [RFC7101]
@@ -80,10 +132,6 @@ WebDAV 的版本控制扩展 (Web 分布式创作和版本控制), 第 1.6 章: 
 
 <!-- REC refs -->
 
-## [REC-XML]
-
-扩展标记语言 (XML) 1.0（第五版）
-
 ## [REC-XML-NAMES]
 
 XML 1.0 中的命名空间（第二版）
@@ -92,8 +140,13 @@ XML 1.0 中的命名空间（第二版）
 
 XML 信息集合 (第二版)
 
+## [REC-XML]
+
+扩展标记语言 (XML) 1.0（第五版）
+
 <!-- herf -->
 
+[SECTION#2]: 2-notational_conventions.md
 [RFC2518]: https://datatracker.ietf.org/doc/html/rfc2518
 [RFC2291]: https://datatracker.ietf.org/doc/html/rfc2291
 [RFC7101]: https://datatracker.ietf.org/doc/html/rfc7101

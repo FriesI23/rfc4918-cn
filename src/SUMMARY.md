@@ -1,31 +1,34 @@
 # Summary
 
-- [1. 简介](./1-introduction.md)
-- [2. 符号约定](./2-notational_conventions.md)
-- [3. 术语](./3-terminology.md)
-- [4. 资源属性的数据模型](./4-data_model_for_resource_properties.md)
-  - [4.1. 资源属性模型](./4-data_model_for_resource_properties.md#41-资源属性模型-the-resource-property-model)
-  - [4.2. 属性和 HTTP 头](./4-data_model_for_resource_properties.md#42-属性和-http-头-properties-and-http-headers)
-  - [4.3. 属性值](./4-data_model_for_resource_properties.md#43-属性值-property-values)
-    - [4.3.1 示例 - 具有混合内容的属性](./4-data_model_for_resource_properties.md#431-示例---具有混合内容的属性-example---property-with-mixed-content)
-  - [4.4. 属性名称](./4-data_model_for_resource_properties.md#44-属性名称-property-names)
-  - [4.5. 原始资源与输出资源](./4-data_model_for_resource_properties.md#45-原始资源与输出资源-source-resources-and-output-resources)
-- [5. 网络资源集合](./5-collection_of_web_resources.md)
-  - [5.1. HTTP URL 命名空间模型](./5-collection_of_web_resources.md#51-http-url-命名空间模型-http-url-namespace-model)
-  - [5.2. 集合资源](./5-collection_of_web_resources.md#52-集合资源-collection-resources)
-- [8. 一般请求与相应处理](./8-general_request_and_response_handling.md)
-  - [8.1. 错误处理优先级](./8-general_request_and_response_handling.md#81-错误处理优先级-precedence-in-error-handling)
-  - [8.2. XML 的使用](./8-general_request_and_response_handling.md#82-xml-的使用-use-of-xml)
-  - [8.3. 处理 URL](./8-general_request_and_response_handling.md#83-处理-url-url-handling)
-    - [8.3.1. 一个正确处理 URL 的实例](./8-general_request_and_response_handling.md#831-一个正确处理-url-的实例-example---correct-url-handling)
-  - [8.4. 请求中必要的正文](./8-general_request_and_response_handling.md#84-请求中必要的正文-required-bodies-in-requests)
-  - [8.5. 用于 WebDAV 的 HTTP 标头](./8-general_request_and_response_handling.md#85-用于-webdav-的-http-标头-http-headers-for-use-in-webdav)
-  - [8.6. ETag](./8-general_request_and_response_handling.md#87-包含错误响应的正文-including-error-response-bodies)
-  - [8.7. 包含错误响应的正文](./8-general_request_and_response_handling.md#87-包含错误响应的正文-including-error-response-bodies)
-  - [8.8. 命名空间操作对缓存验证器的影响](./8-general_request_and_response_handling.md#88-命名空间操作对缓存验证器的影响-impact-of-namespace-operations-on-cache-validators)
-- [9. 用于分布式创作的 HTTP 方法](./9-http_methods_for_distributed_authoring.md)
-- [10. 用于分布式创作的 HTTP 标头](./10-http_headers_for_distributed_authoring.md)
-- [11. HTTP/1.1 状态代码扩展](./11-status_code_extensions_to_http11.md)
-- [12. HTTP 状态码的使用](./12-use-of-hhtp-status-code.md)
-- [13. 多状态响应](./13-multi_status_response.md)
-- [14. XML 元素定义](./14-xml_element_definitions.md)
+- [概述][SECTION#0]
+- [1. 简介][SECTION#1]
+- [2. 符号约定][SECTION#2]
+- [3. 术语][SECTION#3]
+- [4. 资源属性的数据模型][SECTION#4]
+- [5. 网络资源集合][SECTION#5]
+- [8. 一般请求与相应处理][SECTION#8]
+- [9. 用于分布式创作的 HTTP 方法][SECTION#9]
+- [10. 用于分布式创作的 HTTP 标头][SECTION#10]
+- [11. HTTP/1.1 状态代码扩展][SECTION#11]
+- [12. HTTP 状态码的使用][SECTION#12]
+- [13. 多状态响应][SECTION#13]
+- [14. XML 元素定义][SECTION#14]
+- [15. DAV 属性][SECTION#15]
+- [翻译表](TRANSLATION.md)
+
+<!-- herfs -->
+
+[SECTION#0]: README.md
+[SECTION#1]: 1-introduction.md
+[SECTION#2]: 2-notational_conventions.md
+[SECTION#3]: 3-terminology.md
+[SECTION#4]: 4-data_model_for_resource_properties.md
+[SECTION#5]: 5-collection_of_web_resources.md
+[SECTION#8]: 8-general_request_and_response_handling.md
+[SECTION#9]: 9-http_methods_for_distributed_authoring.md
+[SECTION#10]: 10-http_headers_for_distributed_authoring.md
+[SECTION#11]: 11-status_code_extensions_to_http11.md
+[SECTION#12]: 12-use-of-hhtp-status-code.md
+[SECTION#13]: 13-multi_status_response.md
+[SECTION#14]: 14-xml_element_definitions.md
+[SECTION#15]: 15-dav_properties.md
