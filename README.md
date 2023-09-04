@@ -177,10 +177,10 @@
   - [x] 15.10.1. Example - Retrieving DAV:supportedlock
 - [ ] 16. Precondition/Postcondition XML Elements
 - [ ] 17. XML Extensibility in DAV
-- [ ] 18. DAV Compliance Classes
-  - [ ] 18.1. Class 1
-  - [ ] 18.2. Class 2
-  - [ ] 18.3. Class 3
+- [x] 18. DAV Compliance Classes
+  - [x] 18.1. Class 1
+  - [x] 18.2. Class 2
+  - [x] 18.3. Class 3
 - [ ] 19. Internationalization Considerations
 - [ ] 20. Security Considerations
   - [ ] 20.1. Authentication of Clients
