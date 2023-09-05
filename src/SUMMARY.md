@@ -14,6 +14,7 @@
 - [13. 多状态响应][SECTION#13]
 - [14. XML 元素定义][SECTION#14]
 - [15. DAV 属性][SECTION#15]
+- [16. 前置条件/​​ 后置条件 XML 元素][SECTION#16]
 - [18. DAV 合规类][SECTION#18]
 - [翻译表](TRANSLATION.md)
 
@@ -33,4 +34,5 @@
 [SECTION#13]: 13-multi_status_response.md
 [SECTION#14]: 14-xml_element_definitions.md
 [SECTION#15]: 15-dav_properties.md
+[SECTION#16]: 16-precondition_postcondition_xml_elements.md
 [SECTION#18]: 18-dav_compliance_classes.md
