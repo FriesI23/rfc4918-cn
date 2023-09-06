@@ -176,7 +176,7 @@
   - [x] 15.10. supportedlock Property
   - [x] 15.10.1. Example - Retrieving DAV:supportedlock
 - [x] 16. Precondition/Postcondition XML Elements
-- [ ] 17. XML Extensibility in DAV
+- [x] 17. XML Extensibility in DAV
 - [x] 18. DAV Compliance Classes
   - [x] 18.1. Class 1
   - [x] 18.2. Class 2

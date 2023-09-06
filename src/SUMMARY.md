@@ -15,6 +15,7 @@
 - [14. XML 元素定义][SECTION#14]
 - [15. DAV 属性][SECTION#15]
 - [16. 前置条件/​​ 后置条件 XML 元素][SECTION#16]
+- [17. DAV 中的 XML 扩展性][SECTION#17]
 - [18. DAV 合规类][SECTION#18]
 - [翻译表](TRANSLATION.md)
 
@@ -35,4 +36,5 @@
 [SECTION#14]: 14-xml_element_definitions.md
 [SECTION#15]: 15-dav_properties.md
 [SECTION#16]: 16-precondition_postcondition_xml_elements.md
+[SECTION#17]: 17-xml_extensibility_in_dav.md
 [SECTION#18]: 18-dav_compliance_classes.md

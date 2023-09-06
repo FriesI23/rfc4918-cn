@@ -52,6 +52,10 @@ Linear White Space, 既 "线性空白".
 
 Backus–Naur form, 既 "巴科斯范式".
 
+## DTD
+
+Document Type Definition, 一种用于定义 XML 文档内的结构和元素的规范.
+
 <!-- RFC refs -->
 
 ## [RFC7101]
