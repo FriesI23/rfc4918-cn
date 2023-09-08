@@ -181,8 +181,8 @@
   - [x] 18.1. Class 1
   - [x] 18.2. Class 2
   - [x] 18.3. Class 3
-- [ ] 19. Internationalization Considerations
-- [x] 20. Security Considerations
+- [x] 19. Internationalization Considerations
+- [ ] 20. Security Considerations
   - [ ] 20.1. Authentication of Clients
   - [ ] 20.2. Denial of Service
   - [ ] 20.3. Security through Obscurity
