@@ -131,3 +131,7 @@ External Entities
 ## 内部实体
 
 Internel Entities
+
+## 信任集
+
+Trust Set

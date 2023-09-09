@@ -20,7 +20,12 @@
 - [19. 国际化注意事项][SECTION#19]
 - [20. 安全性考量][SECTION#20]
 - [21. IANA 考量因素][SECTION#21]
+- [22. 致谢 (原文)][SECTION#22]
+- [23. 本规范的贡献者 (原文)][SECTION#23]
+- [24. RFC2518 的作者 (原文)][SECTION#24]
+- [25. 参考文献 (原文)][SECTION#25]
 - [翻译表](TRANSLATION.md)
+- [词汇表](GLOSSARY.md)
 
 <!-- herfs -->
 
@@ -44,3 +49,7 @@
 [SECTION#19]: 19-internationalization_considerations.md
 [SECTION#20]: 20-security_consideration.md
 [SECTION#21]: 21-iana_considerations.md
+[SECTION#22]: https://datatracker.ietf.org/doc/html/rfc4918#section-22
+[SECTION#23]: https://datatracker.ietf.org/doc/html/rfc4918#section-23
+[SECTION#24]: https://datatracker.ietf.org/doc/html/rfc4918#section-24
+[SECTION#25]: https://datatracker.ietf.org/doc/html/rfc4918#section-25

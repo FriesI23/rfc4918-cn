@@ -20,10 +20,10 @@
   - [x] 5.1. HTTP URL Namespace Model
   - [x] 5.2. Collection Resources
 - [ ] 6. Locking
-  - [ ] 6.1. Lock Model
-  - [ ] 6.2. Exclusive vs. Shared Locks
-  - [ ] 6.3. Required Support
-  - [ ] 6.4. Lock Creator and Privileges
+  - [x] 6.1. Lock Model
+  - [x] 6.2. Exclusive vs. Shared Locks
+  - [x] 6.3. Required Support
+  - [x] 6.4. Lock Creator and Privileges
   - [ ] 6.5. Lock Tokens
   - [ ] 6.6. Lock Timeout
   - [ ] 6.7. Lock Capability Discovery
@@ -203,12 +203,12 @@
     - [x] 21.3.6. Overwrite
     - [x] 21.3.7. Timeout
   - [x] 21.4. HTTP Status Codes
-- [ ] 22. Acknowledgements
-- [ ] 23. Contributors to This Specification
-- [ ] 24. Authors of RFC 2518
-- [ ] 25. References
+<!-- - [ ] 22. Acknowledgements -->
+<!-- - [ ] 23. Contributors to This Specification -->
+<!-- - [ ] 24. Authors of RFC 2518 -->
+<!-- - [ ] 25. References
   - [ ] 25.1. Normative References
-  - [ ] 25.2.Informative References
+  - [ ] 25.2.Informative References -->
 - [ ] A. Notes on Processing XML Elements
   - [ ] A.1. Notes on Empty XML Elements
   - [ ] A.2. Notes on Illegal XML Processing
