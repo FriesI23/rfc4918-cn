@@ -42,7 +42,7 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 最后, 该版本 WebDAV 在错误响应体 (response body) 的 XML 元素中引入了前置和后置条件
 ([第 16 章][SECTION#16]).
 
-WebDAV 使用 XML ([REC-XML]) 作为属性名称和部分值，
+WebDAV 使用 XML ([REC-XML]) 作为属性名和部分值，
 并且还使用 XML 来编组 (marshalling) 复杂的请求和响应. 本规范包含编组中使用的定义:
 
 - XML 元素（[第 14 章][SECTION#14]）

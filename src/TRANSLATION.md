@@ -24,7 +24,7 @@ Live Property
 
 Dead Property
 
-## 属性元素名称
+## 属性元素名
 
 Property Name Element
 
@@ -123,3 +123,11 @@ Mechanism
 ## 多语言平面
 
 Multilingual Plane
+
+## 外部实体
+
+External Entities
+
+## 内部实体
+
+Internel Entities

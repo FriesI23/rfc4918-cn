@@ -182,27 +182,27 @@
   - [x] 18.2. Class 2
   - [x] 18.3. Class 3
 - [x] 19. Internationalization Considerations
-- [ ] 20. Security Considerations
-  - [ ] 20.1. Authentication of Clients
-  - [ ] 20.2. Denial of Service
-  - [ ] 20.3. Security through Obscurity
-  - [ ] 20.4. Privacy Issues Connected to Locks
-  - [ ] 20.5. Privacy Issues Connected to Properties
-  - [ ] 20.6. Implications of XML Entities
-  - [ ] 20.7. Risks Connected with Lock Tokens
-  - [ ] 20.8. Hosting Malicious Content
-- [ ] 21. IANA Considerations
-  - [ ] 21.1. New URI Schemes
-  - [ ] 21.2. XML Namespaces
-  - [ ] 21.3. Message Header Fields
-    - [ ] 21.3.1. DAV
-    - [ ] 21.3.2. Depth
-    - [ ] 21.3.3. Destination
-    - [ ] 21.3.4. If
-    - [ ] 21.3.5. Lock-Token
-    - [ ] 21.3.6. Overwrite
-    - [ ] 21.3.7. Timeout
-  - [ ] 21.4. HTTP Status Codes
+- [x] 20. Security Considerations
+  - [x] 20.1. Authentication of Clients
+  - [x] 20.2. Denial of Service
+  - [x] 20.3. Security through Obscurity
+  - [x] 20.4. Privacy Issues Connected to Locks
+  - [x] 20.5. Privacy Issues Connected to Properties
+  - [x] 20.6. Implications of XML Entities
+  - [x] 20.7. Risks Connected with Lock Tokens
+  - [x] 20.8. Hosting Malicious Content
+- [x] 21. IANA Considerations
+  - [x] 21.1. New URI Schemes
+  - [x] 21.2. XML Namespaces
+  - [x] 21.3. Message Header Fields
+    - [x] 21.3.1. DAV
+    - [x] 21.3.2. Depth
+    - [x] 21.3.3. Destination
+    - [x] 21.3.4. If
+    - [x] 21.3.5. Lock-Token
+    - [x] 21.3.6. Overwrite
+    - [x] 21.3.7. Timeout
+  - [x] 21.4. HTTP Status Codes
 - [ ] 22. Acknowledgements
 - [ ] 23. Contributors to This Specification
 - [ ] 24. Authors of RFC 2518

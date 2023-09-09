@@ -246,7 +246,7 @@ DingALing property.
 "propfind" XML 元素指定了正在请求的四个属性的名称. 在这个例子中, 只返回了两个属性，
 因为发出请求的正文没有足够的访问权限查看后两个个属性.
 
-### 9.1.4. 示例 - 使用 "propname" 检索所有属性名称的
+### 9.1.4. 示例 - 使用 "propname" 检索所有属性名的
 
 ```xml
 >>Request
@@ -310,7 +310,7 @@ Content-Length: xxxx
 在这个例子中, PROPFIND 在集合资源 `"http://www.example.com/container/"` 上调用,
 "propfind" XML 元素包含 "propname" XML 元素, 表示应该返回所有属性的名称.
 由于没有出现 Depth 标头，服务器假设其默认值为 "infinity",
-意味着服务器应该返回集合及其所有后代的属性名称.
+意味着服务器应该返回集合及其所有后代的属性名.
 
 与前面的例子一样, 在资源 `"http://www.example.com/container/"` 定义了六属性:
 
