@@ -19,6 +19,7 @@
 - [18. DAV 合规类][SECTION#18]
 - [19. 国际化注意事项][SECTION#19]
 - [20. 安全性考量][SECTION#20]
+- [21. IANA 考量因素][SECTION#21]
 - [翻译表](TRANSLATION.md)
 
 <!-- herfs -->
@@ -42,3 +43,4 @@
 [SECTION#18]: 18-dav_compliance_classes.md
 [SECTION#19]: 19-internationalization_considerations.md
 [SECTION#20]: 20-security_consideration.md
+[SECTION#21]: 21-iana_considerations.md
