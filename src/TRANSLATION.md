@@ -135,3 +135,11 @@ Internel Entities
 ## 信任集
 
 Trust Set
+
+## 生命周期
+
+Lifetime
+
+## 小程序
+
+Applet

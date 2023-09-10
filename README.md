@@ -19,15 +19,15 @@
 - [x] 5. Collections of Web Resources
   - [x] 5.1. HTTP URL Namespace Model
   - [x] 5.2. Collection Resources
-- [ ] 6. Locking
+- [x] 6. Locking
   - [x] 6.1. Lock Model
   - [x] 6.2. Exclusive vs. Shared Locks
   - [x] 6.3. Required Support
   - [x] 6.4. Lock Creator and Privileges
-  - [ ] 6.5. Lock Tokens
-  - [ ] 6.6. Lock Timeout
-  - [ ] 6.7. Lock Capability Discovery
-  - [ ] 6.8. Active Lock Discover
+  - [x] 6.5. Lock Tokens
+  - [x] 6.6. Lock Timeout
+  - [x] 6.7. Lock Capability Discovery
+  - [x] 6.8. Active Lock Discover
 - [ ] 7. Write Lock
   - [ ] 7.1. Write Locks and Properties
   - [ ] 7.2. Avoiding Lost Updates
