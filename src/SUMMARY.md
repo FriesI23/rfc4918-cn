@@ -7,6 +7,7 @@
 - [4. 资源属性的数据模型][SECTION#4]
 - [5. 网络资源集合][SECTION#5]
 - [6. 锁定][SECTION#6]
+- [7. 写锁][SECTION#7]
 - [8. 一般请求与相应处理][SECTION#8]
 - [9. 用于分布式创作的 HTTP 方法][SECTION#9]
 - [10. 用于分布式创作的 HTTP 标头][SECTION#10]
@@ -37,6 +38,7 @@
 [SECTION#4]: 4-data_model_for_resource_properties.md
 [SECTION#5]: 5-collection_of_web_resources.md
 [SECTION#6]: 6-locking.md
+[SECTION#7]: 7-write_lock.md
 [SECTION#8]: 8-general_request_and_response_handling.md
 [SECTION#9]: 9-http_methods_for_distributed_authoring.md
 [SECTION#10]: 10-http_headers_for_distributed_authoring.md

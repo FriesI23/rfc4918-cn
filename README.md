@@ -29,7 +29,7 @@
   - [x] 6.7. Lock Capability Discovery
   - [x] 6.8. Active Lock Discover
 - [ ] 7. Write Lock
-  - [ ] 7.1. Write Locks and Properties
+  - [x] 7.1. Write Locks and Properties
   - [ ] 7.2. Avoiding Lost Updates
   - [ ] 7.3. Write Locks and Unmapped URLs
   - [ ] 7.4. Write Locks and Collections
