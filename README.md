@@ -30,9 +30,9 @@
   - [x] 6.8. Active Lock Discover
 - [ ] 7. Write Lock
   - [x] 7.1. Write Locks and Properties
-  - [ ] 7.2. Avoiding Lost Updates
-  - [ ] 7.3. Write Locks and Unmapped URLs
-  - [ ] 7.4. Write Locks and Collections
+  - [x] 7.2. Avoiding Lost Updates
+  - [x] 7.3. Write Locks and Unmapped URLs
+  - [x] 7.4. Write Locks and Collections
   - [ ] 7.5. Write Locks and the If Request Header
     - [ ] 7.5.1. Example - Write Lock and COPY
     - [ ] 7.5.2 Example - Deleting a Member of a Locked Collection
