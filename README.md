@@ -36,8 +36,8 @@
   - [ ] 7.5. Write Locks and the If Request Header
     - [ ] 7.5.1. Example - Write Lock and COPY
     - [ ] 7.5.2 Example - Deleting a Member of a Locked Collection
-  - [ ] 7.6. Write Locks and COPY/MOVE
-  - [ ] 7.7. Refreshing Write Locks
+  - [x] 7.6. Write Locks and COPY/MOVE
+  - [x] 7.7. Refreshing Write Locks
 - [x] 8. General Request and Response Handling
   - [x] 8.1. Precedence in Error Handling
   - [x] 8.2. Use of XML
