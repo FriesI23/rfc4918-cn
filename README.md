@@ -28,14 +28,14 @@
   - [x] 6.6. Lock Timeout
   - [x] 6.7. Lock Capability Discovery
   - [x] 6.8. Active Lock Discover
-- [ ] 7. Write Lock
+- [x] 7. Write Lock
   - [x] 7.1. Write Locks and Properties
   - [x] 7.2. Avoiding Lost Updates
   - [x] 7.3. Write Locks and Unmapped URLs
   - [x] 7.4. Write Locks and Collections
-  - [ ] 7.5. Write Locks and the If Request Header
-    - [ ] 7.5.1. Example - Write Lock and COPY
-    - [ ] 7.5.2 Example - Deleting a Member of a Locked Collection
+  - [x] 7.5. Write Locks and the If Request Header
+    - [x] 7.5.1. Example - Write Lock and COPY
+    - [x] 7.5.2 Example - Deleting a Member of a Locked Collection
   - [x] 7.6. Write Locks and COPY/MOVE
   - [x] 7.7. Refreshing Write Locks
 - [x] 8. General Request and Response Handling

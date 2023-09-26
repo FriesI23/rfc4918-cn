@@ -152,6 +152,81 @@ WebDAV 提供了一种向未映射 URL 发送 LOCK 请求的能力, 以便保留
 则新资源必须自动由该锁保护. 例如, 如果集合 `/a/b/` 写锁定, 且资源 `/c` 被移动到 `/a/b/c`,
 则资源 `/a/b/c` 将被添加到写锁定中.
 
+## 7.5. 写锁与 IF 请求标头
+
+用户代理在对已锁定资源请求操作时, 必须证明其对锁了解. 否则可能会出现以下情况.
+考虑如下场景, 用户 A 运行的程序 A 在某个资源上获取了写锁定. 另外一个同样由用户 A 运行的程序 B,
+不知道程序 A 获取锁, 然而对已锁资源执行了 PUT 请求. 在这种情况下, PUT 请求成功,
+因为锁与主体 (principa) 而不是程序相关联. 因此, 程序 B 因为使用了主体 A 的凭证,
+所以被允许执行 PUT 请求. 然而, 如果程序 B 了解该锁定的情况, 其就不会覆盖资源,
+而会更偏于向用户呈现一个描述冲突的对话框.
+对于这种情况, 需要一种机制来防止不同程序意外忽略具有相同授权的其他程序所获取的锁.
+
+为了防止这些冲突, 授权的主体**必须[MUST]**为所有已锁定的资源提交一个锁令牌,
+以提供给可能更改的资源的方法, 否则该方法**必须[MUST]**失败.
+锁令牌随 If 标头被提交. 例如, 如果要移动资源并且源和目标都已被锁定,
+则**必须[MUST]**在 If 标头中提交两个锁令牌, 一个用于源, 另一个用于目标.
+
+### 7.5.1. 示例 - 写锁与 COPY
+
+```http
+>>Request
+COPY /~fielding/index.html HTTP/1.1
+Host: www.example.com
+Destination: http://www.example.com/users/f/fielding/index.html
+If: <http://www.example.com/users/f/fielding/index.html>
+    (<urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6>)
+
+>>Response
+HTTP/1.1 204 No Content
+```
+
+在该示例中, 尽管源和目标都已被锁定, 但只需要提交一个锁令牌 (用于目标上的那个锁).
+这是因为源资源不会被 COPY 修改, 因此也不受写锁的影响.
+在该示例中, 用户代理身份验证已经先通过 HTTP 协议范围之外的机制在底层传输层中进行.
+
+### 7.5.2. 示例 - 删除锁集合的成员
+
+考虑一个带有 `depth-infinity` 的互斥写锁集合 "/locked",
+并尝试删除其内部成员 "/locked/member":
+
+```http
+>>Request
+DELETE /locked/member HTTP/1.1
+Host: example.com
+
+>>Response
+HTTP/1.1 423 Locked
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:error xmlns:D="DAV:">
+  <D:lock-token-submitted>
+    <D:href>/locked/</D:href>
+  </D:lock-token-submitted>
+</D:error>
+```
+
+因此, 客户端需要在请求中提交锁令牌其成功.
+为此, 可以使用各种形式的 If 标头 (参见[第 10.4 章][SECTION#10.4]).
+
+```http
+"No-Tag-List" format:
+  If: (<urn:uuid:150852e2-3847-42d5-8cbe-0f4f296f26cf>)
+
+"Tagged-List" format, for "http://example.com/locked/":
+  If: <http://example.com/locked/>
+      (<urn:uuid:150852e2-3847-42d5-8cbe-0f4f296f26cf>)
+
+"Tagged-List" format, for "http://example.com/locked/member":
+  If: <http://example.com/locked/member>
+      (<urn:uuid:150852e2-3847-42d5-8cbe-0f4f296f26cf>)
+```
+
+需要注意的是, 为了提交锁令牌, 实际的形式并不重要;
+重要的是锁令牌出现在 If 标头中, 并且该 If 标头本身评估为真 (true).
+
 ## 7.6. 写锁与 COPY/MOVE
 
 对于 COPY 方法的调用, **不得[MUST_NOT]**复制源上任何活动的写锁. 但是, 如前所述,
