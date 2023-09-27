@@ -96,9 +96,9 @@
     - [ ] 9.10.7. Example - Simple Lock Request
     - [ ] 9.10.8. Example - Refreshing a Write Lock
     - [ ] 9.10.9. Example - Multi-Resource Lock Request
-  - [ ] 9.11 UNLOCK Method
-    - [ ] 9.11.1. Status Codes
-    - [ ] 9.11.2. Example - UNLOCK
+  - [x] 9.11 UNLOCK Method
+    - [x] 9.11.1. Status Codes
+    - [x] 9.11.2. Example - UNLOCK
 - [x] 10. HTTP Headers for Distributed Authoring
   - [x] 10.1. DAV Header
   - [x] 10.2. Depth Header

@@ -171,6 +171,7 @@ WebDAV 提供了一种向未映射 URL 发送 LOCK 请求的能力, 以便保留
 
 ```http
 >>Request
+
 COPY /~fielding/index.html HTTP/1.1
 Host: www.example.com
 Destination: http://www.example.com/users/f/fielding/index.html
@@ -178,6 +179,7 @@ If: <http://www.example.com/users/f/fielding/index.html>
     (<urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6>)
 
 >>Response
+
 HTTP/1.1 204 No Content
 ```
 
@@ -192,10 +194,12 @@ HTTP/1.1 204 No Content
 
 ```http
 >>Request
+
 DELETE /locked/member HTTP/1.1
 Host: example.com
 
 >>Response
+
 HTTP/1.1 423 Locked
 Content-Type: application/xml; charset="utf-8"
 Content-Length: xxxx

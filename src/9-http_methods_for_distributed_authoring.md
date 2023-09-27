@@ -1074,3 +1074,61 @@ Content-Length: xxxx
 这意味着资源 `/container/C2/` 无法被移动. 由于移动 `/container/C2/` 时出现错误, 因此
 `/container/C2` 的所有成员也没有被移动. 但由于错误最小化规则, 这些成员的移动错误没有列出.
 用户代理身份验证之前已经通过 HTTP 协议范围之外的底层传输层机制处理.
+
+## 9.11. UNLOCK 方法
+
+UNLOCK 方法会移除由 Lock-Token 请求标头中的锁定牌标识的锁.
+请求 URI **必须[MUST]**标识锁范围内的资源.
+
+需要注意的是, 使用 Lock-Token 标头来提供锁令牌的方式与其他更改状态的方法不一致,
+其他方法都需要带有锁令牌的 If 标头. 因此, 不需要 If 标头来提供锁令牌.
+一般当 If 标头存在时, 其具有正常条件标头的含义.
+
+如果此方法成功响应, 服务器必须完全删除锁.
+
+如果所有根据提交的锁令牌而被锁定的资源都无法被解锁, 则 UNLOCK 请求**必须[MUST]**失败.
+
+对 UNLOCK 方法的成功响应并不意味着资源一定已解锁. 该情况只表示指定令牌对应的特定锁不再存在.
+
+任何支持 LOCK 方法的 DAV 兼容资源**必须[MUST]**支持 UNLOCK 方法.
+
+该方法幂等但不安全 (参见[RFC2616#9.1]). 不得缓存此方法的响应.
+
+### 9.11.1. 状态码
+
+除了可能的通用状态码外, 以下状态码在特定情况适用:
+
+- 204 (No Content): 正常的成功响应 (与 200 OK 响应不同,
+  因为 200 OK 将意味着存在响应正文, 而 UNLOCK 成功响应通常不包含正文).
+- 400 (Bad Request): 未提供锁令牌.
+- 403 (Forbidden): 当前经过身份验证的主体没有删除该锁的权限.
+- 409 (Conflict), 并带有 "lock-token-matches-request-uri" 前置条件: 该资源未被锁定,
+  或请求针对不在锁定范围内的 Request-URI.
+
+### 9.11.2. 示例 - UNLOCK
+
+```http
+>>Request
+
+UNLOCK /workspace/webdav/info.doc HTTP/1.1
+Host: example.com
+Lock-Token: <urn:uuid:a515cfa4-5da4-22e1-f5b5-00a0451e6bf7>
+Authorization: Digest username="ejw"
+realm="ejw@example.com", nonce="...",
+uri="/workspace/webdav/proposal.doc",
+response="...", opaque="..."
+
+>>Response
+
+HTTP/1.1 204 No Content
+```
+
+该示例中, 由锁令牌 "urn:uuid:a515cfa4-5da4-22e1-f5b5-00a0451e6bf7"
+标识的锁已成功从资源 `http://example.com/workspace/webdav/info.doc` 中移除.
+如果此锁包括不止一个资源, 则将从包括在该锁中的所有资源中移除该锁.
+
+在该示例中, Authorization 请求标头中的 `nonce`, `response` 和 `opaque`
+字段未被计算生成.
+
+> 译者注: 这些字段尚未被填充, 因为在该示例中关注的重点是 UNLOCK 操作,
+> 而这些字段牵扯到服务器认证机制, 该示例中并不需要关注这些认证细节.
