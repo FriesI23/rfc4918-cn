@@ -67,7 +67,7 @@
 ## 14.6. exclusive XML 元素
 
 - **名称**: exclusive
-- **目的**: 指定一个排他锁
+- **目的**: 指定一个互斥锁
 
 ```bnf
 <!ELEMENT exclusive EMPTY >
@@ -141,7 +141,7 @@
 ## 14.13. lockscope XML 元素
 
 - **名称**: lockscope
-- **目的**: 指定该锁是独占锁还是共享锁.
+- **目的**: 指定该锁是互斥锁还是共享锁.
 
 ```bnf
 <!ELEMENT lockscope (exclusive | shared) >

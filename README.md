@@ -86,16 +86,16 @@
     - [x] 9.9.4. Status Codes
     - [x] 9.9.5. Example - MOVE of a Non-Collection
     - [x] 9.9.6. Example - MOVE of a Collection
-  - [ ] 9.10. LOCK Method
-    - [ ] 9.10.1. Creating a Lock on an Existing Resource
-    - [ ] 9.10.2. Refreshing Locks
-    - [ ] 9.10.3. Depth and Locking
-    - [ ] 9.10.4. Locking Unmapped URLs
-    - [ ] 9.10.5. Lock Compatibility Table
-    - [ ] 9.10.6. LOCK Responses
-    - [ ] 9.10.7. Example - Simple Lock Request
-    - [ ] 9.10.8. Example - Refreshing a Write Lock
-    - [ ] 9.10.9. Example - Multi-Resource Lock Request
+  - [x] 9.10. LOCK Method
+    - [x] 9.10.1. Creating a Lock on an Existing Resource
+    - [x] 9.10.2. Refreshing Locks
+    - [x] 9.10.3. Depth and Locking
+    - [x] 9.10.4. Locking Unmapped URLs
+    - [x] 9.10.5. Lock Compatibility Table
+    - [x] 9.10.6. LOCK Responses
+    - [x] 9.10.7. Example - Simple Lock Request
+    - [x] 9.10.8. Example - Refreshing a Write Lock
+    - [x] 9.10.9. Example - Multi-Resource Lock Request
   - [x] 9.11 UNLOCK Method
     - [x] 9.11.1. Status Codes
     - [x] 9.11.2. Example - UNLOCK

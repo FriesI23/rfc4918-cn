@@ -212,7 +212,7 @@ Content-Length: xxxx
 </D:multistatus>
 ```
 
-该资源具有一个带有无限超时的排他写锁 (exclusive write lock).
+该资源具有一个带有无限超时的互斥写锁 (exclusive write lock).
 
 ## 15.9. resourcetype 属性
 

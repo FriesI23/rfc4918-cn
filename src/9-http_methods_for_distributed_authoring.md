@@ -433,7 +433,7 @@ Content-Length: xxxx
 - 在 1997/12/01 5:42:21PM GMT-8 创建的 (`DAV:creationdate`),
 - 名称为 "Example collection" (`DAV:displayname`),
 - 是一个集合资源类型 (`DAV:resourcetype`),
-- 支持独占写锁和共享写锁 (`DAV:supportedlock`).
+- 支持互斥写锁和共享写锁 (`DAV:supportedlock`).
 
 资源 `"http://www.example.com/container/front.html"` 上定义了九个属性:
 
@@ -452,7 +452,7 @@ Content-Length: xxxx
 - 实体标记为 "zzyzx" (`DAV:getetag`).
 - 在 1998/01/12 09:25:56AM GMT 进行最后修改 (`DAV:getlastmodified`),
 - 该属性具有空的资源类型, 意味其不是一个集合 (`DAV:resourcetype`),
-- 支持独占写锁和共享写锁 (`DAV:supportedlock`).
+- 支持互斥写锁和共享写锁 (`DAV:supportedlock`).
 
 ### 9.1.6. 示例 - 使用 "allprop" 与 "include"
 
@@ -1075,6 +1075,268 @@ Content-Length: xxxx
 `/container/C2` 的所有成员也没有被移动. 但由于错误最小化规则, 这些成员的移动错误没有列出.
 用户代理身份验证之前已经通过 HTTP 协议范围之外的底层传输层机制处理.
 
+## 9.10. LOCK 方法
+
+以下各节用于描述 LOCK 方法, 该方法用于获取任何访问类型的锁, 并刷新现有锁.
+以下章节有关 LOCK 方法仅描述于特定 LOCK 方法的语义, 并与所请求锁的访问类型无关.
+
+任何支持 LOCK 方法的资源**必须[MUST]**至少支持本文中定义的 XML 请求和响应格式.
+
+此方法既不幂等也不安全 (参阅[RFC2616#9.1]). 不得缓存此方法的响应.
+
+### 9.10.1. 在现有资源上创建锁
+
+对于现有资源的 LOCK 请求将在 Request-URI 标识的资源上创建一个锁,
+前提是该资源未使用相冲突. Request-URI 中标识的资源成为锁根.
+用于创建新锁的 LOCK 方法请求**必须[MUST]**具有一个 XML 请求正文.
+服务器**必须[MUST]**保留 LOCK 请求中客户端在 "owner" 元素中提供的信息.
+LOCK 请求**可能[MAY]**含有 Timeout 标头.
+
+当新锁创建时, LOCK 响应:
+
+- **必须[MUST]**包含一个在 prop XML 元素中的 `DAV:lockdiscovery` 属性值的正文.
+  这**必须[MUST]**包含有关刚授予的锁的完整信息, 而有关其他 (共享) 锁的信息是可选的.
+- **必须[MUST]**包括 Lock-Token 响应标头, 其中包含与新锁关联的令牌.
+
+### 9.10.2. 刷新锁
+
+要刷新一个锁, 需要向该锁范围内资源的 URL 发送一个 LOCK 请求.
+此请求**不能[MUST_NOT]**具有正文，且**必须[MUST]**使用 "If" 标头指定要刷新的锁,
+只能一次刷新一个锁. 请求**可能[MAY]**包含 Timeout 标头,
+服务器**可以[MAY]**接受以将锁上剩余的持续时间更改为新值.
+服务器**必须[MUST]**忽略 LOCK 刷新上的 Depth 标头.
+
+如果资源有其他 (共享) 锁, 则这些锁不受锁刷新的影响. 此外, 这些锁不会阻止刷新指定的锁.
+
+对于一个成功的刷新 LOCK 请求, 响应中不会返回 Lock-Token 标头,
+但 LOCK 响应正文必须包含 `DAV:lockdiscovery` 属性的新值.
+
+### 9.10.3 深度与锁定
+
+Depth 标头可能与 LOCK 方法一起使用. 除了 0 或无穷大之外的值都**不能[MUST_NOT]**与
+LOCK 方法的 Depth 标头一起使用. 所有支持 LOCK 方法的资源必须支持 Depth 标头.
+
+值为 0 的 Depth 标头意味着只锁定 Request-URI 中指定的资源.
+
+如果 Depth 标头设置为无穷大, 那么 Request-URI 中指定的资源及其所有成员,
+直到整个层次结构最底部，都将被锁定. 该成功结果**必须[MUST]**返回一个单一的锁令牌.
+类似地, 如果使用此令牌成功执行 UNLOCK, 则所有关联资源都将被解锁.
+因此, LOCK 或 UNLOCK 不会部分锁定成功. 要么整个层次结构被锁定, 要么不锁定任何资源.
+
+如果无法将锁授权给所有资源, 服务器**必须[MUST]**返回多状态响应,
+其中至少包含一个阻止授权锁定对应资源的 "response" 元素, 以及适当的状态码用来指示了失败
+(例如, 403 (Forbidden) 或 423 (Locked)). 此外, 如果导致失败的资源不是请求资源,
+服务器也**应该[SHOULD]**为 Request-URI 包含一个 "response" 元素,
+包含一个含有 424 (Failed Dependency) 的 "status" 元素.
+
+如果在 LOCK 请求上未提交任何 Depth 标头, 则该请求必须被视为已提交 "Depth:infinity".
+
+### 9.10.4. 锁定未映射 URL
+
+当 URL 之前不存在资源时, 对其成功的 LOCK 请求**必须[MUST]**最终创建一个已锁定的空资源
+(且不是集合). 随后, 锁可以消失, 但空资源仍然存在.
+空资源**必须[MUST]**出现在 PROPFIND 响应中, 并包括响应范围中的该 URL.
+服务器**必须[MUST]**对空资源的 GET 请求做出成功响应, 可以使用 204 (No Content) 响应,
+也可以使用 200 (OK) 响应 (包含带有指示零长度的 Content-Length 标头).
+
+### 9.10.5. 锁兼容性表格
+
+下表描述了在资源上进行锁定请求时的行为.
+
+| 当前状态 | 共享锁允许 | 互斥锁允许 |
+| -------- | ---------- | ---------- |
+| 无锁     | True       | True       |
+| 共享锁   | True       | False      |
+| 互斥锁   | False      | False\*    |
+
+> 图例：True = 可以授予锁. False = **必须[MUST_NOT]**不授予锁.
+> "\*" = 主体请求相同的锁两次是非法的.
+
+资源的当前锁状态在最左边列中给出, 锁请求在第一行中给出. 行和列的交点给出了锁请求的结果.
+例如, 如果在资源上持有共享锁, 并且请求互斥锁, 则表格中的条目为 "false", 既表明不能授予锁.
+
+### 9.10.6. LOCK 响应
+
+除了一般可能出现的状态码外, 以下状态码对于 LOCK 具有特定适应性:
+
+- 200 (OK): LOCK 请求成功, 并且 "DAV:lockdiscovery" 属性的值包含在响应正文中.
+- 201 (Created): 对未映射的 URL 的 LOCK 请求, 该请求成功并导致创建新资源,
+  并且 "DAV：lockdiscovery" 属性值包含在响应正文中.
+- 409 (Conflict): 直到创建一个或多个中间集合前, 无法在目标位置创建资源.
+  服务器**不得[MUST_NOT]**自动创建这些中间集合.
+- 423 (Locked), 并带有 "no-conflicting-lock" 前置条件码:
+  资源上已存在一个与请求的锁不兼容的锁 (请参阅上面的[锁兼容性表格][SECTION#9.10.5]).
+- 412 (Precondition Failed)，带有 "lock-token-matches-request-uri" 前置条件码:
+  LOCK 请求带有 If 标头, 表示客户端希望刷新其指定的锁.
+  但是 Request-URI 不在由标记标识的锁的范围内. 锁的范围可能不包括该 Request-URI,
+  或是锁可能已消失, 或是令牌可能无效.
+
+### 9.10.7. 示例 - 简单的锁请求
+
+```xml
+>>Request
+
+LOCK /workspace/webdav/proposal.doc HTTP/1.1
+Host: example.com
+Timeout: Infinite, Second-4100000000
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+Authorization: Digest username="ejw",
+realm="ejw@example.com", nonce="...",
+uri="/workspace/webdav/proposal.doc",
+response="...", opaque="..."
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:lockinfo xmlns:D='DAV:'>
+    <D:lockscope><D:exclusive/></D:lockscope>
+    <D:locktype><D:write/></D:locktype>
+    <D:owner>
+        <D:href>http://example.org/~ejw/contact.html</D:href>
+    </D:owner>
+</D:lockinfo>
+
+>>Response
+
+HTTP/1.1 200 OK
+Lock-Token: <urn:uuid:e71d4fae-5dec-22d6-fea5-00a0c91e6be4>
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:prop xmlns:D="DAV:">
+    <D:lockdiscovery>
+        <D:activelock>
+            <D:locktype><D:write/></D:locktype>
+            <D:lockscope><D:exclusive/></D:lockscope>
+            <D:depth>infinity</D:depth>
+            <D:owner>
+                <D:href>http://example.org/~ejw/contact.html</D:href>
+            </D:owner>
+            <D:timeout>Second-604800</D:timeout>
+            <D:locktoken>
+                <D:href>urn:uuid:e71d4fae-5dec-22d6-fea5-00a0c91e6be4</D:href>
+            </D:locktoken>
+            <D:lockroot>
+                <D:href
+                >http://example.com/workspace/webdav/proposal.doc</D:href>
+            </D:lockroot>
+        </D:activelock>
+    </D:lockdiscovery>
+</D:prop>
+```
+
+这个例子演示了在资源 "http://example.com/workspace/webdav/proposal.doc"
+上成功创建一个互斥写锁.
+资源 "http://example.org/~ejw/contact.html" 包含了锁创建者的联系信息.
+服务器在这个资源上使用了基于活动 (activity-based) 的超时策略,
+这会导致锁在 1 周后 (604800 秒) 被自动移除. 需要注意的是,
+Authorization 请求标头中的 `nonce`, `response` 和 `opaque` 字段未被计算生成.
+
+> 译者注: 这些字段尚未被填充, 因为在该示例中关注的重点是 UNLOCK 操作,
+> 而这些字段牵扯到服务器认证机制, 该示例中并不需要关注这些认证细节.
+
+### 9.10.8. 示例 - 刷新一个写锁
+
+```xml
+>>Request
+
+LOCK /workspace/webdav/proposal.doc HTTP/1.1
+Host: example.com
+Timeout: Infinite, Second-4100000000
+If: (<urn:uuid:e71d4fae-5dec-22d6-fea5-00a0c91e6be4>)
+Authorization: Digest username="ejw",
+realm="ejw@example.com", nonce="...",
+uri="/workspace/webdav/proposal.doc",
+response="...", opaque="..."
+
+>>Response
+
+HTTP/1.1 200 OK
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:prop xmlns:D="DAV:">
+<D:lockdiscovery>
+    <D:activelock>
+        <D:locktype><D:write/></D:locktype>
+        <D:lockscope><D:exclusive/></D:lockscope>
+        <D:depth>infinity</D:depth>
+        <D:owner>
+            <D:href>http://example.org/~ejw/contact.html</D:href>
+        </D:owner>
+        <D:timeout>Second-604800</D:timeout>
+        <D:locktoken>
+            <D:href
+            >urn:uuid:e71d4fae-5dec-22d6-fea5-00a0c91e6be4</D:href>
+        </D:locktoken>
+        <D:lockroot>
+            <D:href
+            >http://example.com/workspace/webdav/proposal.doc</D:href>
+        </D:lockroot>
+    </D:activelock>
+</D:lockdiscovery>
+</D:prop>
+```
+
+此请求将刷新锁, 尝试将超时时间重置为 timeout 标头中指定的新值.
+需要注意的是,客户端请求了一个无限超时, 但服务器选择忽略该请求.
+在该例中, Authorization 请求标头中的 `nonce`, `response` 和 `opaque` 字段未被计算生成.
+
+### 9.10.9. 示例 - 多资源锁请求
+
+```xml
+>>Request
+
+LOCK /webdav/ HTTP/1.1
+Host: example.com
+Timeout: Infinite, Second-4100000000
+Depth: infinity
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+Authorization: Digest username="ejw",
+realm="ejw@example.com", nonce="...",
+uri="/workspace/webdav/proposal.doc",
+response="...", opaque="..."
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:lockinfo xmlns:D="DAV:">
+    <D:locktype><D:write/></D:locktype>
+    <D:lockscope><D:exclusive/></D:lockscope>
+    <D:owner>
+        <D:href>http://example.org/~ejw/contact.html</D:href>
+    </D:owner>
+</D:lockinfo>
+
+>>Response
+
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<D:multistatus xmlns:D="DAV:">
+    <D:response>
+        <D:href>http://example.com/webdav/secret</D:href>
+        <D:status>HTTP/1.1 403 Forbidden</D:status>
+    </D:response>
+    <D:response>
+        <D:href>http://example.com/webdav/</D:href>
+        <D:status>HTTP/1.1 424 Failed Dependency</D:status>
+    </D:response>
+</D:multistatus>
+```
+
+这个例子展示了对集合及其所有子集合请求互斥写锁的情况. 此请求中, 客户端指出其希望获得无限期的锁,
+否则希望设置 41 亿秒的超时. 请求实体正文包含了取得锁主体的联系信息,
+该例中是一个 Web 页面的 URL.
+
+错误是对资源 "http://example.com/webdav/secret" 上的 403 (Forbidden) 响应.
+因为无法锁定此资源, 没有资源被锁定. 还需要注意的是,
+Request-URI 本身的 "response" 元素已按要求包含在内.
+
+在该例中, Authorization 请求标头中的 `nonce`, `response` 和 `opaque` 字段未被计算生成.
+
 ## 9.11. UNLOCK 方法
 
 UNLOCK 方法会移除由 Lock-Token 请求标头中的锁定牌标识的锁.
@@ -1129,6 +1391,3 @@ HTTP/1.1 204 No Content
 
 在该示例中, Authorization 请求标头中的 `nonce`, `response` 和 `opaque`
 字段未被计算生成.
-
-> 译者注: 这些字段尚未被填充, 因为在该示例中关注的重点是 UNLOCK 操作,
-> 而这些字段牵扯到服务器认证机制, 该示例中并不需要关注这些认证细节.
