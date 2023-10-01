@@ -26,6 +26,7 @@
 - [23. 本规范的贡献者 (原文)][SECTION#23]
 - [24. RFC2518 的作者 (原文)][SECTION#24]
 - [25. 参考文献 (原文)][SECTION#25]
+- [附录 C. "opaquelocktoken" 方案和 URI][APPENDIX#C]
 - [翻译表](TRANSLATION.md)
 - [词汇表](GLOSSARY.md)
 
@@ -57,3 +58,4 @@
 [SECTION#23]: https://datatracker.ietf.org/doc/html/rfc4918#section-23
 [SECTION#24]: https://datatracker.ietf.org/doc/html/rfc4918#section-24
 [SECTION#25]: https://datatracker.ietf.org/doc/html/rfc4918#section-25
+[APPENDIX#C]: c-the_opaquelocktoken_scheme_and_url.md

@@ -215,7 +215,7 @@
   - [ ] A.3. Example - XML Syntax Error
   - [ ] A.4. Example - Unexpected XML Element
 - [ ] B. Notes on HTTP Client Compatibility
-- [ ] C. The 'opaquelocktoken' Scheme and URIs
+- [x] C. The 'opaquelocktoken' Scheme and URIs
 - [ ] D. Lock-null Resources
   - [ ] D.1. Guidance for Clients Using LOCK to Create Resources
 - [ ] E. Guidance for Clients Desiring to Authenticate
