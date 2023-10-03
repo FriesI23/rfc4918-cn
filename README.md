@@ -218,8 +218,8 @@
 - [x] C. The 'opaquelocktoken' Scheme and URIs
 - [x] D. Lock-null Resources
   - [x] D.1. Guidance for Clients Using LOCK to Create Resources
-- [ ] E. Guidance for Clients Desiring to Authenticate
-- [ ] F. Summary of Changes from RFC 2518
-  - [ ] F.1. Changes for Both Client and Server Implementations
-  - [ ] F.2. Changes for Server Implementations
-  - [ ] F.3. Other Changes
+- [x] E. Guidance for Clients Desiring to Authenticate
+- [x] F. Summary of Changes from RFC 2518
+  - [x] F.1. Changes for Both Client and Server Implementations
+  - [x] F.2. Changes for Server Implementations
+  - [x] F.3. Other Changes

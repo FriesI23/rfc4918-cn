@@ -143,3 +143,7 @@ Lifetime
 ## 小程序
 
 Applet
+
+## 认证质询
+
+Authentication Challenge
