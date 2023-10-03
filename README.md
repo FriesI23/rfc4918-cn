@@ -209,15 +209,15 @@
 <!-- - [ ] 25. References
   - [ ] 25.1. Normative References
   - [ ] 25.2.Informative References -->
-- [ ] A. Notes on Processing XML Elements
-  - [ ] A.1. Notes on Empty XML Elements
-  - [ ] A.2. Notes on Illegal XML Processing
-  - [ ] A.3. Example - XML Syntax Error
-  - [ ] A.4. Example - Unexpected XML Element
-- [ ] B. Notes on HTTP Client Compatibility
+- [x] A. Notes on Processing XML Elements
+  - [x] A.1. Notes on Empty XML Elements
+  - [x] A.2. Notes on Illegal XML Processing
+  - [x] A.3. Example - XML Syntax Error
+  - [x] A.4. Example - Unexpected XML Element
+- [x] B. Notes on HTTP Client Compatibility
 - [x] C. The 'opaquelocktoken' Scheme and URIs
-- [ ] D. Lock-null Resources
-  - [ ] D.1. Guidance for Clients Using LOCK to Create Resources
+- [x] D. Lock-null Resources
+  - [x] D.1. Guidance for Clients Using LOCK to Create Resources
 - [ ] E. Guidance for Clients Desiring to Authenticate
 - [ ] F. Summary of Changes from RFC 2518
   - [ ] F.1. Changes for Both Client and Server Implementations

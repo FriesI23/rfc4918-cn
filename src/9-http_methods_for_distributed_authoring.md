@@ -612,7 +612,7 @@ Media Type) 状态码.
 - 405 (Method Not Allowed): MKCOL 只能在未映射的 URL 上执行.
 - 409 (Conflict): 在 Request-URI 处创建集合前, 必须先创建一个或多个中间集合.
   服务器**不能[MUST_NOT]**自动创建这些中间集合.
-- 415 (Unsupported Media Type): 服务器不支持的请求体类型
+- 415 (Unsupported Media Type): 服务器不支持的请求正文类型
   (尽管在 MKCOL 请求中可以使用请求正文 (bodies on requests)，
   但由于本规范没有定义任何请求正文类型, 因此服务器可能不会支持任何给定的请求正文类型).
 - 507 (Insufficient Storage): 该资源没有足够的空间来记录执行此方法后资源状态.
