@@ -297,3 +297,11 @@ Content-Length: xxxx
   </D:response>
 </D:multistatus>
 ```
+
+<!-- refs -->
+
+[SECTION#7]: 7-write_lock.md
+[SECTION#8.6]: 8-general_request_and_response_handling.md#86-etag
+[SECTION#8.8]: 8-general_request_and_response_handling.md#88-命名空间操作对缓存验证器的影响
+[SECTION#9.7.1]: 9-http_methods_for_distributed_authoring.md#971-非集合资源中的-put
+[SECTION#14.3]: 14-xml_element_definitions.md#143-collection-xml-元素

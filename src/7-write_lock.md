@@ -260,3 +260,11 @@ Content-Length: xxxx
 前提是服务器在 LOCK 刷新响应中通告新的值.
 
 如果在刷新 LOCK 请求的响应中收到错误, 则客户端**不得[MUST_NOT]**假设锁已被刷新.
+
+<!-- refs -->
+
+[SECTION#6.1]: 6-locking.md#61-model-锁
+[SECTION#7.4]: 7-write_lock.md#74-写锁与集合
+[SECTION#7.5]: 7-write_lock.md#75-写锁与-if-请求标头
+[SECTION#10.4]: 10-http_headers_for_distributed_authoring.md#104-if-标头
+[APPENDIX#D]: d-lock_mull_resources.md

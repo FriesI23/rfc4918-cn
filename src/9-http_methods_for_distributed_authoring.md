@@ -1225,9 +1225,9 @@ Content-Length: xxxx
 </D:prop>
 ```
 
-这个例子演示了在资源 "http://example.com/workspace/webdav/proposal.doc"
+这个例子演示了在资源 `"http://example.com/workspace/webdav/proposal.doc"`
 上成功创建一个互斥写锁.
-资源 "http://example.org/~ejw/contact.html" 包含了锁创建者的联系信息.
+资源 `"http://example.org/~ejw/contact.html"` 包含了锁创建者的联系信息.
 服务器在这个资源上使用了基于活动 (activity-based) 的超时策略,
 这会导致锁在 1 周后 (604800 秒) 被自动移除. 需要注意的是,
 Authorization 请求标头中的 `nonce`, `response` 和 `opaque` 字段未被计算生成.
@@ -1331,7 +1331,7 @@ Content-Length: xxxx
 否则希望设置 41 亿秒的超时. 请求实体正文包含了取得锁主体的联系信息,
 该例中是一个 Web 页面的 URL.
 
-错误是对资源 "http://example.com/webdav/secret" 上的 403 (Forbidden) 响应.
+错误是对资源 `"http://example.com/webdav/secret"` 上的 403 (Forbidden) 响应.
 因为无法锁定此资源, 没有资源被锁定. 还需要注意的是,
 Request-URI 本身的 "response" 元素已按要求包含在内.
 
@@ -1391,3 +1391,16 @@ HTTP/1.1 204 No Content
 
 在该示例中, Authorization 请求标头中的 `nonce`, `response` 和 `opaque`
 字段未被计算生成.
+
+<!-- refs -->
+
+[SECTION#5.1]: 5-collection_of_web_resources.md#51-http-url-命名空间模型
+[SECTION#9.2.1]: 9-http_methods_for_distributed_authoring.md#921-propstat-元素中使用的状态代码
+[SECTION#9.3]: 9-http_methods_for_distributed_authoring.md#93-mkcol-方法
+[SECTION#9.10.5]: 9-http_methods_for_distributed_authoring.md#9105-锁兼容性表格
+[SECTION#14.20]: 14-xml_element_definitions.md#1420-propfind-xml-元素
+[SECTION#14.22]: 14-xml_element_definitions.md#1422-propstat-xml-元素
+[SECTION#14.23]: 14-xml_element_definitions.md#1423-remove-xml-元素
+[SECTION#14.26]: 14-xml_element_definitions.md#1426-set-xml-元素
+[SECTION#15]: 15-dav_properties.md
+[SECTION#16]: 16-precondition_postcondition_xml_elements.md

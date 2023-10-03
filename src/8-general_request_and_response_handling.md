@@ -244,3 +244,9 @@ e.g.，当锁超时时，客户端可能无法续订锁 (renew a lock),
 >   <!-- ... other responses -->
 > </D:multistatus>
 > ```
+
+<!-- refs -->
+
+[SECTION#8.1]: 8-general_request_and_response_handling.md#81-错误处理优先级
+[SECTION#16]: 16-precondition_postcondition_xml_elements.md
+[SECTION#20]: 20-security_consideration.md

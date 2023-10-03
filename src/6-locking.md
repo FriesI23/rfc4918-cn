@@ -149,3 +149,13 @@ Timeout 标头仅指示服务器在不发生特殊情况时的行为. 例如, �
 甚至可以提供锁定令牌.
 
 任何支持 LOCK 方法的 DAV 兼容资源都**必须[MUST]**支持 DAV:lockdiscovery 属性.
+
+<!-- refs -->
+
+[SECTION#6.2]: 6-locking.md#62-互斥锁-vs-共享锁
+[SECTION#6.5]: 6-locking.md#65-锁令牌
+[SECTION#6.6]: 6-locking.md#66-锁超时
+[SECTION#7]: 7-write_lock.md
+[SECTION#9.10.2]: 9-http_methods_for_distributed_authoring.md#9102-刷新锁
+[SECTION#10.5]: 10-http_headers_for_distributed_authoring.md#105-lock-token-标头
+[APPENDIX#C]: c-the_opaquelocktoken_scheme_and_url.md

@@ -87,13 +87,26 @@ IANA 不会管理这些命名空间, 属性名或元素名.
 - 422 Unprocessable Entity ([第 11.2 章][SECTION#11.2])
 - 423 Locked ([第 11.3 章][SECTION#11.3])
 - 424 Failed Dependency ([第 11.4 章][SECTION#11.4])
-- 507 Insufficient Storage ([第 11.5 章][SECTION11.5])
+- 507 Insufficient Storage ([第 11.5 章][SECTION#11.5])
 
 可以在[这里][HTTP_SATUTS_CODE]找到状态码更新的注册码.
 
 注意: HTTP 状态码 102 (Processing) 已在本规范中删除;
 [RFC2518] 将继续引用 IANA 中的该注册码.
 
-<!-- herfs -->
+<!-- refs -->
 
+[SECTION#10.1]: 10-http_headers_for_distributed_authoring.md#101-dav-标头
+[SECTION#10.2]: 10-http_headers_for_distributed_authoring.md#102-depth-标头
+[SECTION#10.3]: 10-http_headers_for_distributed_authoring.md#103-destination-标头
+[SECTION#10.4]: 10-http_headers_for_distributed_authoring.md#104-if-标头
+[SECTION#10.5]: 10-http_headers_for_distributed_authoring.md#105-lock-token-标头
+[SECTION#10.6]: 10-http_headers_for_distributed_authoring.md#106-overwrite-标头
+[SECTION#10.7]: 10-http_headers_for_distributed_authoring.md#107-timeout-请求标头
+[SECTION#11.1]: 11-status_code_extensions_to_http11.md#111-207-多状态-207-multi-status
+[SECTION#11.2]: 11-status_code_extensions_to_http11.md#112-422-无法处理的实体-422-unprocessable-entity
+[SECTION#11.3]: 11-status_code_extensions_to_http11.md#113-432-已锁定-423-locked
+[SECTION#11.4]: 11-status_code_extensions_to_http11.md#114-424-依赖失败-424-failed-dependency
+[SECTION#11.5]: 11-status_code_extensions_to_http11.md#115-507-存储空间不足-507-insufficient-storage
+[APPENDIX#C]: c-the_opaquelocktoken_scheme_and_url.md
 [HTTP_SATUTS_CODE]: http://www.iana.org/assignments/http-status-codes

@@ -48,3 +48,15 @@ URI 中. 如果该元素不存在, 客户端**可能[MAY]**需要向单独的重
 第 [9.2.1][SECTION#9.2.1], [9.1.2][SECTION#9.1.2],
 [9.6.1][SECTION#9.6.1], [9.8.3][SECTION#9.8.3] 和 [9.9.2][SECTION#9.9.2]
 章中定义了多状态响应中使用的各种状态码. 本规范没有定义在这些响应中可能出现的其他状态码的含义.
+
+<!-- refs -->
+
+[SECTION#14.9]: 14-xml_element_definitions.md#149-location-xml-元素
+[SECTION#9.1]: 9-http_methods_for_distributed_authoring.md#91-propfind-方法
+[SECTION#9.1.2]: 9-http_methods_for_distributed_authoring.md#912-用于-propstat-元素的状态码
+[SECTION#9.2]: 9-http_methods_for_distributed_authoring.md#92-proppatch-方法
+[SECTION#9.2.1]: 9-http_methods_for_distributed_authoring.md#921-propstat-元素中使用的状态代码
+[SECTION#9.6.1]: 9-http_methods_for_distributed_authoring.md#961-集合中的-delete
+[SECTION#9.6.2]: 9-http_methods_for_distributed_authoring.md#962-示例---delete
+[SECTION#9.8.3]: 9-http_methods_for_distributed_authoring.md#983-集合中的-copy
+[SECTION#9.9.2]: s9-http_methods_for_distributed_authoring.md#992-集合中的-move

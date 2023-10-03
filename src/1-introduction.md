@@ -56,3 +56,22 @@ WebDAV 包含一些特殊规则，以向后兼容的方式扩展 WebDAV XML 编�
 - 符合本规范资源含义的说明 ([第 18 章][SECTION#18])
 - 国际化支持 ([第 19 章][SECTION#19])
 - 安全性讨论([第 20 章][SECTION#20])
+
+<!-- refs -->
+
+[SECTION#4]: 4-data_model_for_resource_properties.md
+[SECTION#5]: 5-collection_of_web_resources.md
+[SECTION#6]: 6-locking.md
+[SECTION#7]: 7-write_lock.md
+[SECTION#9]: 9-http_methods_for_distributed_authoring.md
+[SECTION#10]: 10-http_headers_for_distributed_authoring.md
+[SECTION#11]: 11-status_code_extensions_to_http11.md
+[SECTION#12]: 12-use-of-hhtp-status-code.md
+[SECTION#13]: 13-multi_status_response.md
+[SECTION#14]: 14-xml_element_definitions.md
+[SECTION#15]: 15-dav_properties.md
+[SECTION#16]: 16-precondition_postcondition_xml_elements.md
+[SECTION#17]: 17-xml_extensibility_in_dav.md
+[SECTION#18]: 18-dav_compliance_classes.md
+[SECTION#19]: 19-internationalization_considerations.md
+[SECTION#20]: 20-security_consideration.md

@@ -337,3 +337,8 @@
 ```bnf
 <!ELEMENT write EMPTY >
 ```
+
+<!-- refs -->
+
+[SECTION#10.7]: 10-http_headers_for_distributed_authoring.md#107-timeout-请求标头
+[SECTION#17]: 17-xml_extensibility_in_dav.md

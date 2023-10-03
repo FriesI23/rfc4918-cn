@@ -120,3 +120,7 @@ Content-Length: xxxx
 - **分类**: 前置条件
 - **目的**: 客户端尝试在 PROPPATCH 中设置受保护的属性 (比如 `DAV:getetag`).
   另请参见 [RFC3253#3.12].
+
+<!-- refs -->
+
+[SECTION#8.7]: 8-general_request_and_response_handling.md#87-包含错误响应的正文

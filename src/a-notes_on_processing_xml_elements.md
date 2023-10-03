@@ -80,3 +80,7 @@ propfind 元素的定义仅允许 allprop 或 propname 元素, 而不允许两�
 上述示例包含了虚构的元素 leave-out. 该元素目的是阻止返回与提交的模式匹配的任何属性.
 如果将上述示例提交给不了解 "leave-out" 的服务器, 唯一的结果将是 "leave-out" 元素被忽略,
 然后 propname 被执行.
+
+<!-- refs -->
+
+[SECTION#17]: 17-xml_extensibility_in_dav.md

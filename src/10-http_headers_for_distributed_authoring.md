@@ -34,7 +34,8 @@ DAV 的值是资源支持的所有 `compliance-class` 标识符并使用逗号�
 需要注意的是，许多 WebDAV 服务器在 "OPTIONS \*" 的响应中不会宣称支持 WebDAV.
 
 作为一个请求标头, 此标头允许客户端在服务器需要该信息时宣称其具对命名功能的合规性.
-除非标准化进城规范 (standards track specification) 需要, 否则客户端**不应[SHOULD_NOT]**发送此标头.
+除非标准化进城规范 (standards track specification) 需要,
+否则客户端**不应[SHOULD_NOT]**发送此标头.
 任何使用此标头作为请求标头的扩展都需要仔细考虑缓存该请求带来的影响.
 
 ## 10.2. Depth 标头
@@ -66,8 +67,8 @@ e.g., MOVE 方法仅支持 "Depth: infinity", 如果没有 Depth 标头,
 因此, e.g., 尝试 COPY 层次结构可能会导致一些成员会被复制，而另一些则不会.
 
 默认情况下，Depth 标头不与其他标头相互影响. 也就是说,
-带有 Depth 标头的请求上的每个标头**必须[MUST]**仅能(在其适用于任何资源时)应用于 Request-URI,
-除非为该标头定义了特定的 Depth 行为.
+带有 Depth 标头的请求上的每个标头**必须[MUST]**仅能(在其适用于任何资源时)应用于
+Request-URI, 除非为该标头定义了特定的 Depth 行为.
 
 > 译者注: 怎么理解这句话, 假设存在一个集合 "/example", 内部包含多个资源, 此时客户端发送
 > PROPFIND 请求:
@@ -119,11 +120,11 @@ If 请求标头可以的与[RFC2616#14.24]中定义的 `If-Match` 标头提供�
 
 If 标头头有两个不同的目的:
 
-- 第一个目的是通过提供一系列状态列表来使请求具有条件性, 其中包含与特定资源的令牌和 ETags 匹配的条件.
-  如果此标头经过评估且所有状态列表都失败了,
+- 第一个目的是通过提供一系列状态列表来使请求具有条件性, 其中包含与特定资源的令牌和 ETags
+  匹配的条件. 如果此标头经过评估且所有状态列表都失败了,
   则请求**必须[MUST]**失败并使用 412 (Precondition Failed) 状态码.
   另一方面，仅当描述的状态列表之一成功时, 请求才能成功.
-  状态列表和匹配函数的成功标准在[第 10.4.3 章][SECTION#10.4.3]和[第 10.4.4 章][SECTION10.4.4]中定义.
+  状态列表和匹配函数的成功标准在[第 10.4.3 章][SECTION#10.4.3]和[第 10.4.4 章][SECTION#10.4.4]中定义.
 
 - 此外, 一个事实是, 当状态令牌出现在 If 标头中时, 意味着其已随请求 "提交". 一般来说，
   这用于指示客户端具有该状态令牌信息.
@@ -353,3 +354,13 @@ DAVTimeOutVal = 1*DIGIT
 TimeType 中 "Second-" 的超时值不能大于 `2^32-1`.
 
 有关锁超时行为的说明, 请参见[第 6.6 章][SECTION#6.6].
+
+<!-- refs -->
+
+[SECTION#6]: 6-locking.md
+[SECTION#6.5]: 6-locking.md#65-锁令牌
+[SECTION#6.6]: 6-locking.md#66-锁超时
+[SECTION#10.4.3]: 10-http_headers_for_distributed_authoring.md#1043-list-评估
+[SECTION#10.4.4]: 10-http_headers_for_distributed_authoring.md#1044-匹配状态令牌和-etag
+[SECTION#10.4.7]: 10-http_headers_for_distributed_authoring.md#1047-示例---no-tag-语法规则中使用-not
+[SECTION#18]: 18-dav_compliance_classes.md

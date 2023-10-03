@@ -34,7 +34,7 @@
 - [翻译表](TRANSLATION.md)
 - [词汇表](GLOSSARY.md)
 
-<!-- herfs -->
+<!-- refs -->
 
 [SECTION#0]: README.md
 [SECTION#1]: 1-introduction.md
