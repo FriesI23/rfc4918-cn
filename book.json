@@ -1,6 +1,6 @@
 {
     "root": "./src",
-    "language": "zh",
+    "language": "zh-hans",
     "plugins": [ "sitemap", "page-treeview" ],
     "pluginsConfig": {
         "sitemap": {
