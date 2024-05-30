@@ -52,6 +52,10 @@ Terminology
 
 Segment
 
+## 路径段
+
+Path Segment
+
 ## 片段
 
 Fragment
