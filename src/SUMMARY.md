@@ -32,6 +32,7 @@
 - [附录 D. 锁定占位资源][APPENDIX#D]
 - [附录 F. 对[RFC2518]中的变更摘要 (原文)][APPENDIX#F]
 - [词汇表](GLOSSARY.md)
+- [规则定义](TYPEDEFS.md)
 
 <!-- refs -->
 
