@@ -152,6 +152,168 @@ XML 信息集合 (第二版)
 
 扩展标记语言 (XML) 1.0（第五版）
 
+<!-- Translations -->
+
+## 方法
+
+Method (for HTTP)
+
+## 标头
+
+Header (for HTTP)
+
+## 正文
+
+Body (for HTTP)
+
+## 属性
+
+Property
+
+## 活属性
+
+Live Property
+
+## 死属性
+
+Dead Property
+
+## 属性元素名
+
+Property Name Element
+
+## 集合
+
+Collection
+
+## 锁定
+
+Locking
+
+## 命名空间
+
+Namespace
+
+## 资源
+
+Resource
+
+## 术语
+
+Terminology
+
+## 段
+
+Segment
+
+## 路径段
+
+Path Segment
+
+## 片段
+
+Fragment
+
+## 主体
+
+Principal
+
+## 令牌
+
+Token
+
+## 状态令牌
+
+State Token
+
+## 匹配状态令牌
+
+Matching State Token
+
+## 锁令牌
+
+Lock Token
+
+## 元素
+
+Element
+
+## 模式
+
+Schema
+
+## 原始模式
+
+Original Schema
+
+## 前缀
+
+Prefix
+
+## 集合资源
+
+Collection Resource
+
+## 缓存验证器
+
+Cache Validators
+
+## 断言
+
+Assert
+
+## 目的
+
+Purpose
+
+## 语法
+
+Syntax
+
+## 评估
+
+Evaluation
+
+## 机制
+
+Mechanism
+
+## 多语言平面
+
+Multilingual Plane
+
+## 外部实体
+
+External Entities
+
+## 内部实体
+
+Internel Entities
+
+## 信任集
+
+Trust Set
+
+## 生命周期
+
+Lifetime
+
+## 小程序
+
+Applet
+
+## 认证质询
+
+Authentication Challenge
+
+## 锁根
+
+Lock Root
+
+## 必要性支持
+
+Required Support
+
 <!-- herf -->
 
 [SECTION#2]: 2-notational_conventions.md

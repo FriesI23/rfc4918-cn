@@ -31,7 +31,6 @@
 - [附录 C. "opaquelocktoken" 方案和 URI][APPENDIX#C]
 - [附录 D. 锁定占位资源][APPENDIX#D]
 - [附录 F. 对[RFC2518]中的变更摘要 (原文)][APPENDIX#F]
-- [翻译表](TRANSLATION.md)
 - [词汇表](GLOSSARY.md)
 
 <!-- refs -->
