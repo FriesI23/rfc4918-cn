@@ -60,6 +60,10 @@ Document Type Definition, 既 "文档类型说明", 一种用于定义 XML 文�
 
 Internet Assigned Numbers Authority, 既 "互联网数字分配管理机构".
 
+## LNR
+
+Lock-Null Resources, 锁空资源
+
 <!-- RFC refs -->
 
 ## [RFC7101]
@@ -313,6 +317,10 @@ Lock Root
 ## 必要性支持
 
 Required Support
+
+## 前置条件
+
+Precondition
 
 <!-- herf -->
 
