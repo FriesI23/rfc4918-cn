@@ -1,4 +1,4 @@
-# 附录 C. "opaquelocktoken" 方案和 URI
+# 附录 C. "opaquelocktoken" 方案与 URI
 
 "opaquelocktoken" URI 方案在 [RFC2518] 中定义 (由 IANA 注册),
 旨在使用 UUID 创建正确语法且易于生成的 URI 用与锁令牌, 并使其在所有资源和时间内是唯一的.
@@ -16,3 +16,12 @@ OpaqueLockToken-URI = "opaquelocktoken:" UUID [Extension]
 Extension = path
     ; path 在 [RFC3986#3.3] 中定义
 ```
+
+> 译者注: e.g.
+>
+> ```text
+> // token
+> opaquelocktoken:550e8400-e29b-41d4-a716-446655440000
+> // with extension
+> opaquelocktoken:550e8400-e29b-41d4-a716-446655440000/extension/path
+> ```
