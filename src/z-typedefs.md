@@ -56,7 +56,7 @@ DAV:my-token
 
 ## Depth
 
-```dnf
+```bnf
 Depth = "Depth" ":" ("0" | "1" | "infinity")
 ```
 
@@ -299,3 +299,101 @@ HTTP/1.1 500 Internal Server Error
 ```
 
 参考: [RFC2612#6.1](https://datatracker.ietf.org/doc/html/rfc2616#section-6.1)
+
+## date-time
+
+```bnf
+date-time       = full-date "T" full-time
+
+full-date       = date-fullyear "-" date-month "-" date-mday
+full-time       = partial-time time-offset
+
+partial-time    = time-hour ":" time-minute ":" time-second
+                  [time-secfrac]
+
+date-fullyear   = 4DIGIT
+date-month      = 2DIGIT  ; 01-12
+date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
+                           ; month/year
+
+time-offset     = "Z" / time-numoffset
+time-numoffset  = ("+" / "-") time-hour ":" time-minute
+time-secfrac    = "." 1*DIGIT
+
+time-hour       = 2DIGIT  ; 00-23
+time-minute     = 2DIGIT  ; 00-59
+time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap second
+                           ; rules
+```
+
+```text
+// utc
+2023-06-03T14:23:30Z
+// +offset
+2024-06-03T14:23:30+05:30
+// with milliseconds
+2024-01-01T00:00:00.123-05:00
+```
+
+参考: [RPC3339#5.6](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6)
+
+## language-tag
+
+```bnf
+language-tag  = primary-tag *( "-" subtag )
+
+primary-tag   = 1*8ALPHA
+subtag        = 1*8ALPHA
+```
+
+```text
+zh
+zh-CN
+zh-Hant-TW
+```
+
+参考: [RFC2616#3.10](https://datatracker.ietf.org/doc/html/rfc2616#section-3.10)
+
+## media-type
+
+```bnf
+media-type     = type "/" subtype *( ";" parameter )
+
+type           = token
+subtype        = token
+```
+
+`token` 见[这里](#token).
+
+```text
+text/plain
+application/json
+application/octet-stream; charset=ISO-8859-1
+application/xml; version=1.0
+application/javascript; charset=UTF-8; version=ECMA-26
+```
+
+参考: [RFC2616#3.7](https://datatracker.ietf.org/doc/html/rfc2616#section-3.7)
+
+## rfc1123-date
+
+```bnf
+rfc1123-date = wkday "," SP date1 SP time SP "GMT"
+
+date1        = 2DIGIT SP month SP 4DIGIT
+               ; day month year (e.g., 02 Jun 1982)
+
+time         = 2DIGIT ":" 2DIGIT ":" 2DIGIT
+               ; 00:00:00 - 23:59:59
+wkday        = "Mon" | "Tue" | "Wed"
+            | "Thu" | "Fri" | "Sat" | "Sun"
+month        = "Jan" | "Feb" | "Mar" | "Apr"
+            | "May" | "Jun" | "Jul" | "Aug"
+            | "Sep" | "Oct" | "Nov" | "Dec"
+```
+
+```text
+Fri, 02 Jun 1982 14:30:00 GMT
+```
+
+参考: [RFC2616#3.3.1](https://datatracker.ietf.org/doc/html/rfc2616#section-3.3.1)
