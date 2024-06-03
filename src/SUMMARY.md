@@ -31,7 +31,8 @@
 - [附录 C. "opaquelocktoken" 方案和 URI][APPENDIX#C]
 - [附录 D. 锁定占位资源][APPENDIX#D]
 - [附录 F. 对[RFC2518]中的变更摘要 (原文)][APPENDIX#F]
-- [补充 1. Etag 在 RFC2616 上的定义](z-etag-define-on-rfc2616.md)
+- [补充 1. Etag 在 RFC2616 上的定义](z-etag_define_on_rfc2616.md)
+- [补充 2. 与 XML 实体相关的影响补充](z-addtional_info_about_implcations_of_xml_entities.md)
 - [词汇表](GLOSSARY.md)
 - [方法速查](z-methods.md)
 - [规则定义](z-typedefs.md)

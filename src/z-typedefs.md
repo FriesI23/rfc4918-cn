@@ -397,3 +397,34 @@ Fri, 02 Jun 1982 14:30:00 GMT
 ```
 
 参考: [RFC2616#3.3.1](https://datatracker.ietf.org/doc/html/rfc2616#section-3.3.1)
+
+## EntityValue
+
+```bnf
+EntityValue    ::= '"' ([^%&"] | PEReference | Reference)* '"'
+                 | "'" ([^%&'] | PEReference | Reference)* "'"
+
+Reference      ::= EntityRef | CharRef
+
+EntityRef      ::= '&' Name ';'
+PEReference    ::= '%' Name ';'
+
+Name           ::= NameStartChar (NameChar)*
+NameChar       ::= NameStartChar | "-" | "." | [0-9] | #xB7
+                 | [#x0300-#x036F] | [#x203F-#x2040]
+
+NameStartChar  ::= ":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6]
+                 | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF]
+                 | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF]
+                 | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD]
+                 | [#x10000-#xEFFFF]
+```
+
+```text
+// simple
+"Hello, World!"
+// complex
+'&lt;p&gt;This is a paragraph.&lt;/p&gt;'
+```
+
+参考: [REC-XML#2.3](https://www.w3.org/TR/xml/#sec-common-syn)

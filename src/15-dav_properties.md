@@ -142,7 +142,7 @@ COPY 和 MOVE 行为指的是本地 COPY 和 MOVE 操作.
 - **COPY/MOVE 行为**: 此属性值取决于目标资源的最终状态, 而不是源资源上属性的值.
   另需要注意[第 8.8 章][SECTION#8.8]中的考虑事项.
 - **描述**: 在任何返回 `Etag` 标头的 DAV 兼容资源上都**必须[MUST]**定义 `getetag` 属性.
-  请参阅 [RFC2616#3.11](z-etag-define-on-rfc2616.md) 中有关 ETag 语义的完整定义,
+  请参阅 [RFC2616#3.11](z-etag_define_on_rfc2616.md) 中有关 ETag 语义的完整定义,
   并参阅[第 8.6 章][SECTION#8.6]中关于 WebDAV 中 `ETag` 的讨论.
 
 ```bnf
