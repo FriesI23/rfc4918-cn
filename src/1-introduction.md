@@ -1,15 +1,15 @@
 # 1. 简介
 
-本文档描述了对 HTTP/1.1 协议的扩展, 允许客户端执行远程 Web 内容作者操作 (remote Web
-content authoring operations). 该扩展提供了一组相关的方法 (methods),
-标头 (heaeders), 请求实体正文格式 (request entity body formats) 和响应实体正文格式
+本文档描述了对 HTTP/1.1 协议的扩展, 允许客户端执行远程 Web 内容创作相关操作 (remote Web
+content authoring operations). 该扩展提供一组相关方法 (methods), 标头 (heaeders),
+请求实体正文格式 (request entity body formats) 和响应实体正文格式
 (response entity body formats), 并提供下述操作:
 
 - **属性 (Property)**: 创建, 删除, 查询有关 Web 页面信息, 例如作者或者创建日期等.
 - **集合 (Collection)**：创建文档集合 (sets of documents),
   并检索层级成员列表 (hierarchical membership listing) (类似于文件系统中的目录树).
 - **锁定 (Locking)**: 能够防止多人同时编辑一个文档, 避免"丢失更新问题",
-  即第一个修改作者修改的内容丢失, 而另一个作者在更改内容时, 并没有合并其他作者的修改.
+  即在没有合并其他作者的更改的情况下, 连续两个作者先后进行修改, 这会导致第一个作者的修改丢失.
 - **命名空间操作 (Namespace Operations)**: 能够指示服务器复制和移动 Web 资源,
   从而改变从 URL 到资源的映射关系.
 
@@ -26,8 +26,8 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 
 这些抽象使用以下方式操作
 
-- WebDAV 特定的 HTTP 方法 (WebDAV-specific HTTP methods) ([第 9 章][SECTION#9])
-- 与 WebDAV 方法一起使用的额外 HTTP 标头头 (extra HTTP headers used with
+- WebDAV 中特定的 HTTP 方法 (WebDAV-specific HTTP methods) ([第 9 章][SECTION#9])
+- 与 WebDAV 方法一起使用的额外 HTTP 标头 (extra HTTP headers used with
   WebDAV methods) ([第 10 章][SECTION#10])
 
 关于在 WebDAV 中处理 HTTP 请求和响应的一般考虑事项,
@@ -39,17 +39,16 @@ content authoring operations). 该扩展提供了一组相关的方法 (methods)
 并描述了在 WebDAV 中使用的现有 HTTP 状态码 ([第 12 章][SECTION#12]).
 由于一些 WebDAV 方法可能涉及多个资源, 因此引入了多状态响应 (Multi-Status response)
 ([第 13 章][SECTION#13]) 来返回多个资源的状态信息.
-最后, 该版本 WebDAV 在错误响应体 (response body) 的 XML 元素中引入了前置和后置条件
+最后, 该版本 WebDAV 在错误响应正文 (response body) 的 XML 元素中引入了前置和后置条件
 ([第 16 章][SECTION#16]).
 
 WebDAV 使用 XML ([REC-XML]) 作为属性名和部分值，
-并且还使用 XML 来编组 (marshalling) 复杂的请求和响应. 本规范包含编组中使用的定义:
+并且还使用 XML 来封装 (marshalling) 复杂的请求和响应. 本规范包含封装中使用的定义:
 
 - XML 元素（[第 14 章][SECTION#14]）
 - 所有 属性的 DTD 和文本定义 ([第 15 章][SECTION#15])
 
-WebDAV 包含一些特殊规则，以向后兼容的方式扩展 WebDAV XML 编组 (marshalling)
-([第 17 章][SECTION#17]).
+WebDAV 包含一些特殊规则，以向后兼容的方式扩展 WebDAV XML 封装 ([第 17 章][SECTION#17]).
 
 规范的其他部分包括:
 

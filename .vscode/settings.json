@@ -1,0 +1,7 @@
+{
+    "licenser.author": "Fries_I23",
+    "licenser.license": "CC-BY-SA-4",
+    "markdownlint.config": {
+        "MD033": {"allowed_elements": ["id"]}
+    },
+}

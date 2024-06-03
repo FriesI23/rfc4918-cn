@@ -60,6 +60,10 @@ Document Type Definition, 既 "文档类型说明", 一种用于定义 XML 文�
 
 Internet Assigned Numbers Authority, 既 "互联网数字分配管理机构".
 
+## LNRs
+
+Lock-Null Resources, 锁空资源
+
 <!-- RFC refs -->
 
 ## [RFC7101]
@@ -69,6 +73,30 @@ Internet Assigned Numbers Authority, 既 "互联网数字分配管理机构".
 ## [RFC2518]
 
 WebDAV - 用于分布式创作的 HTTP 扩展
+
+## [RFC2518#6.4]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 6.4 章: opaquelocktoken 锁定令牌 URI 方案.
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-6.4)
+
+## [RFC2518#9.2]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 9.2 章: Depth 标头
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-9.2)
+
+## [RFC2518#9.7]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 9.7 章: Status-URI 响应标头
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-9.7)
+
+## [RFC2518#10.1]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 10.1 章: 102 正在处理 (processing)
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-10.1)
 
 ## [RFC2291]
 
@@ -151,6 +179,184 @@ XML 信息集合 (第二版)
 ## [REC-XML]
 
 扩展标记语言 (XML) 1.0（第五版）
+
+<!-- Translations -->
+
+## 方法
+
+Method (for HTTP)
+
+## 标头
+
+Header (for HTTP)
+
+## 正文
+
+Body (for HTTP)
+
+## 属性
+
+Property
+
+## 活属性
+
+Live Property
+
+## 死属性
+
+Dead Property
+
+## 属性元素名
+
+Property Name Element
+
+## 集合
+
+Collection
+
+## 锁定
+
+Locking
+
+## 命名空间
+
+Namespace
+
+## 资源
+
+Resource
+
+## 术语
+
+Terminology
+
+## 段
+
+Segment
+
+## 路径段
+
+Path Segment
+
+## 片段
+
+Fragment
+
+## 主体
+
+Principal
+
+## 令牌
+
+Token
+
+## 状态令牌
+
+State Token
+
+## 匹配状态令牌
+
+Matching State Token
+
+## 锁令牌
+
+Lock Token
+
+## 元素
+
+Element
+
+## 模式
+
+Schema
+
+## 原始模式
+
+Original Schema
+
+## 前缀
+
+Prefix
+
+## 集合资源
+
+Collection Resource
+
+## 缓存验证器
+
+Cache Validators
+
+## 断言
+
+Assert
+
+## 目的
+
+Purpose
+
+## 语法
+
+Syntax
+
+## 评估
+
+Evaluation
+
+## 机制
+
+Mechanism
+
+## 多语言平面
+
+Multilingual Plane
+
+## 外部实体
+
+External Entities
+
+## 内部实体
+
+Internel Entities
+
+## 信任集
+
+Trust Set
+
+## 生命周期
+
+Lifetime
+
+## 小程序
+
+Applet
+
+## 认证质询
+
+Authentication Challenge
+
+## 锁根
+
+Lock Root
+
+## 必要性支持
+
+Required Support
+
+## 前置条件
+
+Precondition
+
+## 后置条件
+
+Postcondition
+
+## 合规类
+
+Compliance Classes
+
+## 封装
+
+Marshalling
 
 <!-- herf -->
 
