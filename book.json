@@ -4,7 +4,7 @@
     "plugins": [ "sitemap", "page-treeview" ],
     "pluginsConfig": {
         "sitemap": {
-            "url": "https://friesi23.github.io",
+            "url": "https://play4fun.friesi23.cn/",
             "pathSuffix": "/rfc4918-cn/"
         },
         "page-treeview": {

@@ -30,6 +30,7 @@
 - [附录 B. HTTP 客户端兼容性注意事项][APPENDIX#B]
 - [附录 C. "opaquelocktoken" 方案和 URI][APPENDIX#C]
 - [附录 D. 锁空资源][APPENDIX#D]
+- [附录 E. 客户端希望进行认证的相关指导][APPENDIX#E]
 - [附录 F. 对[RFC2518]中的变更摘要][APPENDIX#F]
 - [补充 1. Etag 在 RFC2616 上的定义](z-etag_define_on_rfc2616.md)
 - [补充 2. 与 XML 实体相关的影响补充](z-addtional_info_about_implcations_of_xml_entities.md)
@@ -69,4 +70,5 @@
 [APPENDIX#B]: b-notes_on_http_client_compatibility.md
 [APPENDIX#C]: c-the_opaquelocktoken_scheme_and_url.md
 [APPENDIX#D]: d-lock_mull_resources.md
+[APPENDIX#E]: e-guidance_for_clients_desiring_to_authenticate.md
 [APPENDIX#F]: f-summary_changes_from_rfc2518.md
