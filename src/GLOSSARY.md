@@ -322,6 +322,14 @@ Required Support
 
 Precondition
 
+## 后置条件
+
+Postcondition
+
+## 合规类
+
+Compliance Classes
+
 <!-- herf -->
 
 [SECTION#2]: 2-notational_conventions.md
