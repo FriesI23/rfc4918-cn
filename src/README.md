@@ -25,12 +25,13 @@ Web 分布式作者和版本控制 (WebDAV) 包括一组与 HTTP/1.1 相关的�
 ## 翻译版本修订状态
 
 - v2
-  - 校对并修正部分翻译
-  - 修复在线文档的一些错误
+  - 校对并修正大量翻译问题 (机翻 or 原文理解错误).
+  - 增加对该文档中一些重要外部引用文档的部分翻译.
+  - 修复在线文档的一些错误.
 - v1
-  - 完成翻译
+  - 完成翻译.
 
-## 完整版权声明
+## IETF 原文完整版权声明
 
 ```text
    Copyright (C) The IETF Trust (2007).
@@ -75,4 +76,16 @@ Acknowledgement
 
    Funding for the RFC Editor function is currently provided by the
    Internet Society.
+```
+
+## 本文版权声明
+
+```text
+ rfc4918-cn (c) by Fries_I23
+
+ rfc4918-cn is licensed under a
+ Creative Commons Attribution-ShareAlike 4.0 International License.
+
+ You should have received a copy of the license along with this
+ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 ```

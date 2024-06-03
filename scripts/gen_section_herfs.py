@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # coding: utf-8
-# rfc4918-cn (c) by weooh
+# rfc4918-cn (c) by Fries_I23
 #
 # rfc4918-cn is licensed under a
 # Creative Commons Attribution-ShareAlike 4.0 International License.

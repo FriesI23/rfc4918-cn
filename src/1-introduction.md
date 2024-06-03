@@ -43,13 +43,12 @@ content authoring operations). 该扩展提供一组相关方法 (methods), 标�
 ([第 16 章][SECTION#16]).
 
 WebDAV 使用 XML ([REC-XML]) 作为属性名和部分值，
-并且还使用 XML 来编组 (marshalling) 复杂的请求和响应. 本规范包含编组中使用的定义:
+并且还使用 XML 来封装 (marshalling) 复杂的请求和响应. 本规范包含封装中使用的定义:
 
 - XML 元素（[第 14 章][SECTION#14]）
 - 所有 属性的 DTD 和文本定义 ([第 15 章][SECTION#15])
 
-WebDAV 包含一些特殊规则，以向后兼容的方式扩展 WebDAV XML 编组 (marshalling)
-([第 17 章][SECTION#17]).
+WebDAV 包含一些特殊规则，以向后兼容的方式扩展 WebDAV XML 封装 ([第 17 章][SECTION#17]).
 
 规范的其他部分包括:
 

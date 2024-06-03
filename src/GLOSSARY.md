@@ -60,7 +60,7 @@ Document Type Definition, 既 "文档类型说明", 一种用于定义 XML 文�
 
 Internet Assigned Numbers Authority, 既 "互联网数字分配管理机构".
 
-## LNR
+## LNRs
 
 Lock-Null Resources, 锁空资源
 
@@ -73,6 +73,30 @@ Lock-Null Resources, 锁空资源
 ## [RFC2518]
 
 WebDAV - 用于分布式创作的 HTTP 扩展
+
+## [RFC2518#6.4]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 6.4 章: opaquelocktoken 锁定令牌 URI 方案.
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-6.4)
+
+## [RFC2518#9.2]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 9.2 章: Depth 标头
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-9.2)
+
+## [RFC2518#9.7]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 9.7 章: Status-URI 响应标头
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-9.7)
+
+## [RFC2518#10.1]
+
+WebDAV - 用于分布式创作的 HTTP 扩展, 第 10.1 章: 102 正在处理 (processing)
+
+> [原文](https://datatracker.ietf.org/doc/html/rfc2518#section-10.1)
 
 ## [RFC2291]
 
@@ -329,6 +353,10 @@ Postcondition
 ## 合规类
 
 Compliance Classes
+
+## 封装
+
+Marshalling
 
 <!-- herf -->
 
