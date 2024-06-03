@@ -1,5 +1,7 @@
 # 15. DAV 属性
 
+> [原文](https://datatracker.ietf.org/doc/html/rfc4918#section-15)
+
 对于 DAV 属性，属性名与包含其值的 XML 元素名相同. 在下面章节中,
 每小节的最后一行会使用 [REC-XML] 中定义的格式给出元素类型声明.
 其中 `Value` 字段 (如果存在) 使用 BNF 对 XML 元素内允许内容做了进一步限制
