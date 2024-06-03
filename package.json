@@ -9,7 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "@honkit/honkit-plugin-ga": "^1.0.1",
     "gitbook-plugin-page-treeview": "^3.0.2",
     "honkit": "^5.1.4",
     "honkit-plugin-sitemap": "^1.0.2"

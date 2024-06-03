@@ -1,7 +1,11 @@
 {
     "root": "./src",
     "language": "zh-hans",
-    "plugins": [ "sitemap", "page-treeview" ],
+    "plugins": [
+        "sitemap",
+        "page-treeview",
+        "@honkit/honkit-plugin-ga"
+    ],
     "pluginsConfig": {
         "sitemap": {
             "url": "https://play4fun.friesi23.cn/",
@@ -12,6 +16,10 @@
             "style": "markdown",
             "minHeaderCount": "2",
             "minHeaderDeep": "2"
+        },
+        "ga": {
+            "trackingID": "G-86FL9YRD0F",
+            "anonymizeIP": true
         }
     }
 }
