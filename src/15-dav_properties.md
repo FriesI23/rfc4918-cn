@@ -217,7 +217,7 @@ COPY 和 MOVE 行为指的是本地 COPY 和 MOVE 操作.
 > </D:lockdiscovery>
 > ```
 
-## 15.8.1。示例 - 检索 DAV:lockdiscovery
+### 15.8.1。示例 - 检索 DAV:lockdiscovery
 
 ```xml
 >>Request
@@ -306,7 +306,7 @@ Content-Length: xxxx
 <!ELEMENT supportedlock (lockentry)* >
 ```
 
-## 15.10.1. 示例 - 检索 DAV:supportedlock
+### 15.10.1. 示例 - 检索 DAV:supportedlock
 
 ```xml
 >>Request

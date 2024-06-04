@@ -4,7 +4,9 @@
     "plugins": [
         "sitemap",
         "page-treeview",
-        "@honkit/honkit-plugin-ga"
+        "@honkit/honkit-plugin-ga",
+        "@dogatana/page-toc-button",
+        "@dogatana/back-to-top-button"
     ],
     "pluginsConfig": {
         "sitemap": {
@@ -15,7 +17,8 @@
             "copyright": "",
             "style": "markdown",
             "minHeaderCount": "2",
-            "minHeaderDeep": "2"
+            "minHeaderDeep": "2",
+            "collapsed": true
         },
         "ga": {
             "trackingID": "G-86FL9YRD0F",

@@ -284,7 +284,7 @@ If: </specs/rfc2518.doc> (Not ["4217"])
 
 需要注意的是, 正如在[第 10.4.4 章][SECTION#10.4.4]中所定义的, 对匹配状态令牌也需要进行相同的考虑.
 
-### 10.5. Lock-Token 标头
+## 10.5. Lock-Token 标头
 
 > [原文](https://datatracker.ietf.org/doc/html/rfc4918#section-10.5)
 
@@ -297,7 +297,7 @@ Lock-Token = "Lock-Token" ":" Coded-URL
 
 `Lock-Token` 响应标头用于 LOCK 方法时, 用以指示由成功 LOCK 请求创建的新锁的锁令牌.
 
-### 10.6. Overwrite 标头
+## 10.6. Overwrite 标头
 
 ```bnf
 Overwrite = "Overwrite" ":" ("T" | "F")
@@ -315,7 +315,7 @@ Overwrite = "Overwrite" ":" ("T" | "F")
 
 所有符合 DAV 的资源必须支持 `Overwrite` 标头.
 
-### 10.7. Timeout 请求标头
+## 10.7. Timeout 请求标头
 
 ```bnf
 TimeOut = "Timeout" ":" 1#TimeType

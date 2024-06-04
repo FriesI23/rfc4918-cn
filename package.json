@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@dogatana/honkit-plugin-back-to-top-button": "^1.0.0",
+    "@dogatana/honkit-plugin-page-toc-button": "^1.0.0",
     "@honkit/honkit-plugin-ga": "^1.0.1",
     "gitbook-plugin-page-treeview": "^3.0.2",
     "honkit": "^5.1.4",
