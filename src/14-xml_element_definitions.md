@@ -110,8 +110,7 @@
 >
 > ```xml
 > <error>
->   <code> 403 </code>
->   <reason> Auth Forbidden </reason>
+>     <internal-server-error/>
 > </error>
 > ```
 
@@ -608,9 +607,9 @@
 > </D:set>
 > ```
 
-## 14.27. shard XML 元素
+## 14.27. shared XML 元素
 
-- **名称**: shard
+- **名称**: shared
 - **目的**: 指定一个共享锁
 
 ```bnf
