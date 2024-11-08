@@ -20,7 +20,7 @@ def purge_url(url):
     headers = {"User-Agent": "curl/7.12.1"}
     try:
         res = requests.get(url, headers=headers, timeout=10)
-        print(f"success: {url}, got {res.text}")
+        print(f"success: {url}, got {res.status_code}")
     except Exception as e:
         print(f"failed, got exception: {e}", file=sys.stderr)
 
