@@ -1,0 +1,20 @@
+# purge urls
+# https://friesi23.cn/rfc4918-cn/search_index.json
+# https://friesi23.cn/rfc4918-cn/gitbook/images/apple-touch-icon-precomposed-152.png
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook.js
+# https://friesi23.cn/rfc4918-cn/gitbook/theme.js
+# https://friesi23.cn/rfc4918-cn/gitbook/@honkit/honkit-plugin-ga/plugin.js
+# https://friesi23.cn/rfc4918-cn/gitbook/@dogatana/honkit-plugin-page-toc-button/plugin.js
+# https://friesi23.cn/rfc4918-cn/gitbook/@dogatana/honkit-plugin-back-to-top-button/plugin.js
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-search/search-engine.js
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-search/search.js
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-lunr/lunr.min.js
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-lunr/search-lunr.js
+# https://friesi23.cn/rfc4918-cn/gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js
+# https://friesi23.cn/rfc4918-cn/gitbook/style.css
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-page-treeview/style.css
+# https://friesi23.cn/rfc4918-cn/gitbook/@dogatana/honkit-plugin-page-toc-button/plugin.css
+# https://friesi23.cn/rfc4918-cn/gitbook/@dogatana/honkit-plugin-back-to-top-button/plugin.css
+# https://friesi23.cn/rfc4918-cn/gitbook/@honkit/honkit-plugin-highlight/website.css
+# https://friesi23.cn/rfc4918-cn/gitbook/gitbook-plugin-search/search.css
+# https://friesi23.cn/rfc4918-cn/gitbook/@honkit/honkit-plugin-fontsettings/website.css
